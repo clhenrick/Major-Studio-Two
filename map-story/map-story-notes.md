@@ -29,7 +29,7 @@ Observations on a few platforms that already exist
 
 ####Pros and Cons
 1. Google Earth / Tour Builder:  
-![google earth tour builder](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/precedence/google-earth-tour-builder-example2.jpg)
+![google earth tour builder](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/precedence/google-earth-tour-builder-example2.jpg "Google")
   * Pros: Simple GUI, slick transitions, built in basemap data, can add multi-media (videos, photos, etc), contains lots of tutorials.
   * Cons: It's made by Google & not open-source, can't interact with it programmatically,
     can't change or customize the basemap cartography

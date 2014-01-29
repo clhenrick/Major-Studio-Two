@@ -35,7 +35,7 @@ Observations on a few platforms that already exist
     can't change or customize the basemap cartography
 
 
-2. MapStory.org
+2. MapStory.org  
 ![mapstory.org](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/mapstory-example.png "MapStory.org")
   * Pros: Let's users add multi-media, DL data, promotes transparency, users can curate content
   * Cons: Poorly designed UI, limited control over time lapse settings

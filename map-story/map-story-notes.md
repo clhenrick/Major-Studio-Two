@@ -22,14 +22,14 @@ Some observations on a few platforms that already exist.
 * The Atlantic on Neatline [Once Upon a Place](http://www.theatlantic.com/technology/archive/2012/07/once-upon-a-place-telling-stories-with-maps/259787/)
 * Engadget.com [Google Earth Tour Builder lets you tell stories through maps](http://www.engadget.com/2013/11/11/google-earth-tour-builder/)
 
-####Examples 
+###Examples 
 Google Earth Tour Builder:
   * [Defending the Rivers of the Amazon, with Sigourney Weaver](http://www.youtube.com/watch?feature=player_embedded&v=Melq7VA7FjY)
   * [Being a Post-9/11 National Guard Member](https://tourbuilder.withgoogle.com/builder#play/ahJzfmd3ZWItdG91cmJ1aWxkZXJyDAsSBFRvdXIY-I0LDA)
 
 More example links coming soon...
 
-####Pros and Cons
+###Pros and Cons
 1. Google Earth Tour Builder:  
 ![google earth tour builder](https://github.com/clhenrick/Major-Studio-Two/raw/master/map-story/images/google-earth-tour-builder-example.png)  
   * Pros: Simple GUI, slick transitions, built in basemap data, can add multi-media (videos, photos, etc), contains lots of tutorials.
@@ -56,7 +56,7 @@ More example links coming soon...
   * Pros: Open-source, rich control over how content is displayed and created.
   * Cons: Requires a CMS called Omeka, limited capability for sandbox web app. User must set up and install on their own. Too much user control allowing for poor cartography and clunky design
 
-###Design Steps
+##Design Steps
 1. Cherry pick from existing platforms to decide what I'd like to improve on.
 2. Develop a Wireframe to mock up a website.
 3. Code interactivity in Javascript. 

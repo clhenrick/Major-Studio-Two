@@ -21,8 +21,9 @@ Telling my brother Mike's story of Hiking the PCT through an interactive media e
 * Engadget.com [Google Earth Tour Builder lets you tell stories through maps](http://www.engadget.com/2013/11/11/google-earth-tour-builder/)
 
 ###Precedence
+Observations on a few platforms that already exist
 
-####Examples using Google Earth:
+####Examples using Google Earth Tour Builder:
 * [Defending the Rivers of the Amazon, with Sigourney Weaver](http://www.youtube.com/watch?feature=player_embedded&v=Melq7VA7FjY)
 * [Being a Post-9/11 National Guard Member](https://tourbuilder.withgoogle.com/builder#play/ahJzfmd3ZWItdG91cmJ1aWxkZXJyDAsSBFRvdXIY-I0LDA)
 
@@ -44,5 +45,9 @@ Telling my brother Mike's story of Hiking the PCT through an interactive media e
 
 
 4. ESRI's Story Telling With Maps
-  * Pros: 
-  * Cons: 
+  * Pros: User can customize the layout somewhat using templates, sort of like Wordpress, can add multimedia, configure pop-ups
+  * Cons: Requires access to ArcGIS.com (ESRI's proprietary software which only runs on windows and cost $$$)
+
+5. Neatline
+  * Pros: Open-source, rich control over how content is displayed and created.
+  * Cons: Requires a CMS called Omeka, limited capability for sandbox web app. User must set up and install on their own. Too much user control allowing for poor cartography and clunky design

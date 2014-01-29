@@ -11,21 +11,23 @@ Telling my brother Mike's story of Hiking the PCT through an interactive media e
 ##Research
 
 ###Plaforms:
-* mapstory.org
-* storymap.js
-* storytelling with maps (ESRI, propriertary)
-* Neatline (University of VA)
+* [mapstory.org](http://mapstory.org/)
+* [storymap.js](http://storymap.knightlab.com/)
+* [storytelling with maps (ESRI, propriertary)](http://storymaps.esri.com/home/)
+* [Neatline (University of VA)](http://neatline.org/)
+* [Google Earth Tour Builder](https://tourbuilder.withgoogle.com/)
 
 ###Articles
 * The Atlantic on Neatline [Once Upon a Place](http://www.theatlantic.com/technology/archive/2012/07/once-upon-a-place-telling-stories-with-maps/259787/)
 * Engadget.com [Google Earth Tour Builder lets you tell stories through maps](http://www.engadget.com/2013/11/11/google-earth-tour-builder/)
 
 ###Precedence
-Observations on a few platforms that already exist
+Observations on a few platforms that already exist [listed above]
 
-####Examples using Google Earth Tour Builder:
-* [Defending the Rivers of the Amazon, with Sigourney Weaver](http://www.youtube.com/watch?feature=player_embedded&v=Melq7VA7FjY)
-* [Being a Post-9/11 National Guard Member](https://tourbuilder.withgoogle.com/builder#play/ahJzfmd3ZWItdG91cmJ1aWxkZXJyDAsSBFRvdXIY-I0LDA)
+####Examples 
+Using Google Earth Tour Builder:
+  * [Defending the Rivers of the Amazon, with Sigourney Weaver](http://www.youtube.com/watch?feature=player_embedded&v=Melq7VA7FjY)
+  * [Being a Post-9/11 National Guard Member](https://tourbuilder.withgoogle.com/builder#play/ahJzfmd3ZWItdG91cmJ1aWxkZXJyDAsSBFRvdXIY-I0LDA)
 
 ####Pros and Cons
 1. Google Earth / Tour Builder:  
@@ -48,8 +50,15 @@ Observations on a few platforms that already exist
 ![ESRI story telling with maps](https://github.com/clhenrick/Major-Studio-Two/raw/master/map-story/images/esri_story-telling-with-maps-example.png "ESRI")  
   * Pros: User can customize the layout somewhat using templates, sort of like Wordpress, can add multimedia, configure pop-ups
   * Cons: Requires access to ArcGIS.com (ESRI's proprietary software which only runs on windows and cost $$$)  
-  
+
 5. Neatline  
 ![Neatline](https://github.com/clhenrick/Major-Studio-Two/raw/master/map-story/images/neatline-example.png "Neatline")  
   * Pros: Open-source, rich control over how content is displayed and created.
   * Cons: Requires a CMS called Omeka, limited capability for sandbox web app. User must set up and install on their own. Too much user control allowing for poor cartography and clunky design
+
+###Design Steps
+1. Cherry pick from existing platforms to decide what I'd like to improve on.
+2. Develop a Wireframe to mock up a website.
+3. Code interactivity in Javascript. 
+4. Process and prepare data for interactive mapping.
+5. Scrape content from [Mike's blog.](http://theuncalculatedlife.blogspot.com/)

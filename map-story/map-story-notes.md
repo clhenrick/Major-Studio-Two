@@ -9,6 +9,7 @@ Telling my brother Mike's story of Hiking the PCT through an interactive media e
 * Create custom cartography for a basemap, markers, etc. that are similar to the printed version.
 
 ##Research
+Some observations on a few platforms that already exist.
 
 ###Plaforms:
 * [mapstory.org](http://mapstory.org/)
@@ -21,16 +22,15 @@ Telling my brother Mike's story of Hiking the PCT through an interactive media e
 * The Atlantic on Neatline [Once Upon a Place](http://www.theatlantic.com/technology/archive/2012/07/once-upon-a-place-telling-stories-with-maps/259787/)
 * Engadget.com [Google Earth Tour Builder lets you tell stories through maps](http://www.engadget.com/2013/11/11/google-earth-tour-builder/)
 
-###Precedence
-Observations on a few platforms that already exist [listed above]
-
 ####Examples 
-Using Google Earth Tour Builder:
+Google Earth Tour Builder:
   * [Defending the Rivers of the Amazon, with Sigourney Weaver](http://www.youtube.com/watch?feature=player_embedded&v=Melq7VA7FjY)
   * [Being a Post-9/11 National Guard Member](https://tourbuilder.withgoogle.com/builder#play/ahJzfmd3ZWItdG91cmJ1aWxkZXJyDAsSBFRvdXIY-I0LDA)
 
+More example links coming soon...
+
 ####Pros and Cons
-1. Google Earth / Tour Builder:  
+1. Google Earth Tour Builder:  
 ![google earth tour builder](https://github.com/clhenrick/Major-Studio-Two/raw/master/map-story/images/google-earth-tour-builder-example.png)  
   * Pros: Simple GUI, slick transitions, built in basemap data, can add multi-media (videos, photos, etc), contains lots of tutorials.
   * Cons: It's made by Google & not open-source, can't interact with it programmatically,

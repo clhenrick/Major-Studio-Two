@@ -30,34 +30,22 @@ Observations on a few platforms that already exist
 ####Pros and Cons
 1. Google Earth / Tour Builder:  
 ![google earth tour builder](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/google-earth-tour-builder-example.png)  
-
   * Pros: Simple GUI, slick transitions, built in basemap data, can add multi-media (videos, photos, etc), contains lots of tutorials.
   * Cons: It's made by Google & not open-source, can't interact with it programmatically,
     can't change or customize the basemap cartography
-
-
 2. MapStory.org  
 ![mapstory.org](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/mapstory-example.png "MapStory.org")  
-
   * Pros: Let's users add multi-media, DL data, promotes transparency, users can curate content
   * Cons: Poorly designed UI, limited control over time lapse settings
-
-
 3. StoryMapJS  
 ![Storymapjs](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/story-map-js-example.png "StoryMap JS")  
-
   * Pros: Interface is a little better designed than MapStory.org, uses Leaflet JS, users can interact programatically with it.
   * Cons: In beta, prone to bugs in browsers.
-
-
 4. ESRI's Story Telling With Maps  
 ![ESRI story telling with maps](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/esri_story-telling-with-maps-example.png "ESRI")  
-
   * Pros: User can customize the layout somewhat using templates, sort of like Wordpress, can add multimedia, configure pop-ups
   * Cons: Requires access to ArcGIS.com (ESRI's proprietary software which only runs on windows and cost $$$)
-
 5. Neatline  
 ![Neatline](https://github.com/clhenrick/Major-Studio-Two/blob/master/map-story/images/neatline-example.png "Neatline")  
-
   * Pros: Open-source, rich control over how content is displayed and created.
   * Cons: Requires a CMS called Omeka, limited capability for sandbox web app. User must set up and install on their own. Too much user control allowing for poor cartography and clunky design

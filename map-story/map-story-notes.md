@@ -13,11 +13,11 @@ This project is inspired by a NY Times article titled [The Russia Left Behind](h
 Some observations on a few platforms that already exist.
 
 ###Plaforms:
-* [mapstory.org](http://mapstory.org/)
-* [storymap.js](http://storymap.knightlab.com/)
-* [storytelling with maps (ESRI, propriertary)](http://storymaps.esri.com/home/)
-* [Neatline (University of VA)](http://neatline.org/)
 * [Google Earth Tour Builder](https://tourbuilder.withgoogle.com/)
+* [MapStory.org](http://mapstory.org/)
+* [StoryMapJS](http://storymap.knightlab.com/)
+* [Storytelling With Maps (ESRI, propriertary)](http://storymaps.esri.com/home/)
+* [Neatline (University of VA)](http://neatline.org/)
 
 ###Articles
 * The Atlantic on Neatline [Once Upon a Place](http://www.theatlantic.com/technology/archive/2012/07/once-upon-a-place-telling-stories-with-maps/259787/)

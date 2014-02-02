@@ -1,0 +1,8 @@
+html, body, #wrapper {
+	height: 100%;
+	margin: auto 0px;
+}
+
+#map {
+    height: 100%;
+}

@@ -1,8 +1,80 @@
-html, body, #wrapper {
+html, body, {
+	width: 100%;
 	height: 100%;
-	margin: auto 0px;
+	margin: 0;
+	padding: 0;
+	font: 17px/28px, Georgia, serif;
+}
+
+#wrapper {
+	position: absolute;
+	margin: 0;
+	top: 50px;
+	width: 100%;
+	height: 100%;
+/*	border: 1px orange solid;
+*/}
+
+#title {
+	position: fixed;
+	z-index: 100;
+	height: 50px;
+	width: 100%;
+	margin: 0 auto;
+	top: 0px;
+/*	box-shadow: 0px 1px 50px #5E5E5E;
+*/	background: #262626;
+	border-bottom: solid 1px hsla(0, 100%, 100%, 0.3);
+}
+
+#title h1 {
+	font: bold 30px/15px "Georgia", serif;
+	text-align: left;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: #ffffff;
+	padding-left: 10px;
+}
+
+/* can't seem to get the content and map to sit below the nav bar */
+#content-wrapper, #map{
+/*	margin-top: 3%;
+*/}
+
+.chapter {
+	height: 100%;
+}
+
+#content-wrapper {
+	width: 75%;
+	height: 100%;
+	float: left;
+	z-index: 0;
+	display: inline-block;
+/*	border: 1px red solid;
+*/	background: white;
+}
+
+.content-title {
+	padding: 10px 30px 0px 30px;
+	text-transform: capitalize;
+}
+
+.content {
+	padding: 0px 30px 10px 30px;
+}
+
+.content p {
+	font: 17px/28px "Georgia", sans-serif;
 }
 
 #map {
     height: 100%;
+    width: 25%;
+    margin: 0px;
+    float: right;
+  	position: fixed;
+  	z-index: 0;
+    display: inline-block;
 }
+

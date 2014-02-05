@@ -61,7 +61,9 @@ $.getJSON("data/pct.geojson", function(data) {
 	// add pct lat lon points for the marker to animate
 	var line = L.polyline(temp);
 		animatedMarker = L.animatedMarker(line.getLatLngs(), {
-			autoStart: false
+			autoStart: false,
+			distance: 2000,
+			interval: 1000
 		});
 
 	map.addLayer(animatedMarker);
@@ -76,11 +78,60 @@ $.getJSON("data/pct.geojson", function(data) {
 	console.log(animatedMarker['_latlng'].lat);
 	console.log(animatedMarker['_latlng'].lng);
 
-	// use a setInterval function to have the map follow the marker
-	// var fps = 100,
-	// 	mapPanTo = setInterval(function(){map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})}, fps);
 
 });
+
+
+// temporary button interaction code here
+var clicked = false;
+
+$('#button').click(function(){
+	// for now set button to start / stop animated marker
+	// also set zoom to larger scale?
+	// eventually replace button with scrolling functionality 
+	
+	// use a setInterval function to have the map follow the marker
+	var fps = 100,
+	mapPanTo = setInterval(function(){map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})}, fps);
+	
+	//check to see if button has been clicked
+	if (clicked === false){
+		animatedMarker.start();
+		clicked = true;
+		
+		//zoom in by a factor of 6
+		map.zoomIn(6);
+		
+	} else if (clicked === true) {
+		animatedMarker.stop();
+		clicked = false;
+
+		//zoom out by a factor of 6
+		map.zoomOut(6);
+	}
+
+});
+
+// TO DO: namespace for marker control
+markerCntrl = {
+
+	coordinates : {
+		1 : [-116.470082461131227, 32.60058364666218],
+		2 : [-116.479056128305629, 32.605312472627269],
+		3 : [-116.488815620191019, 32.607002082491533]
+	},
+	start : animatedMarker.start(),
+	stop : animatedMarker.stop()
+
+}
+
+
+
+
+
+
+
+
 
 
 

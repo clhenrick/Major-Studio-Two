@@ -81,55 +81,114 @@ $.getJSON("data/pct.geojson", function(data) {
 	console.log(animatedMarker['_latlng'].lat);
 	console.log(animatedMarker['_latlng'].lng);
 
+	markerCntrl.run();
+	markerCntrl.latLonCheck;
 
 });
 
 
 // temporary button interaction code here
-var clicked = false;
+// var clicked = false;
 
-$('#button').click(function(){
-	// for now set button to start / stop animated marker
-	// also set zoom to larger scale?
-	// eventually replace button with scrolling functionality 
+// $('#button').click(function(){
+// 	// for now set button to start / stop animated marker
+// 	// also set zoom to larger scale?
+// 	// eventually replace button with scrolling functionality 
 	
-	// use a setInterval function to have the map follow the marker
-	var fps = 100,
-	mapPanTo = setInterval(function(){map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})}, fps);
+// 	// use a setInterval function to have the map follow the marker
+// 	var fps = 100,
+// 	mapPanTo = setInterval(function(){map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})}, fps);
 	
-	//check to see if button has been clicked
-	if (clicked === false){
-		animatedMarker.start();
-		clicked = true;
+// 	//check to see if button has been clicked
+// 	if (clicked === false){
+// 		animatedMarker.start();
+// 		clicked = true;
 		
-		//zoom in by a factor of 6
-		map.zoomIn(6);
+// 		//zoom in by a factor of 6
+// 		map.zoomIn(6);
 		
-	} else if (clicked === true) {
-		animatedMarker.stop();
-		clicked = false;
+// 	} else if (clicked === true) {
+// 		animatedMarker.stop();
+// 		clicked = false;
 
-		//zoom out by a factor of 6
-		map.zoomOut(6);
-	}
+// 		//zoom out by a factor of 6
+// 		map.zoomOut(6);
+// 	}
 
-});
+// });
 
-// TO DO: namespace for marker control
+
+/* waypoint test */
+// $('#wp1').waypoint(function() {
+//   animatedMarker.start();
+// });
+
+
+// namespace for marker control
 markerCntrl = {
 
-	coordinates : { //arbitrary for testing
-		1 : [-116.46705135909554, 32.59236807198289],
-		2 : [-116.46672634267014, 32.59659328551297],
-		3 : [-116.4696108634455, 32.59894965459705]
+	coordinates : { //arbitrary right now for testing
+		one : [-116.46705135909554, 32.59236807198289],
+		two : [-116.46672634267014, 32.59659328551297],
+		three : [-116.4696108634455, 32.59894965459705]
 	},
-	start : animatedMarker.start(),
-	stop : animatedMarker.stop()
+	start : function(){
+		animatedMarker.start();
+	},
+	stop : function(){
+		animatedMarker.stop();
+	},
 
+	pan : function() {
+		var fps = 100;
+		setInterval(function(){
+			map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})
+		},fps)
+	},
+
+	zoomIn : function(factor){
+		map.zoomIn(factor);
+	},
+
+	zoomOut : function(factor){
+		map.zoomOut(factor);
+	},
+
+	latLonCheck : setInterval(function(){
+		if (animatedMarker['_latlng'].lng === markerCntrl.coordinates.one[0] && animatedMarker['_latlng'].lat === markerCntrl.coordinates.one[1]){
+			animatedMarker.stop();
+		};
+		
+	},100),
+
+	run : function() {
+		console.log('this.coordinates.one[0]: ' + markerCntrl.coordinates.one[0]);
+	
+		$('#wp1').waypoint(function(direction) {
+
+			console.log('direction: ' + direction);
+
+			switch(direction){
+				case 'down' :
+					map.zoomIn(6);
+					animatedMarker.start();
+			  		var fps = 100,
+						panTo = setInterval(function(){
+							map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})
+						},fps);
+					break;
+				case 'up' :
+					map.zoomOut(6)
+					animatedMarker.stop();
+					break;
+			}
+
+		}, {offset: 100});
+
+		// check to see if marker will stop at specified coordinates
+
+	}
 }
-
-
-
 
 
 

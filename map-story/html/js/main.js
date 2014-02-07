@@ -154,7 +154,6 @@ markerCntrl = {
 	}
 }
 
-
 if (animatedMarker['_latlng'].lng === markerCntrl.coordinates.one[0] && animatedMarker['_latlng'].lat === markerCntrl.coordinates.one[1]){
 		animatedMarker.stop();
 	};

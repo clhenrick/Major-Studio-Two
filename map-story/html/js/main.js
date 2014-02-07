@@ -92,7 +92,7 @@ $.getJSON("data/pct.geojson", function(data) {
 
 		console.log('e.latlng.lat: ' + e.latlng.lat + 'e.latlng.lng: ' + e.latlng.lng);
 		if (e.latlng.lng === markerCntrl.coordinates.one[0] && e.latlng.lat === markerCntrl.coordinates.one[1]){
-				alert("whoa!");	
+				//alert("whoa!"); //works
 			}
 		}
 

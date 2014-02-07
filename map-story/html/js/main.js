@@ -79,12 +79,25 @@ $.getJSON("data/pct.geojson", function(data) {
 	// grab the animated marker lat lon values (note: they are constantly changing)
 	console.log(animatedMarker['_latlng'].lat);
 	console.log(animatedMarker['_latlng'].lng);
+	console.log(animatedMarker);
 
+	// start browser panning interactivity:
 	markerCntrl.run();
 
-	// var latLonCheck = setInterval(function(){
-	// 	markerCntrl.latLonCheck;
-	// },100);
+	var onMove = function(e){
+		//e.preventDefault();
+		//console.log('this: ' + this.getLatLng() + 'this properties: ' + this);
+		var lat1 = markerCntrl.coordinates.one[0],
+			lng1 = markerCntrl.coordinates.one[1];
+
+		console.log('e.latlng.lat: ' + e.latlng.lat + 'e.latlng.lng: ' + e.latlng.lng);
+		if (e.latlng.lng === markerCntrl.coordinates.one[0] && e.latlng.lat === markerCntrl.coordinates.one[1]){
+				alert("whoa!");	
+			}
+		}
+
+	animatedMarker.on('move', onMove);
+
 });
 
 
@@ -154,9 +167,6 @@ markerCntrl = {
 	}
 }
 
-if (animatedMarker['_latlng'].lng === markerCntrl.coordinates.one[0] && animatedMarker['_latlng'].lat === markerCntrl.coordinates.one[1]){
-		animatedMarker.stop();
-	};
 
 
 

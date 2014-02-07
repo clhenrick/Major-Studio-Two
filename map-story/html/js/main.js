@@ -1,6 +1,5 @@
-console.log($(document).width());
-
-// pct center point is 40.3025, -121.234722
+// Leaflet Stuff:
+// PCT center point is 40.3025, -121.234722
 
 // store map config variables in an object
 var config = {
@@ -82,53 +81,19 @@ $.getJSON("data/pct.geojson", function(data) {
 	console.log(animatedMarker['_latlng'].lng);
 
 	markerCntrl.run();
-	markerCntrl.latLonCheck;
 
+	// var latLonCheck = setInterval(function(){
+	// 	markerCntrl.latLonCheck;
+	// },100);
 });
 
-
-// temporary button interaction code here
-// var clicked = false;
-
-// $('#button').click(function(){
-// 	// for now set button to start / stop animated marker
-// 	// also set zoom to larger scale?
-// 	// eventually replace button with scrolling functionality 
-	
-// 	// use a setInterval function to have the map follow the marker
-// 	var fps = 100,
-// 	mapPanTo = setInterval(function(){map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})}, fps);
-	
-// 	//check to see if button has been clicked
-// 	if (clicked === false){
-// 		animatedMarker.start();
-// 		clicked = true;
-		
-// 		//zoom in by a factor of 6
-// 		map.zoomIn(6);
-		
-// 	} else if (clicked === true) {
-// 		animatedMarker.stop();
-// 		clicked = false;
-
-// 		//zoom out by a factor of 6
-// 		map.zoomOut(6);
-// 	}
-
-// });
-
-
-/* waypoint test */
-// $('#wp1').waypoint(function() {
-//   animatedMarker.start();
-// });
 
 
 // namespace for marker control
 markerCntrl = {
 
 	coordinates : { //arbitrary right now for testing
-		one : [-116.46705135909554, 32.59236807198289],
+		one : [-116.46705135909554, 32.59186023381822],
 		two : [-116.46672634267014, 32.59659328551297],
 		three : [-116.4696108634455, 32.59894965459705]
 	},
@@ -154,12 +119,12 @@ markerCntrl = {
 		map.zoomOut(factor);
 	},
 
-	latLonCheck : setInterval(function(){
+	latLonCheck : function(){
 		if (animatedMarker['_latlng'].lng === markerCntrl.coordinates.one[0] && animatedMarker['_latlng'].lat === markerCntrl.coordinates.one[1]){
 			animatedMarker.stop();
 		};
 		
-	},100),
+	},
 
 	run : function() {
 		console.log('this.coordinates.one[0]: ' + markerCntrl.coordinates.one[0]);
@@ -186,12 +151,13 @@ markerCntrl = {
 		}, {offset: 100});
 
 		// check to see if marker will stop at specified coordinates
-
 	}
 }
 
 
-
+if (animatedMarker['_latlng'].lng === markerCntrl.coordinates.one[0] && animatedMarker['_latlng'].lat === markerCntrl.coordinates.one[1]){
+		animatedMarker.stop();
+	};
 
 
 

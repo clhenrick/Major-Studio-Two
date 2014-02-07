@@ -138,15 +138,18 @@ html, body, {
 
 .content-title h2 {
 	margin: 0;
-	text-transform: capitalize;
+	text-transform: uppercase;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	display: relative;
+	padding-bottom: 5px;
 }
 
 .content-title h3 {
 	margin: 0;
 	top: 0px;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding-bottom: 5px;
 }
 
 .content {

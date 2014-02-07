@@ -1,3 +1,5 @@
+console.log($(document).width());
+
 // pct center point is 40.3025, -121.234722
 
 // store map config variables in an object
@@ -18,6 +20,7 @@ map.addLayer(config.baselayer);
 // set init map center and zoom
 map.setView(config.initLatLng, config.initZoom);
 
+L.control.attribution({'position': 'bottomleft'}).addTo(map);
 
 
 // add PCT line feature from external geojson file
@@ -115,10 +118,10 @@ $('#button').click(function(){
 // TO DO: namespace for marker control
 markerCntrl = {
 
-	coordinates : {
-		1 : [-116.470082461131227, 32.60058364666218],
-		2 : [-116.479056128305629, 32.605312472627269],
-		3 : [-116.488815620191019, 32.607002082491533]
+	coordinates : { //arbitrary for testing
+		1 : [-116.46705135909554, 32.59236807198289],
+		2 : [-116.46672634267014, 32.59659328551297],
+		3 : [-116.4696108634455, 32.59894965459705]
 	},
 	start : animatedMarker.start(),
 	stop : animatedMarker.stop()

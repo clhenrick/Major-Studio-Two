@@ -1,15 +1,68 @@
-html, body, {
-	width: 100%;
-	height: 100%;
+/* CSS RESET */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
 	margin: 0;
 	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* MY CSS */
+html, body, {
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
 	font: 17px/28px, Georgia, serif;
+	overflow: hidden;
 }
 
 #wrapper {
 	position: absolute;
 	margin: 0;
-	top: 50px;
+	padding: 0;
+	top: 40px;
 	width: 100%;
 	height: 100%;
 /*	border: 1px orange solid;
@@ -18,7 +71,7 @@ html, body, {
 #title-container {
 	position: fixed;
 	z-index: 100;
-	height: 50px;
+	height: 40px;
 	width: 100%;
 	margin: 0 auto;
 	top: 0px;
@@ -33,39 +86,36 @@ html, body, {
 }
 
 #title h1 {
-	font: bold 30px/15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font: 25px/40px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	text-align: left;
 	text-transform: uppercase;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	color: #ffffff;
 	padding-left: 10px;
 }
 
 #button {
-	font: bold 20px sans-serif;
 	display: inline-block;
 	position: absolute;
 	float: left;
-	margin: 0;
 	padding-left: 25px;
-	padding-top: 5px;
-	/*border: 1px red solid;*/
-	border-radius: 5%;
+	top: 10px;
 }
 
 #button a {
-	float: left;
-	display: inline-block;
+	font: bold 20px/25px sans-serif;
 	text-decoration: none;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	text-align: left;
 	color: red;
-	padding: 3px;
-	margin: 10px 10px 0px 0px;
+	display: inline-block;
 }
 
 .chapter {
+	margin: 0;
+	padding: 0;
+	position: relative;
 }
 
 #content-wrapper {
@@ -76,24 +126,80 @@ html, body, {
 	display: inline-block;
 /*	border: 1px red solid;
 */	background: white;
+	position: relative;
 }
 
 .content-title {
+	font-style: bold;
 	padding: 10px 30px 0px 30px;
+	margin: 0;
+	/*border-top: 1px dashed black;*/
+}
+
+.content-title h2 {
 	margin: 0;
 	text-transform: capitalize;
 	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	display: relative;
 }
 
 .content-title h3 {
+	margin: 0;
+	top: 0px;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
 
 .content {
 	padding: 0px 30px 10px 30px;
+	margin: 0px;
+	/*border: 1px solid green;*/
 }
 
 .content p {
-	font: 17px/28px "Georgia", sans-serif;
+	font: 17px/28px "Georgia", serif;
+	margin: 0px;
+}
+
+.call-out {
+	display: inline-block;
+	margin: 0px;
+	position: relative;
+	font-size: 50px;
+	font-weight: bolder;
+	font-style: italic;	
+	line-height: 70px;
+	padding: 25px 100px 50px 70px;
+}
+
+.content .call-out {
+	padding: 25px 100px 25px 70px;
+	font-size: 50px;
+}
+
+.media-container {
+	position: relative;
+	/*margin-top: -60px;*/
+}
+
+.image img {
+	/* image width in px is 1333px */
+	width: 100%;
+}
+
+.caption {
+	position: relative;
+	margin: 0;
+	top: -4px;
+	padding: 5px 0 5px 0;
+	background-color: #e5e5e5;
+}
+
+.caption p {
+	font: 17px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-style: italic;
+	padding-left: 30px;
+	padding-right: 30px;
+	margin: 0;
 }
 
 #map {
@@ -104,5 +210,6 @@ html, body, {
   	position: fixed;
   	z-index: 0;
     display: inline-block;
+    border-right: 1px solid hsla(0, 100%, 100%, 0.3);
 }
 

@@ -7,11 +7,13 @@ var config = {
   initLatLng: new L.LatLng(40.3025, -121.2347),
   initZoom: 5,
   minZoom: 4,
-  maxZoom: 16
+  maxZoom: 16,
+  zoomControl: false,
+  attributionControl: false
 }
 
 // initialize map
-var map = L.map('map', {minZoom: config.minZoom, maxZoom: config.maxZoom})
+var map = L.map('map', {minZoom: config.minZoom, maxZoom: config.maxZoom, zoomControl: false, attributionControl: false})
 
 // add the Stamen base layer to the map 
 map.addLayer(config.baselayer);
@@ -19,8 +21,9 @@ map.addLayer(config.baselayer);
 // set init map center and zoom
 map.setView(config.initLatLng, config.initZoom);
 
-L.control.attribution({'position': 'bottomleft'}).addTo(map);
-
+// place attribution in bottom left so it's visible
+// ** not working :( 
+new L.Control.Attribution({ position: 'bottomleft'}).addTo(map);
 
 // add PCT line feature from external geojson file
 $.getJSON("data/pct.geojson", function(data) {
@@ -84,19 +87,24 @@ $.getJSON("data/pct.geojson", function(data) {
 	// start browser panning interactivity:
 	markerCntrl.run();
 
-	var onMove = function(e){
-		//e.preventDefault();
-		//console.log('this: ' + this.getLatLng() + 'this properties: ' + this);
-		var lat1 = markerCntrl.coordinates.one[0],
-			lng1 = markerCntrl.coordinates.one[1];
+	// var onMove = function(e){
+	// 	//e.preventDefault();
+	// 	//console.log('this: ' + this.getLatLng() + 'this properties: ' + this);
+	// 	var lat1 = markerCntrl.coordinates.one[0],
+	// 		lng1 = markerCntrl.coordinates.one[1];
 
-		console.log('e.latlng.lat: ' + e.latlng.lat + 'e.latlng.lng: ' + e.latlng.lng);
-		if (e.latlng.lng === markerCntrl.coordinates.one[0] && e.latlng.lat === markerCntrl.coordinates.one[1]){
-				//alert("whoa!"); //works
-			}
-		}
+	// 	console.log('e.latlng.lat: ' + e.latlng.lat + ' 	e.latlng.lng: ' + e.latlng.lng);
+	// 	console.log('e is: ' + e);
 
-	animatedMarker.on('move', onMove);
+	// 	if (e.latlng.lng === markerCntrl.coordinates.one[0] && e.latlng.lat === markerCntrl.coordinates.one[1]){
+	// 			//alert("whoa!"); //works
+	// 			e.latlng.lng = lng1;
+	// 			e.latlng.lat = lat1;
+	// 		}
+	// 	}
+
+	// .on for on .off for off
+	animatedMarker.off('move', markerCntrl.onMove);
 
 });
 
@@ -163,7 +171,20 @@ markerCntrl = {
 
 		}, {offset: 100});
 
-		// check to see if marker will stop at specified coordinates
+	},
+
+	onMove : function(e){
+		var lat1 = markerCntrl.coordinates.one[0],
+			lng1 = markerCntrl.coordinates.one[1];
+
+		console.log('e.latlng.lat: ' + e.latlng.lat + ' e.latlng.lng: ' + e.latlng.lng);
+		console.log('e is: ' + e);
+
+		if (e.latlng.lng === markerCntrl.coordinates.one[0] && e.latlng.lat === markerCntrl.coordinates.one[1]){
+				//alert("whoa!"); //works
+				e.latlng.lng = lng1;
+				e.latlng.lat = lat1;
+			}
 	}
 }
 

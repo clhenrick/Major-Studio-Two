@@ -88,7 +88,7 @@ html, body, {
 #title h1 {
 	font: 25px/40px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	text-align: left;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	letter-spacing: 2px;
 	color: #ffffff;
 	padding-left: 10px;
@@ -187,6 +187,12 @@ html, body, {
 .image img {
 	/* image width in px is 1333px */
 	width: 100%;
+}
+
+.image .call-out {
+	position: absolute;
+	color: hsla(0, 100%, 100%, .9);
+	text-shadow: black 0.1em 0.1em 0.2em; /*-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 }
 
 .caption {

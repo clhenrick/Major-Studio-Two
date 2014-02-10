@@ -8,20 +8,20 @@ var config = {
   initZoom: 5,
   minZoom: 4,
   maxZoom: 16,
-  zoomControl: false,
+  zoomControl: true,
   attributionControl: false
 }
 
 // initialize map
-var map = L.map('map', {minZoom: config.minZoom, maxZoom: config.maxZoom, zoomControl: false, attributionControl: false})
+var map = L.map('map', {minZoom: config.minZoom, maxZoom: config.maxZoom, zoomControl: true, attributionControl: false})
 
 // disable drag and zoom handlers
-map.dragging.disable();
-map.touchZoom.disable();
-map.doubleClickZoom.disable();
-map.scrollWheelZoom.disable();
+// map.dragging.disable();
+// map.touchZoom.disable();
+// map.doubleClickZoom.disable();
+// map.scrollWheelZoom.disable();
 // disable tap handler, if present.
-if (map.tap) map.tap.disable();
+// if (map.tap) map.tap.disable();
 
 // add the Stamen base layer to the map 
 map.addLayer(config.baselayer);
@@ -36,7 +36,7 @@ new L.Control.Attribution({ position: 'bottomleft'}).addTo(map);
 // add PCT line feature from external geojson file
 $.getJSON("data/pct.geojson", function(data) {
 	
-	console.log("geojson file loaded");
+	console.log("geojson for pct trail loaded");
 	
 	// styles to pass to 
 	var myStyle = {
@@ -101,6 +101,38 @@ $.getJSON("data/pct.geojson", function(data) {
 });
 
 
+//Load the POI data
+$.getJSON('data/pct-poi-subset.geojson', function(data){
+	console.log('geojson data for POI\'s loaded');
+	console.log('POI data.features: ', data.features	);
+
+	var poiStyle = {
+			title: 'point of interest',
+		}
+	var features = data.features,
+		len = features.length,
+		i;
+	for (i=0; i<len; i++){
+		var lat = features[i].geometry.coordinates[1],
+			lon = features[i].geometry.coordinates[0];
+
+		var poi = new L.MakiMarkers.icon({
+			icon: "star",
+			color: "#b0b",
+			size: "s"
+		});
+
+		var markers = new L.Marker([lat,lon],{
+			icon: poi
+		}).bindPopup("<b>Point of Interest</b>");	
+
+		map.addLayer(markers);
+	}
+	
+
+})
+
+
 
 // namespace for marker control
 markerCntrl = {
@@ -111,11 +143,18 @@ markerCntrl = {
 		two : [-116.46672634267014, 32.59659328551297],
 		three : [-116.4696108634455, 32.59894965459705]
 	},
+
+	markerRun: false,
+
 	start : function(){
-		animatedMarker.start();
+		if (this.markerRun === false){
+			animatedMarker.start();
+		}
 	},
 	stop : function(){
-		animatedMarker.stop();
+		if (this.markerRun === true){
+			animatedMarker.stop();
+		}		
 	},
 
 	pan : function() {
@@ -141,18 +180,20 @@ markerCntrl = {
 			console.log('direction: ' + direction);
 
 			switch(direction){
-				case 'down' :
+				case 'down' :					
 					//animatedMarker.setLatLng({lat: markerCntrl.coordinates.start[1], lon: markerCntrl.coordinates.start[0]})				
 					map.zoomIn(6);
-					animatedMarker.start();
+					markerCntrl.start();
 			  		var fps = 100,
 						panTo = setInterval(function(){
 							map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})
 						},fps);
+					markerCntrl.markerRun = true;
 					break;
 				case 'up' :
 					map.zoomOut(6)
-					animatedMarker.stop();
+					markerCntrl.stop();
+					markerCntrl.markerRun = false;
 					//animatedMarker.setLatLng({lat: markerCntrl.coordinates.start[1], lon: markerCntrl.coordinates.start[0]})
 					break;
 			}
@@ -166,22 +207,24 @@ markerCntrl = {
 			lng1 = markerCntrl.coordinates.one[0];
 
 		// log e / this properties to debug
-		console.log('e.latlng.lat: ' + e.latlng.lat + ' e.latlng.lng: ' + e.latlng.lng);
-		console.log('e is: ' + e);
-		console.log('lat1: ' + lat1);
-		console.log('lng1: ' + lng1);
-		console.log('this latlon.lat: ' + this['_latlng'].lat);
-		console.log('this latlon.lng: ' + this['_latlng'].lng);
+		// console.log('e.latlng.lat: ' + e.latlng.lat + ' e.latlng.lng: ' + e.latlng.lng);
+		// console.log('e is: ' + e);
+		// console.log('lat1: ' + lat1);
+		// console.log('lng1: ' + lng1);
+		// console.log('this latlon.lat: ' + this['_latlng'].lat);
+		// console.log('this latlon.lng: ' + this['_latlng'].lng);
 
 		if (e.latlng.lng === lng1 && e.latlng.lat === lat1){
-				//alert("whoa!"); //works
+				alert("whoa!"); //works
 				console.log("lat lon check worked!");
 				//animatedMarker.setLatLng({lat: lat1, lon: lng1}); // works but then animateMarker.start() won't work
-				//animatedMarker.stop(); // doesn't work, not sure why. Possibly due to a conflict with JQuery Waypoints?
+				animatedMarker.stop(); // doesn't work, not sure why. Possibly due to a conflict with JQuery Waypoints?
 				
 				// thought this was working but apparently not
 				e.latlng.lat = lat1;
 				e.latlng.lng = lng1;
+
+				markerCntrl.markerRun = false;
 			}
 	}
 }

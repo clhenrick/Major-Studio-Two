@@ -1,0 +1,20 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Name": "Deep Creek Hot Springs", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -117.176957, 34.339397, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Mt Laguna", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -116.418793100000016, 32.8674653, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Mt San Jacinto", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -116.6791834, 33.814463, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Fuller Ridge", "Description": "7,000 feet down from here over 15 miles" }, "geometry": { "type": "Point", "coordinates": [ -116.725015640258789, 33.836771733662431, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Idyllwild Campground", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -116.719608306884766, 33.740971211233138, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Warner Springs", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -116.6345756, 33.2835146, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Eagle Rock", "Description": "I have a photo but GIS is good too" }, "geometry": { "type": "Point", "coordinates": [ -116.61163330078125, 33.254623078996303, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Cold Canyon", "Description": "Had Ice in my bottles in the AM - May 4th" }, "geometry": { "type": "Point", "coordinates": [ -116.414222717285156, 32.819811260491051, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Lake Morena Campground", "Description": "First night on trail!" }, "geometry": { "type": "Point", "coordinates": [ -116.51850700378418, 32.683452654865867, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Southern Terminus of the PCT", "Description": "" }, "geometry": { "type": "Point", "coordinates": [ -116.466965675354004, 32.589960267328216, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Ziggy and the Bears", "Description": "First trail angel stop! Lots of blisters by now." }, "geometry": { "type": "Point", "coordinates": [ -116.699652671813965, 33.938001656074142, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Mission Creek", "Description": "First actual stream" }, "geometry": { "type": "Point", "coordinates": [ -116.666994094848633, 34.049103710638974, 0.0 ] } },
+{ "type": "Feature", "properties": { "Name": "Big Bear Hostel", "Description": "3 days off here" }, "geometry": { "type": "Point", "coordinates": [ -116.909734, 34.243041, 0.0 ] } }
+]
+}

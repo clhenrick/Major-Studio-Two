@@ -1,8 +1,6 @@
 myApp = {
 
-	map : null,
-
-	animatedMarker : null,
+	map : '',
 
 	renderMap : function(){
 		console.log('this: ', this);
@@ -108,14 +106,13 @@ myApp = {
 			} // end outer for loop
 
 			var line = L.polyline(temp);
-			// animatedMarker only working when defined as a global...
-			myApp.animatedMarker = L.animatedMarker(line.getLatLngs(), {
+			animatedMarker = L.animatedMarker(line.getLatLngs(), {
 					autoStart: false,
-					distance: 300,
-					interval: 2000
+					distance: 2000,
+					interval: 1000
 				});
 			// add the animated marker
-			myApp.map.addLayer(myApp.animatedMarker);
+			myApp.map.addLayer(animatedMarker);
 			// add pct line geojson layer
 			var pctLine = L.geoJson(data, {
 					style : myStyle
@@ -123,7 +120,7 @@ myApp = {
 			// add event listener for user scrolling
 			myApp.onScroll();
 			// add event listener for animatedMarker lat lon position
-			myApp.animatedMarker.on('move', myApp.onMove);
+			animatedMarker.on('move', myApp.onMove);
 		})
 		.done(function() {
 			console.log( "success! getJSON for pct.geojson is done." );
@@ -149,24 +146,19 @@ myApp = {
 
 	start : function(){
 		if (!this.markerRun){
-			console.log('myApp.start()');
-			myApp.animatedMarker.start();
-			myApp.markerRun = true;
+			animatedMarker.start();
 		}
 	},
 	stop : function(){
 		if (this.markerRun){
-			console.log('myApp.stop()');
-			myApp.animatedMarker.stop();
-			console.log('myApp.animatedMarker: ', myApp.animatedMarker);
-			myApp.markerRun = false;
+			animatedMarker.stop();
 		}		
 	},
 
 	pan : function() {
 		var fps = 100;
 		setInterval(function(){
-			myApp.map.panTo({lon: myApp.animatedMarker['_latlng'].lng, lat: myApp.animatedMarker['_latlng'].lat})
+			myApp.map.panTo({lon: animatedMarker['_latlng'].lng, lat: animatedMarker['_latlng'].lat})
 		},fps);
 	},
 
@@ -180,13 +172,14 @@ myApp = {
 			switch(direction){
 				case 'down' :					
 					myApp.map.zoomIn(6);
-					console.log('onScroll calls start()');	
 					myApp.start();
 					myApp.pan();
+					myApp.markerRun = true;
 					break;
 				case 'up' :
 					myApp.map.zoomOut(6)
 					myApp.stop();
+					myApp.markerRun = false;					
 					break;
 			}
 
@@ -202,10 +195,10 @@ myApp = {
 
 	checkMapBounds : function(e, lat, lon) {
 		if (e.latlng.lng === lon && e.latlng.lat === lat){
-			//alert("whoa!"); //works
+			alert("whoa!"); //works
 			console.log("lat lon check worked!");
-			console.log('e: ', e);
-			myApp.stop();			
+			myApp.stop();
+			myApp.markerRun = false;
 		}
 	},
 

@@ -55,10 +55,53 @@ html, body, {
     background-size: cover;	
 }
 
-#intro-image .caption {
-	position: relative;
-	z-index: 0;
+#intro-caption {
+	position: fixed;
+	display: inline-block;
+	top: 97%;
+	right: 0;
+	left: 0;
 	bottom: 0;
+	z-index: 0;
+}
+
+.arrow {
+	/*border: 1px solid white;*/
+}
+
+.arrow p {
+	position: fixed;
+	top: 85%;
+	left: 50%;
+	margin: 0 auto;
+	z-index: 50;
+	text-align: center;
+	color: #fff;
+	opacity: 0.5;	
+	-webkit-transform: rotate(180deg) scale(8);
+	-moz-transform: rotate(180deg) scale(8);
+	transform: rotate(180deg) scale(8);
+}
+
+.image .call-out {
+	position: absolute;
+	font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	text-align: left;
+	font-weight: normal;
+	right: 3%;
+	bottom: 15%;
+	width: 33.3%;
+
+	color: hsla(0, 100%, 100%, .9);
+	/*text-shadow: /* black 0.1em 0.1em 0.2em; -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+	text-shadow: 0 1px 0 hsl(0,0%,0%), 0 -1px 0 hsl(0,0%,0%), 1px 0 0 hsl(0,0%,0%), -1px 0 0 hsl(0,0%,0%);
+}
+
+.image .call-out span {
+	font-style: italic;
 }
 
 /* second image*/
@@ -196,27 +239,6 @@ html, body, {
 	height: 90%;
 }
 
-.image .call-out {
-	position: absolute;
-	font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
-	font-size: 20px;
-	line-height: 30px;
-	letter-spacing: 1px;
-	text-align: left;
-	font-weight: normal;
-	right: 3%;
-	bottom: 12%;
-	width: 33.3%;
-
-	color: hsla(0, 100%, 100%, .9);
-	/*text-shadow: /* black 0.1em 0.1em 0.2em; -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-	text-shadow: 0 1px 0 hsl(0,0%,0%), 0 -1px 0 hsl(0,0%,0%), 1px 0 0 hsl(0,0%,0%), -1px 0 0 hsl(0,0%,0%);
-}
-
-.image .call-out span {
-	font-style: italic;
-}
-
 .content .image {
 	margin-bottom: 25px; 
 }
@@ -260,10 +282,9 @@ html, body, {
 
 .content-title {
 	font-style: bold;
-	padding: 15px 30px 0px 70px;
-	margin: 0;
-	margin: 0 auto;
-	width: 65%;
+	padding: 15px 0px 0px 0px;
+	margin: 10px auto;
+	/*width: 65%;*/
 	border-top: 1px dashed black;
 	/*background: hsl(172, 100%, 50%);*/
 }

@@ -12,18 +12,18 @@ myApp = {
 				initZoom: 5,
 				minZoom: 4,
 				maxZoom: 16,
-				zoomControl: true,
+				zoomControl: false,
 				attributionControl: true
 			};
 		//init the map
 		this.map = L.map('map', config);
-		// //disable drag and zoom handlers
-		// this.map.dragging.disable();
-		// this.map.touchZoom.disable();
-		// this.map.doubleClickZoom.disable();
-		// this.map.scrollWheelZoom.disable();
-		// // disable tap handler, if present.
-		// if (this.map.tap) this.map.tap.disable();
+		//disable drag and zoom handlers
+		this.map.dragging.disable();
+		this.map.touchZoom.disable();
+		this.map.doubleClickZoom.disable();
+		this.map.scrollWheelZoom.disable();
+		// disable tap handler, if present.
+		if (this.map.tap) this.map.tap.disable();
 		// add the Stamen terrain basemap layer
 		this.map.addLayer(config.baselayer);
 		// set init map center and zoom level

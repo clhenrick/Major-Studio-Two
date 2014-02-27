@@ -1,76 +1,25 @@
-/* CSS RESET */
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-/* MY CSS */
 html, body, {
 	width: 100%;
+	height: 100%
 	margin: 0 auto;
 	padding: 0;
-	font: 17px/28px, Georgia, serif;
 	overflow: hidden;
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 }
 
 #wrapper {
-	position: absolute;
 	margin: 0;
 	padding: 0;
-	top: 40px;
 	width: 100%;
 	height: 100%;
 /*	border: 1px orange solid;
 */}
 
+/*** title at top of page ***/
+
 #title-container {
 	position: fixed;
-	z-index: 100;
+	z-index: 10;
 	height: 40px;
 	width: 100%;
 	margin: 0 auto;
@@ -88,111 +37,200 @@ html, body, {
 #title h1 {
 	font: 25px/40px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	text-align: left;
-	text-transform: capitalize;
+	/*text-transform: capitalize;*/
 	letter-spacing: 2px;
 	color: #ffffff;
 	padding-left: 10px;
 }
 
-#button {
-	display: inline-block;
-	position: absolute;
-	float: left;
-	padding-left: 25px;
-	top: 10px;
+/*** intro image ***/
+#intro-image {
+	position: fixed;
+	top: 40px;
+	width: 100%;
+	height: 103.5%;
+	z-index: -1;
+    background-position: center;
+    background-image:url('../images/view-of-mojave.jpg');
+    background-size: cover;	
 }
 
-#button a {
-	font: bold 20px/25px sans-serif;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	text-align: left;
-	color: red;
-	display: inline-block;
-}
-
-.chapter {
-	margin: 0;
-	padding: 0;
+#intro-image .caption {
 	position: relative;
+	z-index: 0;
+	bottom: 0;
 }
+
+/* second image*/
+#first-steps {
+/*	background-position: center;
+	background-image: url('../images/s_ca_first_steps.jpg');;
+	background-size: cover;*/
+}
+
+/*** container for map and content ***/
+#map-content-wrapper {
+	position: absolute;
+	width: 100%;
+	top: 1000px;
+	background-color: #fff;
+}
+
+/*** leaflet map stuff ***/
+
+#map-placeholder {
+	height: 1000px;
+	width: 20%;
+	float: left;
+	z-index: 6;
+	position: absolute;
+	background: hsla(0,100%,100%,1);
+	/*border: 1px solid blue;*/
+	-moz-transition:all 2s;
+	-webkit-transition:all 2s;
+	transition:all 2s;
+}
+
+
+#map {
+	position: fixed;
+  	display: inline-block;	
+    height: 100%;
+    width: 20%;
+    float: left;
+    margin: 0px;
+  	top: 40px;
+  	z-index: -2;
+    /*display: inline-block;*/
+    border-right: 1px solid hsla(0, 100%, 100%, 0.3);
+
+    -webkit-animation: slide-in 2s infinite;
+    -moz-animation: slide-in 2s infinite;
+    -o-animation: slide-in 2s infinite;
+    animation: slide-in 2s infinite;
+}
+
+-moz-@keyframes slide-in {
+	from{z-index: -3;}
+	to{z-index: 5;}
+}
+
+-webkit-@keyframes slide-in {
+	from{z-index: -3;}
+	to{z-index: 5;}
+}
+
+@keyframes slide-in {
+	from{z-index: -3;}
+	to{z-index: 5;}
+}
+
+
+/*** sticky class for map ***/
+.sticky {
+  position: fixed;
+}
+
+.sticky-stuff {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 15px;
+}
+
+/*** content on right side of page ***/
 
 #content-wrapper {
-	width: 80%;
-	height: 100%;
-	float: right;
-	z-index: 0;
+	position: relative;
 	display: inline-block;
-/*	border: 1px red solid;
-*/	background: white;
+	float: right;	
+	width: 79%;
+	height: 100%;
+	z-index: 0;
+/*	border: 1px red solid;*/
+	background: white;
 	position: relative;
 }
 
-.content-title {
-	font-style: bold;
-	padding: 10px 30px 0px 30px;
-	margin: 0;
-	/*border-top: 1px dashed black;*/
-}
+/*** each part of story is contained within a chapter ***/
 
-.content-title h2 {
-	margin: 0;
-	text-transform: uppercase;
-	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	display: relative;
-	padding-bottom: 5px;
-}
-
-.content-title h3 {
-	margin: 0;
-	top: 0px;
-	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	padding-bottom: 5px;
-}
-
-.content {
-	padding: 0px 30px 10px 30px;
-	margin: 0px;
-	/*border: 1px solid green;*/
-}
-
-.content p {
-	font: 17px/28px "Georgia", serif;
-	margin: 0px;
+.chapter {
+	margin: 0 auto;
+	padding: 0;
 }
 
 .call-out {
-	display: inline-block;
-	margin: 0px;
+	margin: 0 auto;
+
+}
+
+.call-out p {
+	/*display: inline-block;*/
+	margin: 0 auto;
 	position: relative;
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
 	font-size: 50px;
-	font-weight: bolder;
-	font-style: italic;	
+	font-weight: normal;
+	font-style: italic;
 	line-height: 70px;
-	padding: 25px 100px 50px 70px;
+	letter-spacing: 1px;
+	padding: 25px 70px 50px 70px;
+	width: 71%;
+
+	/*border: 1px solid orange;*/
 }
 
-.content .call-out {
-	padding: 25px 100px 25px 70px;
+.content .call-out p {
 	font-size: 50px;
-}
-
-.media-container {
-	position: relative;
-	/*margin-top: -60px;*/
+	line-height: 70px;
+	width: 100%;
+	padding: 25px 0 25px 0;
+	/*background: hsl(50, 50%, 50%);*/
 }
 
 .image img {
 	/* image width in px is 1333px */
 	width: 100%;
+	height: 90%;
 }
 
 .image .call-out {
 	position: absolute;
+	font-family: "Book Antiqua", Palatino, "Palatino Linotype", "Palatino LT STD", Georgia, serif;
+	font-size: 20px;
+	line-height: 30px;
+	letter-spacing: 1px;
+	text-align: left;
+	font-weight: normal;
+	right: 3%;
+	bottom: 12%;
+	width: 33.3%;
+
 	color: hsla(0, 100%, 100%, .9);
-	text-shadow: black 0.1em 0.1em 0.2em; /*-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+	/*text-shadow: /* black 0.1em 0.1em 0.2em; -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+	text-shadow: 0 1px 0 hsl(0,0%,0%), 0 -1px 0 hsl(0,0%,0%), 1px 0 0 hsl(0,0%,0%), -1px 0 0 hsl(0,0%,0%);
+}
+
+.image .call-out span {
+	font-style: italic;
+}
+
+.content .image {
+	margin-bottom: 25px; 
+}
+
+.content .image p {
+	font: 15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+.media-container {
+	position: relative;
+	/*margin-top: -60px;*/
 }
 
 .caption {
@@ -204,21 +242,66 @@ html, body, {
 }
 
 .caption p {
-	font: 17px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-style: italic;
+	font: 15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-style: normal;
 	padding-left: 30px;
 	padding-right: 30px;
+	text-align: left;	
 	margin: 0;
 }
 
-#map {
-    height: 100%;
-    width: 20%;
-    margin: 0px;
-    float: left;
-  	position: fixed;
-  	z-index: 0;
-    display: inline-block;
-    border-right: 1px solid hsla(0, 100%, 100%, 0.3);
+.video {
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+	vertical-align: top;
+	margin: 5em 0;
 }
+
+.content-title {
+	font-style: bold;
+	padding: 15px 30px 0px 70px;
+	margin: 0;
+	margin: 0 auto;
+	width: 65%;
+	border-top: 1px dashed black;
+	/*background: hsl(172, 100%, 50%);*/
+}
+
+.content-title h2 {
+	text-transform: uppercase;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	display: relative;
+	padding-bottom: 5px;
+}
+
+.content-title h3 {
+	top: 0px;
+	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	padding-bottom: 25px;
+}
+
+.content {
+	padding: 0;
+	margin: 0 auto;
+	width: 65%;	
+	/*border: 1px solid green;*/
+}
+
+.content p {
+	/*font: 17px/28px "Georgia", serif;*/
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-size: 20px;
+	line-height: 28px;
+	letter-spacing: .3px;
+	margin: 0 auto;
+/*	background: hsl(120, 100%, 50%);
+	border: 1px solid green;*/
+}
+
+
+
+
+
 

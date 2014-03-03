@@ -1,8 +1,9 @@
 myApp = {
 
+	that : this,
 	map : null,
 	am : null,
-	markers : null,
+	markers : null,	
 
 	renderMap : function(){
 		//console.log('this: ', this);
@@ -32,37 +33,111 @@ myApp = {
 		new L.Control.Attribution({ position: 'bottomleft'}).addTo(this.map);
 	},
 
-	fetchData : function(){
+	checkFeatureClass : function(feature){
+		/*** function to detect feature class of marker ***/
+		//console.log('checkFeatureClass feature: ', feature);
+		var fc = feature.properties.feature_cl;
+
+		var 	poi = new L.MakiMarkers.icon({
+					icon: "star",
+					color: "#b0b",
+					size: "m"
+				}),
+				camp = new L.MakiMarkers.icon({
+					icon: "campsite",
+					color: "#99554E",
+					size: "m"
+				}),
+				town = new L.MakiMarkers.icon({
+					icon: "town",
+					color: "#D9D9D9",
+					size: "m"
+				}),				
+				event = new L.MakiMarkers.icon({
+					icon: "circle",
+					color: "#5CDBFF",
+					size: "m"
+				}),
+				peak = new L.MakiMarkers.icon({
+					icon: "triangle",
+					color: "#99554E",
+					size: "m"
+				}),				
+				site = new L.MakiMarkers.icon({
+					icon: "square",
+					color: "#6969FF",
+					size: "m"
+				}),	
+				nfwater = new L.MakiMarkers.icon({
+					icon: "park",
+					color: "#6969FF",
+					size: "m"
+				}),
+				food = new L.MakiMarkers.icon({
+					icon: "fast-food",
+					color: "#F3FF5F",
+					size: "m"
+				}),
+				lodging = new L.MakiMarkers.icon({
+					icon: "lodging",
+					color: "#6969FF",
+					size: "m"
+				}),											
+				nf = new L.MakiMarkers.icon({
+					icon: "park",
+					color: "#35ad22",
+					size: "m"
+				});
+
+		switch(fc) {
+			case 'poi' : return poi; break;
+			case 'camp' : return camp; break;
+			case 'lodging' :  return lodging; break;
+			case 'event' :  return event; break;
+			case 'nf' :  return nf; break;
+			case 'peak' :  return peak; break;
+			case 'town' :  return town; break;
+			case 'nf_water' :  return nfwater; break;
+			case 'site' : return site; break;
+			case 'food' : return food; break;
+			default :  return poi;				
+		}		
+	},
+
+	fetchPoiData : function(){
 		var features,
 			len,
 			i,
 			lat,
 			lon,
-			poi;
+			icon,
+			name,
+			desc,
+			marker;
+		// create a layerGroup to store each marker	
+		myApp.markers = L.layerGroup().addTo(myApp.map);
 
 		// load poi.geojson data
-		$.getJSON('data/pct-poi-subset.geojson', function(data){
+		$.getJSON('data/pct-poi-final.geojson', function(data){
 			console.log('geojson data for POI\'s loaded: ', data);
 
 			features = data.features,
 			len = features.length,
 			i = 0;
-			console.log('Fetch data says: features: ', features, ' len is: ', len);
+			//	console.log('Fetch data says: features: ', features, ' len is: ', len);
 
 			for (i; i<len; i++){
 				lat = features[i].geometry.coordinates[1];
 				lon = features[i].geometry.coordinates[0];
-				poi = new L.MakiMarkers.icon({
-					icon: "star",
-					color: "#b0b",
-					size: "s"
-				});
-				myApp.markers = new L.Marker([lat,lon],{
-					icon: poi
-				}).bindPopup("<h2>Point of Interest</h2>");
+				myIcon = myApp.checkFeatureClass(features[i]);
+				name = features[i].properties.Name;
+				desc = features[i].properties.Descriptio;
 
-				// add the poi markers to the map
-				//myApp.addLayer(myApp.markers);
+				marker = new L.Marker([lat,lon],{
+					icon: myIcon
+				}).bindPopup("<h2>" + name + "</h2>" + "<p>" + desc + "</p>");				
+				
+				myApp.markers.addLayer(marker);
 			}	
 		})
 		.done(function() {
@@ -74,10 +149,12 @@ myApp = {
 		})    
 		.always(function() {
 			// run this stuff after, regardless of success or failure
-		}); // end $.getJSON(poi.geojson);
+		}); // end $.getJSON(poi.geojson);	
+	},
 
+	fetchData : function(){
 		// add PCT line feature from external geojson file
-		$.getJSON("data/pct.geojson", function(data) {
+		$.getJSON("data/pct-simp.geojson", function(data) {
 			console.log("geojson for pct trail loaded: ", data);
 
 			var myStyle = {
@@ -88,7 +165,8 @@ myApp = {
 				},
 				temp = [];
 			
-			// loop through geojson data and push the lat lon values to line array
+			// for Animated Marker JS
+			// loop through geojson data and push the lat lon values to line array			
 			for (d in data) {
 				var i = 0,
 					l = data.features.length;
@@ -98,7 +176,7 @@ myApp = {
 						cLen = coordinates.length;
 					for (j; j<cLen; j++){
 						var reverseCoordinates = [];
-							//reverse the order of lat lon as leaflet reads lon then lat
+						//reverse the order of lat lon as leaflet reads lon then lat
 						reverseCoordinates.push(coordinates[j][1]);
 						reverseCoordinates.push(coordinates[j][0]);
 						temp.push(reverseCoordinates);
@@ -106,11 +184,18 @@ myApp = {
 				}
 			} // end outer for loop
 
+			var mike = new L.MakiMarkers.icon({
+					icon: "pitch",
+					color: "#FF9126",
+					size: "l"
+				});
+
 			var line = L.polyline(temp);
 			myApp.am = L.animatedMarker(line.getLatLngs(), {
 					autoStart: false,
-					distance: 500,
-					interval: 1000
+					distance: 5000,
+					interval: 1000,
+					icon: mike
 				});
 			// add the animated marker
 			myApp.map.addLayer(myApp.am);
@@ -141,13 +226,14 @@ myApp = {
 	},
 
 	rm : function(layer){
+		console.log('removeLayer called');
 		myApp.map.removeLayer(layer);
 	},
 
-	coordinates : { //arbitrary right now for testing
-		start: [-116.46694979146261, 32.589707],
-		one : [-116.46705135909554, 32.59186023381822],
-		two : [-116.46672634267014, 32.59659328551297],
+	coordinates : { // for detecting animatedMarker pos
+		start: [-116.46694979146261, 32.589707], 
+		one : [-116.64528224136913, 33.27305403438382],
+		two : [-116.67162888535236, 33.75749101642857], 
 		three : [-116.4696108634455, 32.59894965459705]
 	},
 
@@ -168,9 +254,13 @@ myApp = {
 		},fps);
 	},
 
+	// jquery waypoint detection
 	onScroll : function() {
-		console.log('this.coordinates.one[0]: ' + myApp.coordinates.one[0]);
+		/*** jquery waypoint event liste ***/
+		//waypoint offset value
+		w = 60;
 		
+		// reveal map to user 
 		$('#wp0').waypoint(function(direction){
 			switch(direction) {
 				case 'down':
@@ -182,27 +272,71 @@ myApp = {
 					$('#map').css({'z-index': '-3'});
 					break;
 			}
-		}, {offset: 50});
+		}, {offset: w});
 
-		// detect user scrolling to first chapter
+		// zoom to start and load POI's
+		$('#wp1A').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					myApp.fetchPoiData();
+					myApp.map.zoomIn(6);
+					myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);
+					break;
+				case 'up':
+					myApp.map.removeLayer(myApp.markers);
+					myApp.map.zoomOut(6);
+					myApp.map.panTo([40.3025, -121.2347]);
+					myApp.am['_latlng'].lat = myApp.coordinates.start[1];
+					myApp.am['_latlng'].lon = myApp.coordinates.start[0];
+					break;
+			}
+		}, {offset: w});
+
+		// start animation for chapter 01
 		$('#wp1').waypoint(function(direction) {
 
 			console.log('direction: ' + direction);
 
 			switch(direction){
 				case 'down' :
-					myApp.add(myApp.markers);					
-					myApp.map.zoomIn(6);
+					console.log('waypoint 1 triggered');										
 					myApp.start();
 					myApp.pan();
 					break;
-				case 'up' :
-					myApp.rm(myApp.markers);
-					myApp.map.zoomOut(6);
+				case 'up' :					
 					myApp.stop();
 					break;
 			}
-		}, {offset: 50});
+		}, {offset: w});
+
+		// start animation for chapter 02
+		$('#wp2').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					console.log('waypoint 2 down');
+					if (myApp.flag === true) {
+						myApp.start();
+					}
+					break;
+				case 'up':
+					if (myApp.flag === false) {
+						myApp.stop();
+					}
+					break;
+			}
+		}, {offset: w});
+
+		// detect next event template
+		// $('#wp..').waypoint(function(d) {
+		// 	switch(d) {
+		// 		case 'down':
+					
+		// 			break;
+		// 		case 'up':
+					
+		// 			break;
+		// 	}
+		// });
 	},
 
 	onMove : setInterval(function(e){
@@ -215,17 +349,25 @@ myApp = {
 
 	checkLatLon : function(e) {
 		var lat1 = myApp.coordinates.one[1],
-			lng1 = myApp.coordinates.one[0];
-		if (e.latlng.lng === lng1 && e.latlng.lat === lat1){
-			// alert("whoa!"); //works
-			console.log("lat lon check worked!");
-			//myApp.flag = true;
-			//myApp.stop();
+			lng1 = myApp.coordinates.one[0],
+			lat2 = myApp.coordinates.two[1],
+			lng2 = myApp.coordinates.two[0];
+
+		switch(e.latlng.lng, e.latlng.lat) {
+			case lng1, lat1 :
+				myApp.flag = true;
+				break;
+			case lng2, lat2:
+				myApp.flag = true;
+				break;
+			// case lng3, lat3:
+			// 	myApp.flag = true;
+			// 	break;
 		}
 	},
 
 	init : function() {
-		console.log('here we go');
+		console.log('called myApp.init()');
 		//draw map
 		myApp.renderMap();
 		//async load geo data

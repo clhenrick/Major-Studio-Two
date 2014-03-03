@@ -104,12 +104,6 @@ html, body, {
 	font-style: italic;
 }
 
-/* second image*/
-#first-steps {
-/*	background-position: center;
-	background-image: url('../images/s_ca_first_steps.jpg');;
-	background-size: cover;*/
-}
 
 /*** container for map and content ***/
 #map-content-wrapper {
@@ -168,19 +162,12 @@ html, body, {
 	to{z-index: 5;}
 }
 
-
-/*** sticky class for map ***/
-.sticky {
-  position: fixed;
+.leaflet-popup-content {
+	text-align: center;
 }
 
-.sticky-stuff {
-  position: -webkit-sticky;
-  position: -moz-sticky;
-  position: -ms-sticky;
-  position: -o-sticky;
-  position: sticky;
-  top: 15px;
+.leaflet-popup-content p {
+	font-style: italic;
 }
 
 /*** content on right side of page ***/

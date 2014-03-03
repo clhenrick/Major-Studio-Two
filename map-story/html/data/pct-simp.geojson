@@ -10,19 +10,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec A_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec A",
-                "#VertexCou": 7321,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.662881328,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec A",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec A"
             },
             "geometry": {
                 "type": "LineString",
@@ -2461,19 +2449,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec B_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec B",
-                "#VertexCou": 6970,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.533742978,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec B",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec B"
             },
             "geometry": {
                 "type": "LineString",
@@ -4680,19 +4656,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec C_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec C",
-                "#VertexCou": 8745,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 2.045895859,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec C",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec C"
             },
             "geometry": {
                 "type": "LineString",
@@ -7467,19 +7431,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec D_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec D",
-                "#VertexCou": 7365,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.748944344,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec D",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec D"
             },
             "geometry": {
                 "type": "LineString",
@@ -10066,19 +10018,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec E_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec E",
-                "#VertexCou": 6622,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.77669025,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec E",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec E"
             },
             "geometry": {
                 "type": "LineString",
@@ -12617,19 +12557,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec F_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec F",
-                "#VertexCou": 4748,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.363083532,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec F",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec F"
             },
             "geometry": {
                 "type": "LineString",
@@ -14536,19 +14464,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec G_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec G",
-                "#VertexCou": 6621,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.817422907,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec G",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec G"
             },
             "geometry": {
                 "type": "LineString",
@@ -16791,19 +16707,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec H_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec H",
-                "#VertexCou": 12805,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 2.88816913,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec H",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec H"
             },
             "geometry": {
                 "type": "LineString",
@@ -19986,19 +19890,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec I_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec I",
-                "#VertexCou": 5232,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.181070128,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec I",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec I"
             },
             "geometry": {
                 "type": "LineString",
@@ -21189,19 +21081,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec J_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec J",
-                "#VertexCou": 5146,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.195699013,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec J",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec J"
             },
             "geometry": {
                 "type": "LineString",
@@ -22684,19 +22564,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec K_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec K",
-                "#VertexCou": 4102,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.020807152,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec K",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec K"
             },
             "geometry": {
                 "type": "LineString",
@@ -23935,19 +23803,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec L_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec L",
-                "#VertexCou": 2590,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 0.624801887,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec L",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec L"
             },
             "geometry": {
                 "type": "LineString",
@@ -24778,19 +24634,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec M_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec M",
-                "#VertexCou": 5826,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.483427567,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec M",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec M"
             },
             "geometry": {
                 "type": "LineString",
@@ -26669,19 +26513,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec N_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec N",
-                "#VertexCou": 8438,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 2.178082182,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec N",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec N"
             },
             "geometry": {
                 "type": "LineString",
@@ -28936,19 +28768,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec O_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec O",
-                "#VertexCou": 5509,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.384520108,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec O",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec O"
             },
             "geometry": {
                 "type": "LineString",
@@ -30831,19 +30651,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec P_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec P",
-                "#VertexCou": 6211,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.653539346,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec P",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec P"
             },
             "geometry": {
                 "type": "LineString",
@@ -32594,19 +32402,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec Q_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec Q",
-                "#VertexCou": 3114,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 0.913418532,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec Q",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec Q"
             },
             "geometry": {
                 "type": "LineString",
@@ -33617,19 +33413,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "CA Sec R_line",
-                "#Id": -214748364,
-                "#Name": "CA Sec R",
-                "#VertexCou": 4065,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.080797803,
-                "#ArtScale": 1,
-                "KmlName": "CA Sec R",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "CA Sec R"
             },
             "geometry": {
                 "type": "LineString",
@@ -34824,19 +34608,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec B_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec B",
-                "#VertexCou": 3550,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 0.92444241,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec B",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec B"
             },
             "geometry": {
                 "type": "LineString",
@@ -35967,19 +35739,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec C_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec C",
-                "#VertexCou": 4828,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.154422318,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec C",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec C"
             },
             "geometry": {
                 "type": "LineString",
@@ -37298,19 +37058,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec D_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec D",
-                "#VertexCou": 3664,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.001177962,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec D",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec D"
             },
             "geometry": {
                 "type": "LineString",
@@ -38501,19 +38249,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec E_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec E",
-                "#VertexCou": 4864,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.256622002,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec E",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec E"
             },
             "geometry": {
                 "type": "LineString",
@@ -40204,19 +39940,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec F_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec F",
-                "#VertexCou": 6291,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.763888078,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec F",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec F"
             },
             "geometry": {
                 "type": "LineString",
@@ -42259,19 +41983,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "OR Sec G_line",
-                "#Id": -214748364,
-                "#Name": "OR Sec G",
-                "#VertexCou": 3400,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 0.935339473,
-                "#ArtScale": 1,
-                "KmlName": "OR Sec G",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "OR Sec G"
             },
             "geometry": {
                 "type": "LineString",
@@ -43342,19 +43054,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "WA Sec H_line",
-                "#Id": -214748364,
-                "#Name": "WA Sec H",
-                "#VertexCou": 9747,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 2.54296202,
-                "#ArtScale": 1,
-                "KmlName": "WA Sec H",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "WA Sec H"
             },
             "geometry": {
                 "type": "LineString",
@@ -46489,19 +46189,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "WA Sec I_line",
-                "#Id": -214748364,
-                "#Name": "WA Sec I",
-                "#VertexCou": 5992,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.696521318,
-                "#ArtScale": 1,
-                "KmlName": "WA Sec I",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "WA Sec I"
             },
             "geometry": {
                 "type": "LineString",
@@ -48608,19 +48296,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "WA Sec J_line",
-                "#Id": -214748364,
-                "#Name": "WA Sec J",
-                "#VertexCou": 4563,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.217333519,
-                "#ArtScale": 1,
-                "KmlName": "WA Sec J",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "WA Sec J"
             },
             "geometry": {
                 "type": "LineString",
@@ -50163,19 +49839,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "WA Sec K_line",
-                "#Id": -214748364,
-                "#Name": "WA Sec K",
-                "#VertexCou": 8113,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 2.178883089,
-                "#ArtScale": 1,
-                "KmlName": "WA Sec K",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "WA Sec K"
             },
             "geometry": {
                 "type": "LineString",
@@ -52654,19 +52318,7 @@
         {
             "type": "Feature",
             "properties": {
-                "#Opacity": 100,
-                "#Component": 1,
-                "#LayerName": "WA Sec L_line",
-                "#Id": -214748364,
-                "#Name": "WA Sec L",
-                "#VertexCou": 4113,
-                "#Style": null,
-                "#StrokeWei": 3,
-                "#PathClose": "F",
-                "#Length": 1.202410963,
-                "#ArtScale": 1,
-                "KmlName": "WA Sec L",
-                "KmlStyleUr": "#lineStyle"
+                "KmlName": "WA Sec L"
             },
             "geometry": {
                 "type": "LineString",

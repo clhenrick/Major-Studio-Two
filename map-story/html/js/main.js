@@ -230,21 +230,16 @@ myApp = {
 		myApp.map.removeLayer(layer);
 	},
 
-	coordinates : { // for detecting animatedMarker pos
-		start: [-116.46694979146261, 32.589707], 
-		one : [-116.64528224136913, 33.27305403438382],
-		two : [-116.67162888535236, 33.75749101642857], 
-		three : [-116.4696108634455, 32.59894965459705]
-	},
-
 	flag: false,
 
 	start : function(){
 		this.am.start();
+		this.flag = false;
 	},
 
 	stop : function(){
-		this.am.stop();		
+		this.am.stop();
+		this.flag = true;
 	},
 
 	pan : function() {
@@ -316,11 +311,13 @@ myApp = {
 					console.log('waypoint 2 down');
 					if (myApp.flag === true) {
 						myApp.start();
+						myApp.flag = false;					
 					}
 					break;
 				case 'up':
 					if (myApp.flag === false) {
 						myApp.stop();
+						myApp.flag = true;
 					}
 					break;
 			}
@@ -340,12 +337,19 @@ myApp = {
 	},
 
 	onMove : setInterval(function(e){
+		// myApp.am.on('move', myApp.checkLatLon);
 		if (myApp.flag === true){
-			myApp.am.stop();
-			myApp.add(myApp.markers);					
+			myApp.stop();				
 			clearInterval(myApp.onMove);
 		}
 	},100),
+
+	coordinates : { // for detecting animatedMarker pos
+		start: [-116.46694979146261, 32.589707], 
+		one : [-116.64528224136913, 33.27305403438382],
+		two : [-116.67162888535236, 33.75749101642857], 
+		three : [-116.4696108634455, 32.59894965459705]
+	},	
 
 	checkLatLon : function(e) {
 		var lat1 = myApp.coordinates.one[1],
@@ -357,8 +361,10 @@ myApp = {
 			case lng1, lat1 :
 				myApp.flag = true;
 				break;
-			case lng2, lat2:
+			case lng2, lat2 :
+				console.log('lat2, lng2 triggered');
 				myApp.flag = true;
+				myApp.stop();
 				break;
 			// case lng3, lat3:
 			// 	myApp.flag = true;

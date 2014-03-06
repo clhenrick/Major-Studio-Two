@@ -43,16 +43,6 @@ html, body, {
 	padding-left: 10px;
 }
 
-#map {
-    height: 100%;
-    width: 20%;
-    margin: 0px;
-    float: left;
-  	position: fixed;
-  	z-index: 0;
-    display: inline-block;
-    border-right: 1px solid hsla(0, 100%, 100%, 0.3);
-}
 /*** intro image ***/
 #intro-image {
 	position: fixed;
@@ -137,7 +127,6 @@ html, body, {
 	-webkit-transition:all 2s;
 	transition:all 2s;
 }
-
 
 #map {
 	position: fixed;
@@ -260,7 +249,7 @@ html, body, {
 	background-color: #e5e5e5;
 }
 
-.caption p {
+.caption p, .content .video p {
 	font: 15px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	font-style: normal;
 	padding-left: 30px;
@@ -271,7 +260,7 @@ html, body, {
 
 .video {
 	width: 100%;
-	height: 600px;
+	height: 90%;
 	overflow: hidden;
 	vertical-align: top;
 	margin: 5em 0;

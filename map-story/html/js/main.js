@@ -203,8 +203,6 @@ myApp = {
 			var pctLine = L.geoJson(data, {
 					style : myStyle
 				}).addTo(myApp.map); 
-			// add event listener for user scrolling
-			myApp.onScroll();
 			// add event listener for animatedMarker lat lon position
 			myApp.am.on('move', myApp.checkLatLon);
 		})
@@ -253,12 +251,14 @@ myApp = {
 	onScroll : function() {
 		/*** jquery waypoint event liste ***/
 		//waypoint offset value
-		w = 60;
+		var w = 60,
+			v1 = document.getElementsByTagName("video")[0];
 		
 		// reveal map to user 
 		$('#wp0').waypoint(function(direction){
 			switch(direction) {
 				case 'down':
+					console.log('wp0 called');
 					$('#map').css({'z-index': '5'});
 					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});
 					break;
@@ -267,7 +267,7 @@ myApp = {
 					$('#map').css({'z-index': '-3'});
 					break;
 			}
-		}, {offset: w});
+		}, {offset: 40});
 
 		// zoom to start and load POI's
 		$('#wp1A').waypoint(function(d) {
@@ -311,7 +311,8 @@ myApp = {
 					console.log('waypoint 2 down');
 					if (myApp.flag === true) {
 						myApp.start();
-						myApp.flag = false;					
+						myApp.flag = false;
+						myApp.onMove = myApp.startInterval();		
 					}
 					break;
 				case 'up':
@@ -319,6 +320,20 @@ myApp = {
 						myApp.stop();
 						myApp.flag = true;
 					}
+					break;
+			}
+		}, {offset: w});
+
+		$('#wp3').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					console.log('waypoint 3 down');
+					v1.play();
+					
+					break;
+				case 'up':
+					console.log('waypoint 3 up');
+					v1.pause();
 					break;
 			}
 		}, {offset: w});
@@ -336,13 +351,18 @@ myApp = {
 		// });
 	},
 
-	onMove : setInterval(function(e){
+	startInterval : function() {
+		return setInterval(function(e){
 		// myApp.am.on('move', myApp.checkLatLon);
-		if (myApp.flag === true){
-			myApp.stop();				
-			clearInterval(myApp.onMove);
-		}
-	},100),
+			if (myApp.flag === true){
+				myApp.stop();				
+				clearInterval(myApp.onMove);
+				console.log(myApp.onMove);
+			}
+		},100)
+	},
+
+	onMove : null,
 
 	coordinates : { // for detecting animatedMarker pos
 		start: [-116.46694979146261, 32.589707], 
@@ -380,7 +400,9 @@ myApp = {
 		myApp.fetchData();
 		//attach scroll events
 		//start tracking the marker for lat/long pos
-		myApp.onMove;
+		myApp.onMove = myApp.startInterval();
+		// add event listener for user scrolling
+		myApp.onScroll();
 	}
 } //end myApp
 

@@ -259,10 +259,12 @@ myApp = {
 			switch(direction) {
 				case 'down':
 					console.log('wp0 called');
+					// $('#intro-image').css({'display', 'none'});
 					$('#map').css({'z-index': '5'});
 					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});
 					break;
 				case 'up':
+					// $('#intro-image').css('display', 'block');
 					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,1)'});
 					$('#map').css({'z-index': '-3'});
 					break;
@@ -288,7 +290,7 @@ myApp = {
 		}, {offset: w});
 
 		// start animation for chapter 01
-		$('#wp1').waypoint(function(direction) {
+		$('#wp1B').waypoint(function(direction) {
 
 			console.log('direction: ' + direction);
 
@@ -302,7 +304,7 @@ myApp = {
 					myApp.stop();
 					break;
 			}
-		}, {offset: w});
+		}, {offset: 150});
 
 		// start animation for chapter 02
 		$('#wp2').waypoint(function(d) {
@@ -324,19 +326,35 @@ myApp = {
 			}
 		}, {offset: w});
 
-		$('#wp3').waypoint(function(d) {
+		$('#wp3A').waypoint(function(d) {
 			switch(d) {
 				case 'down':
-					console.log('waypoint 3 down');
+					console.log('waypoint 3A down');
 					v1.play();
-					
+					// $('forester-pass').toggleClass("paused");					
 					break;
 				case 'up':
-					console.log('waypoint 3 up');
+					console.log('waypoint 3A up');
 					v1.pause();
+					// $('forester-pass').toggleClass("paused");
 					break;
 			}
-		}, {offset: w});
+		}, {offset: 150});
+
+		$('#wp3B').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					console.log('waypoint 3B down');
+					v1.pause();
+					// $('forester-pass').toggleClass("paused");					
+					break;
+				case 'up':
+					console.log('waypoint 3B up');
+					v1.play();
+					// $('forester-pass').toggleClass("paused");
+					break;
+			}
+		}, {offset: 150});		
 
 		// detect next event template
 		// $('#wp..').waypoint(function(d) {
@@ -365,10 +383,10 @@ myApp = {
 	onMove : null,
 
 	coordinates : { // for detecting animatedMarker pos
-		start: [-116.46694979146261, 32.589707], 
-		one : [-116.64528224136913, 33.27305403438382],
-		two : [-116.67162888535236, 33.75749101642857], 
-		three : [-116.4696108634455, 32.59894965459705]
+		start: [-116.46695, 32.589707], 
+		one : [-116.645282, 33.273054],
+		two : [-116.671629, 33.757491], 
+		three : [-116.469611, 32.59895]
 	},	
 
 	checkLatLon : function(e) {

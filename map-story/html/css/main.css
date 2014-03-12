@@ -1,6 +1,6 @@
 html, body, {
 	width: 100%;
-	height: 100%
+	height: 100%;
 	margin: 0 auto;
 	padding: 0;
 	overflow: hidden;
@@ -46,13 +46,14 @@ html, body, {
 /*** intro image ***/
 #intro-image {
 	position: fixed;
+	display: block;
 	top: 40px;
 	width: 100%;
 	height: 103.5%;
 	z-index: -1;
     background-position: center;
     background-image:url('../images/view-of-mojave.jpg');
-    background-size: cover;	
+    background-size: cover;
 }
 
 #intro-caption {
@@ -116,7 +117,7 @@ html, body, {
 /*** leaflet map stuff ***/
 
 #map-placeholder {
-	height: 1000px;
+	height: 100%;
 	width: 20%;
 	float: left;
 	z-index: 6;
@@ -136,7 +137,7 @@ html, body, {
     float: left;
     margin: 0px;
   	top: 40px;
-  	z-index: -2;
+  	z-index: -3;
     /*display: inline-block;*/
     border-right: 1px solid hsla(0, 100%, 100%, 0.3);
 
@@ -264,6 +265,10 @@ html, body, {
 	overflow: hidden;
 	vertical-align: top;
 	margin: 5em 0;
+}
+
+.paused {
+	/*background-color: hsla(0,0,0,0.5);*/
 }
 
 .content-title {

@@ -52,11 +52,11 @@
 			<div class="caption" id="intro-caption">
 				<p>View of the Mojave Dessert from Kennedy Meadows in the Southern Sierra Nevada</p>	
 			</div>						
-
+			
 			<div id="map-content-wrapper">				
 				<!-- leaflet map -->
-				<div id="map"></div>				
 				<div id="map-placeholder"></div>
+				<div id="map"></div>				
 
 				<div id="content-wrapper">											
 					<!-- scrollable content here -->
@@ -81,7 +81,7 @@
 								The trail wound its way around the town of Campo and out into the desert.  It was unlike anything I have experienced previously; desert shrubs growing around the husks of burnt trees and dry sand.  The trail is graded for horses and winds up and around hills.  Vast landscapes lay alongside your path as there are few trees taller than belly button height. Often the trial seems cut right from the bedrock of the slope.  It makes me wonder about the history and who built each section that would eventually be linked to become the PCT. <br/>
 								<br/>
 							</p>
-							<div class="image" id="wp1">
+							<div class="image" id="wp1B">
 								<img src="./images/s_ca_first_steps.jpg">
 								<div class="caption">
 									<p>First steps on the trail</p>	
@@ -117,13 +117,13 @@
 								My IT band on my left knee was hurting, not severely but enough to make me stop often to stretch and massage it back into compliance.  I spent last night camping out behind the community center after a burger, a shower and meeting more hikers.  Overall there are many more other through hikers than I expected.  I seem to meet several new people every day and run into half a dozen I've already met who I passed or are in the process of passing me.  Everyone hikes their own pace and I enjoy hiking alone and socializing at water stops and camp sites.  I seem to have an unusual hiking style of pushing for 2 hours without stopping, a quick five minute stretch break and another hour or two push before taking a longer break.  I don't hike with poles so I can eat, drink and change layers all while continuing to walk.  I hope my feet will toughen up after the rest day today and I can start doing longer days continuously.  The next town is 69 miles and an unthinkable 10,000 feet of elevation gain away.  I'm taking four days of food but hope to do it in less than that. <br/>
 								<br/>
 							</p>
-							<div class="video" id="wp3">
+							<div class="video paused" id="wp3A">
 								<video id="forester-pass" width="100%">
 									<source src="images/s_ca_forester-pass_edit2.mp4" preload="none" type="video/mp4">
 										Your browser does not support the <code>video</code> element.
 								</video>
-								<div class="caption">
-									<p>Forester Pass, Sierra Nevada</p>	
+								<div class="caption" id="wp3B">
+									<p>Forester Pass, Sierra Nevada</p>
 								</div>
 							</div>
 						</div>		
@@ -244,5 +244,47 @@
 				</div>				
 			</div>									
 		</div>
+		<script type="text/javascript">
+			// intro image blur as user scrolls
+			$(document).ready(function(){
+				var s,
+					scrolled = false,
+					body = $(document.body),
+					bheigh = body.height();
+
+				$(window).scroll(function(){
+					s = $(window).scrollTop();
+					console.log('scroll value is: ', s);
+
+					// scroll offset value 
+					x = s/75;
+
+					console.log('x value is: ', x);
+
+					var increaseBlur = function(x){
+						var filterVal = 'blur(' + x + 'px)';
+						$('#intro-image')
+						  .css('filter',filterVal)
+						  .css('webkitFilter',filterVal)
+						  .css('mozFilter',filterVal)
+						  .css('oFilter',filterVal)
+						  .css('msFilter',filterVal);
+					};
+
+					var decreaseBlur = function(x){
+						var filterVal = 'blur('+ x + 'px)';
+						$('#intro-image')
+						  .css('filter',filterVal)
+						  .css('webkitFilter',filterVal)
+						  .css('mozFilter',filterVal)
+						  .css('oFilter',filterVal)
+						  .css('msFilter',filterVal);
+					};				 
+
+					s > 100 ? increaseBlur(x) : decreaseBlur(x);
+
+				});
+			});
+		</script>
 	</body>
 </html>

@@ -16,6 +16,18 @@ myApp = {
 				zoomControl: false,
 				attributionControl: true
 			};
+
+		L.Map = L.Map.extend({
+		    openPopup: function(popup) {
+		        //        this.closePopup();
+		        this._popup = popup;
+
+		        return this.addLayer(popup).fire('popupopen', {
+		            popup: this._popup
+		        });
+		    }
+		});
+
 		//init the map
 		this.map = L.map('map', config);
 		//disable drag and zoom handlers
@@ -135,9 +147,12 @@ myApp = {
 
 				marker = new L.Marker([lat,lon],{
 					icon: myIcon
-				}).bindPopup("<h2>" + name + "</h2>" + "<p>" + desc + "</p>");				
+				}).bindPopup("<h2>" + name + "</h2>" + "<p>" + desc + "</p>")
+				.openPopup();				
 				
+				//console.log('marker padding: ', marker.pad(10));				
 				myApp.markers.addLayer(marker);
+
 			}	
 		})
 		.done(function() {

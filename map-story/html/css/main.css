@@ -49,7 +49,7 @@ html, body, {
 	display: block;
 	top: 40px;
 	width: 100%;
-	height: 103.5%;
+	height: 88%;
 	z-index: -1;
     background-position: center;
     background-image:url('../images/view-of-mojave.jpg');
@@ -57,9 +57,9 @@ html, body, {
 }
 
 #intro-caption {
-	position: fixed;
+	position: absolute;
 	display: inline-block;
-	top: 97%;
+	top: 93%;
 	right: 0;
 	left: 0;
 	bottom: 0;
@@ -93,7 +93,7 @@ html, body, {
 	text-align: left;
 	font-weight: normal;
 	right: 3%;
-	bottom: 15%;
+	bottom: 10%;
 	width: 33.3%;
 
 	color: hsla(0, 100%, 100%, .9);
@@ -110,7 +110,7 @@ html, body, {
 #map-content-wrapper {
 	position: absolute;
 	width: 100%;
-	top: 1000px;
+	top: 800px;
 	background-color: #fff;
 }
 

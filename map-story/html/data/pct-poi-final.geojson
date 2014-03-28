@@ -19,7 +19,6 @@
 { "type": "Feature", "properties": { "Name": "Mission Creek", "feature_cl": "nf_water", "Descriptio": "First actual stream" }, "geometry": { "type": "Point", "coordinates": [ -116.666988151102899, 34.049125752287011 ] } },
 { "type": "Feature", "properties": { "Name": "Big Bear Hostel", "feature_cl": "lodging", "Descriptio": "3 days off here" }, "geometry": { "type": "Point", "coordinates": [ -116.909738143367775, 34.243026196986484 ] } },
 { "type": "Feature", "properties": { "Name": "Wrightwood", "feature_cl": "town", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -117.633394073678502, 34.360829646009186 ] } },
-{ "type": "Feature", "properties": { "Name": "Clear Creek Ranger Station", "feature_cl": "site", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -118.153140586542719, 34.270014419904399 ] } },
 { "type": "Feature", "properties": { "Name": "Acton Los Angeles North KOA", "feature_cl": "lodging", "Descriptio": "I made out with that Christian girl here, 8th grade style" }, "geometry": { "type": "Point", "coordinates": [ -118.2688558326182, 34.438798823638635 ] } },
 { "type": "Feature", "properties": { "Name": "Hikertown", "feature_cl": "lodging", "Descriptio": "GIS it, seriously" }, "geometry": { "type": "Point", "coordinates": [ -118.61110509496838, 34.774581857552242 ] } },
 { "type": "Feature", "properties": { "Name": "LA Aqueduct walk", "feature_cl": "nf_water", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -118.582878351681771, 34.799957123710925 ] } },

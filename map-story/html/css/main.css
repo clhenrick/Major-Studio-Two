@@ -136,7 +136,7 @@ html, body, {
     width: 20%;
     float: left;
     margin: 0px;
-  	top: 40px;
+  	top: 00px;
   	z-index: -3;
     /*display: inline-block;*/
     border-right: 1px solid hsla(0, 100%, 100%, 0.3);

@@ -1,6 +1,5 @@
 myApp = {
 
-	that : this,
 	map : null,
 	am : null,
 	markers : null,	
@@ -13,13 +12,13 @@ myApp = {
 				initZoom: 5,
 				minZoom: 4,
 				maxZoom: 16,
-				zoomControl: false,
-				attributionControl: true
+				zoomControl: true,
+				attributionControl: false
 			};
 
 		L.Map = L.Map.extend({
 		    openPopup: function(popup) {
-		        //        this.closePopup();
+		        //this.closePopup();
 		        this._popup = popup;
 
 		        return this.addLayer(popup).fire('popupopen', {
@@ -31,18 +30,24 @@ myApp = {
 		//init the map
 		this.map = L.map('map', config);
 		//disable drag and zoom handlers
-		this.map.dragging.disable();
-		this.map.touchZoom.disable();
-		this.map.doubleClickZoom.disable();
-		this.map.scrollWheelZoom.disable();
+		//this.map.dragging.disable();
+		//this.map.touchZoom.disable();
+		//this.map.doubleClickZoom.disable();
+		//this.map.scrollWheelZoom.disable();
 		// disable tap handler, if present.
-		if (this.map.tap) this.map.tap.disable();
+		//if (this.map.tap) this.map.tap.disable();
 		// add the Stamen terrain basemap layer
 		this.map.addLayer(config.baselayer);
 		// set init map center and zoom level
 		this.map.setView(config.initLatLng, config.initZoom);
 		// place attribution in bottom left so it's visible
-		new L.Control.Attribution({ position: 'bottomleft'}).addTo(this.map);
+		L.control.attribution({ 
+			'position': 'bottomleft'
+		}).setPrefix()
+		  .addAttribution("Trail Data courtesy of <a href=\"http://www.pctmap.net/\">Half Mile Maps</a>")		  
+		  .addTo(this.map);
+
+		this.markers = L.layerGroup().addTo(this.map);
 	},
 
 	checkFeatureClass : function(feature){
@@ -50,56 +55,56 @@ myApp = {
 		//console.log('checkFeatureClass feature: ', feature);
 		var fc = feature.properties.feature_cl;
 
-		var 	poi = new L.MakiMarkers.icon({
-					icon: "star",
-					color: "#b0b",
-					size: "m"
-				}),
-				camp = new L.MakiMarkers.icon({
-					icon: "campsite",
-					color: "#99554E",
-					size: "m"
-				}),
-				town = new L.MakiMarkers.icon({
-					icon: "town",
-					color: "#D9D9D9",
-					size: "m"
-				}),				
-				event = new L.MakiMarkers.icon({
-					icon: "circle",
-					color: "#5CDBFF",
-					size: "m"
-				}),
-				peak = new L.MakiMarkers.icon({
-					icon: "triangle",
-					color: "#99554E",
-					size: "m"
-				}),				
-				site = new L.MakiMarkers.icon({
-					icon: "square",
-					color: "#6969FF",
-					size: "m"
-				}),	
-				nfwater = new L.MakiMarkers.icon({
-					icon: "park",
-					color: "#6969FF",
-					size: "m"
-				}),
-				food = new L.MakiMarkers.icon({
-					icon: "fast-food",
-					color: "#F3FF5F",
-					size: "m"
-				}),
-				lodging = new L.MakiMarkers.icon({
-					icon: "lodging",
-					color: "#6969FF",
-					size: "m"
-				}),											
-				nf = new L.MakiMarkers.icon({
-					icon: "park",
-					color: "#35ad22",
-					size: "m"
-				});
+		var poi = new L.MakiMarkers.icon({
+				icon: "star",
+				color: "#b0b",
+				size: "m"
+			}),
+			camp = new L.MakiMarkers.icon({
+				icon: "campsite",
+				color: "#99554E",
+				size: "m"
+			}),
+			town = new L.MakiMarkers.icon({
+				icon: "town",
+				color: "#D9D9D9",
+				size: "m"
+			}),				
+			event = new L.MakiMarkers.icon({
+				icon: "circle",
+				color: "#5CDBFF",
+				size: "m"
+			}),
+			peak = new L.MakiMarkers.icon({
+				icon: "triangle",
+				color: "#99554E",
+				size: "m"
+			}),				
+			site = new L.MakiMarkers.icon({
+				icon: "square",
+				color: "#6969FF",
+				size: "m"
+			}),	
+			nfwater = new L.MakiMarkers.icon({
+				icon: "park",
+				color: "#6969FF",
+				size: "m"
+			}),
+			food = new L.MakiMarkers.icon({
+				icon: "fast-food",
+				color: "#F3FF5F",
+				size: "m"
+			}),
+			lodging = new L.MakiMarkers.icon({
+				icon: "lodging",
+				color: "#6969FF",
+				size: "m"
+			}),											
+			nf = new L.MakiMarkers.icon({
+				icon: "park",
+				color: "#35ad22",
+				size: "m"
+			});
 
 		switch(fc) {
 			case 'poi' : return poi; break;
@@ -136,24 +141,50 @@ myApp = {
 			features = data.features,
 			len = features.length,
 			i = 0;
-			//	console.log('Fetch data says: features: ', features, ' len is: ', len);
 
-			for (i; i<len; i++){
-				lat = features[i].geometry.coordinates[1];
-				lon = features[i].geometry.coordinates[0];
-				myIcon = myApp.checkFeatureClass(features[i]);
-				name = features[i].properties.Name;
-				desc = features[i].properties.Descriptio;
+            // check point of interest data for what to add to popups
+            var popupContent = function(feature, layer, name, desc, lat, lon) {                    
+                if (name && !desc) {
+                    return "<h2>" + name + "</h2>";
+                } else if (name && desc) {
+                    return "<h2>" + name + "</h2>" + "<p>" + desc + "</p>";
+                } else if (!name && desc) {
+                    return "<p>" + desc + "</p>";
+                };
+            }
 
-				marker = new L.Marker([lat,lon],{
-					icon: myIcon
-				}).bindPopup("<h2>" + name + "</h2>" + "<p>" + desc + "</p>")
-				.openPopup();				
-				
-				//console.log('marker padding: ', marker.pad(10));				
-				myApp.markers.addLayer(marker);
+            var onEachFeature = function(feature, layer, animatedMarker){                    
+                var name = feature.properties.Name,
+                    desc = feature.properties.Descriptio,
+                    lat = feature.geometry.coordinates[1],
+                    lon = feature.geometry.coordinates[0];                    
 
-			}	
+                layer.bindPopup(popupContent(feature, layer, name, desc, lat, lon));
+
+                myApp.am.on({'move': function(e){                      
+                    // measure distance in pixels from animatedMarker to poi markers
+                    var d = L.GeometryUtil.distance(myApp.map, e.latlng, [lat,lon]);
+                    
+                    // do a distance test to open / close popups
+                    if (d < 100) { layer.openPopup(); }
+                    if (d > 200) { layer.closePopup(); }
+                    }
+                });
+            };
+
+            var marker = L.geoJson(data, {
+            	pointToLayer: function(feature, latlng){
+            		var myIcon = myApp.checkFeatureClass(feature);
+            		return new L.Marker(latlng, {
+            			icon : myIcon,
+            		});
+            	},				           	
+            	onEachFeature: function(feature, layer){            		
+            		onEachFeature(feature, layer, myApp.am);
+            	}
+            });
+
+            myApp.markers.addLayer(marker);	
 		})
 		.done(function() {
 			console.log( "another success! getJSON for POI.geojson is done." );
@@ -212,6 +243,7 @@ myApp = {
 					interval: 1000,
 					icon: mike
 				});
+			console.log('myApp.am: ', myApp.am);
 			// add the animated marker
 			myApp.map.addLayer(myApp.am);
 			// add pct line geojson layer
@@ -246,13 +278,13 @@ myApp = {
 	flag: false,
 
 	start : function(){
-		this.am.start();
-		this.flag = false;
+		myApp.am.start();
+		myApp.flag = false;
 	},
 
 	stop : function(){
-		this.am.stop();
-		this.flag = true;
+		myApp.am.stop();
+		myApp.flag = true;
 	},
 
 	pan : function() {

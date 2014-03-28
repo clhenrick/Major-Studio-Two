@@ -162,6 +162,15 @@ html, body, {
 	to{z-index: 5;}
 }
 
+.leaflet-popup {
+	opacity: 0.4;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+	/*opacity: 0.4;*/
+	background: hsla(0,100%,100%,0.7);
+}
+
 .leaflet-popup-content {
 	text-align: center;
 }

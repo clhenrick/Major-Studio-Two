@@ -12,7 +12,7 @@ myApp = {
 				initZoom: 5,
 				minZoom: 4,
 				maxZoom: 16,
-				zoomControl: true,
+				zoomControl: false,
 				attributionControl: false
 			};
 
@@ -47,7 +47,7 @@ myApp = {
 		  .addAttribution("Trail Data courtesy of <a href=\"http://www.pctmap.net/\">Half Mile Maps</a>")		  
 		  .addTo(this.map);
 
-		this.markers = L.layerGroup().addTo(this.map);
+		this.markers = L.layerGroup().addTo(this.map);		
 	},
 
 	checkFeatureClass : function(feature){
@@ -177,13 +177,12 @@ myApp = {
             		var myIcon = myApp.checkFeatureClass(feature);
             		return new L.Marker(latlng, {
             			icon : myIcon,
-            		});
+            		});            		
             	},				           	
             	onEachFeature: function(feature, layer){            		
             		onEachFeature(feature, layer, myApp.am);
             	}
-            });
-
+            });            
             myApp.markers.addLayer(marker);	
 		})
 		.done(function() {
@@ -468,6 +467,7 @@ myApp = {
 		myApp.onMove = myApp.startInterval();
 		// add event listener for user scrolling
 		myApp.onScroll();
+		$('.leaflet-popup-content-wrapper').addClass('changed');
 	}
 } //end myApp
 

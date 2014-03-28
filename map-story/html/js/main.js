@@ -58,63 +58,63 @@ myApp = {
 		var poi = new L.MakiMarkers.icon({
 				icon: "star",
 				color: "#b0b",
-				size: "m"
+				size: "l"
 			}),
 			camp = new L.MakiMarkers.icon({
 				icon: "campsite",
 				color: "#99554E",
-				size: "m"
+				size: "l"
 			}),
 			town = new L.MakiMarkers.icon({
 				icon: "town",
 				color: "#D9D9D9",
-				size: "m"
+				size: "l"
 			}),				
 			event = new L.MakiMarkers.icon({
 				icon: "circle",
 				color: "#5CDBFF",
-				size: "m"
+				size: "l"
 			}),
 			peak = new L.MakiMarkers.icon({
 				icon: "triangle",
 				color: "#99554E",
-				size: "m"
+				size: "l"
 			}),				
 			site = new L.MakiMarkers.icon({
 				icon: "square",
 				color: "#6969FF",
-				size: "m"
+				size: "l"
 			}),	
 			nfwater = new L.MakiMarkers.icon({
 				icon: "park",
 				color: "#6969FF",
-				size: "m"
+				size: "l"
 			}),
 			food = new L.MakiMarkers.icon({
 				icon: "fast-food",
 				color: "#F3FF5F",
-				size: "m"
+				size: "l"
 			}),
 			lodging = new L.MakiMarkers.icon({
 				icon: "lodging",
 				color: "#6969FF",
-				size: "m"
+				size: "l"
 			}),											
 			nf = new L.MakiMarkers.icon({
 				icon: "park",
 				color: "#35ad22",
-				size: "m"
+				size: "l"
 			});
 
 		switch(fc) {
 			case 'poi' : return poi; break;
 			case 'camp' : return camp; break;
-			case 'lodging' :  return lodging; break;
-			case 'event' :  return event; break;
+			case 'lodging' : return lodging; break;
+			case 'event' : return event; break;
 			case 'nf' :  return nf; break;
-			case 'peak' :  return peak; break;
-			case 'town' :  return town; break;
-			case 'nf_water' :  return nfwater; break;
+			case 'peak' : return peak; break;
+			case 'town' : return town; break;
+			case 'nf_water' : return nfwater; break;
 			case 'site' : return site; break;
 			case 'food' : return food; break;
 			default :  return poi;				
@@ -329,8 +329,8 @@ myApp = {
 					myApp.map.removeLayer(myApp.markers);
 					myApp.map.zoomOut(6);
 					myApp.map.panTo([40.3025, -121.2347]);
-					myApp.am['_latlng'].lat = myApp.coordinates.start[1];
-					myApp.am['_latlng'].lon = myApp.coordinates.start[0];
+					// myApp.am['_latlng'].lat = myApp.coordinates.start[1];
+					// myApp.am['_latlng'].lon = myApp.coordinates.start[0];
 					break;
 			}
 		}, {offset: w});
@@ -400,19 +400,80 @@ myApp = {
 					// $('forester-pass').toggleClass("paused");
 					break;
 			}
-		}, {offset: 150});		
+		}, {offset: 150});
 
-		// detect next event template
+		$('#wp4').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					if (myApp.flag === true) {
+						myApp.start();
+						myApp.flag = false;
+						myApp.onMove = myApp.startInterval();		
+					}
+					break;
+				case 'up':
+					if (myApp.flag === false) {
+						myApp.stop();
+						myApp.flag = true;
+					}
+
+					break;
+			}
+		}, {offset: 150});
+
+		$('#wp5').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					if (myApp.flag === true) {
+						myApp.start();
+						myApp.flag = false;
+						myApp.onMove = myApp.startInterval();		
+					}					
+					break;
+				case 'up':
+					if (myApp.flag === false) {
+						myApp.stop();
+						myApp.flag = true;
+					}					
+					break;
+			}
+		}, {offset: 150});
+
+		$('#wp6').waypoint(function(d) {
+			switch(d) {
+				case 'down':
+					if (myApp.flag === true) {
+						myApp.start();
+						myApp.flag = false;
+						myApp.onMove = myApp.startInterval();		
+					}					
+					break;
+				case 'up':
+					if (myApp.flag === false) {
+						myApp.stop();
+						myApp.flag = true;
+					}					
+					break;
+			}
+		}, {offset: 150});
+
 		// $('#wp..').waypoint(function(d) {
 		// 	switch(d) {
 		// 		case 'down':
-					
+		// 			if (myApp.flag === true) {
+		// 				myApp.start();
+		// 				myApp.flag = false;
+		// 				myApp.onMove = myApp.startInterval();		
+		// 			}					
 		// 			break;
 		// 		case 'up':
-					
+		// 			if (myApp.flag === false) {
+		// 				myApp.stop();
+		// 				myApp.flag = true;
+		// 			}					
 		// 			break;
 		// 	}
-		// });
+		// }, {offset: 150});		
 	},
 
 	startInterval : function() {
@@ -432,14 +493,22 @@ myApp = {
 		start: [-116.46695, 32.589707], 
 		one : [-116.645282, 33.273054],
 		two : [-116.671629, 33.757491], 
-		three : [-116.469611, 32.59895]
+		three : [-116.917108, 34.2842],
+		four: [-117.647582, 34.338275],
+		five: [-118.416276, 35.007139]
 	},	
 
 	checkLatLon : function(e) {
 		var lat1 = myApp.coordinates.one[1],
 			lng1 = myApp.coordinates.one[0],
 			lat2 = myApp.coordinates.two[1],
-			lng2 = myApp.coordinates.two[0];
+			lng2 = myApp.coordinates.two[0],
+			lat3 = myApp.coordinates.three[1],
+			lng3 = myApp.coordinates.three[0],
+			lat4 = myApp.coordinates.four[1],
+			lng4 = myApp.coordinates.four[0],
+			lat5 = myApp.coordinates.five[1],
+			lng5 = myApp.coordinates.five[0];
 
 		switch(e.latlng.lng, e.latlng.lat) {
 			case lng1, lat1 :
@@ -450,9 +519,18 @@ myApp = {
 				myApp.flag = true;
 				myApp.stop();
 				break;
-			// case lng3, lat3:
-			// 	myApp.flag = true;
-			// 	break;
+			case lng3, lat3:
+				myApp.flag = true;
+				myApp.stop();
+				break;
+			case lng4, lat4:
+				myApp.flag = true;
+				myApp.stop();
+				break;
+			case lng5, lat5:
+				myApp.flag = true;
+				myApp.stop();
+				break;								
 		}
 	},
 

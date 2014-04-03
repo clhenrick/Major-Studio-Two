@@ -134,7 +134,7 @@ myApp = {
 		// create a layerGroup to store each marker	
 		myApp.markers = L.layerGroup().addTo(myApp.map);
 
-		// load poi.geojson data
+		// load poi.geojson data, add event listener for animatedMarker on move
 		$.getJSON('data/pct-poi-final.geojson', function(data){
 			//console.log('geojson data for POI\'s loaded: ', data);
 
@@ -157,9 +157,12 @@ myApp = {
                 var name = feature.properties.Name,
                     desc = feature.properties.Descriptio,
                     lat = feature.geometry.coordinates[1],
-                    lon = feature.geometry.coordinates[0];                    
+                    lon = feature.geometry.coordinates[0],
+                    popupOptions = {
+                    	closebutton : false
+                    };                    
 
-                layer.bindPopup(popupContent(feature, layer, name, desc, lat, lon));
+                layer.bindPopup(popupContent(feature, layer, name, desc, lat, lon), popupOptions);
 
                 myApp.am.on({'move': function(e){                      
                     // measure distance in pixels from animatedMarker to poi markers
@@ -182,7 +185,8 @@ myApp = {
             	onEachFeature: function(feature, layer){            		
             		onEachFeature(feature, layer, myApp.am);
             	}
-            });            
+            });
+
             myApp.markers.addLayer(marker);	
 		})
 		.done(function() {
@@ -271,41 +275,26 @@ myApp = {
 	rm : function(layer){
 		//console.log('removeLayer called');
 		myApp.map.removeLayer(layer);
-	},
-
-	flag: false,	
+	},		
 
 	start : function(){
 		myApp.am.start();
 		myApp.flag = false;
 	},
 
-	stop : function(){
-		myApp.am.stop();
+	stop : function(){		
 		myApp.flag = true;
+		myApp.am.stop();
 	},
 
 	pan : function(){
-		myApp.map.panTo({lon: myApp.am['_latlng'].lng, lat: myApp.am['_latlng'].lat});
+		myApp.map.panTo({
+			lon: myApp.am['_latlng'].lng, lat: myApp.am['_latlng'].lat
+		});
 	}, 
 
-	startInterval : function() {
-		return setInterval(function(){
-		// myApp.am.on('move', myApp.checkLatLon);
-			if (myApp.flag === true){
-				myApp.stop();				
-				clearInterval(myApp.onMove);			
-			}
-		},100);
-	},
-
-	onMove : null,
-
-	amCounter : 0,
-
-	// jquery waypoint detection
+	// jQuery waypoint scroll detection
 	onScroll : function() {
-		/*** jquery waypoint event liste ***/
 		//waypoint offset value
 		var w = 60,
 			v1 = document.getElementsByTagName("video")[0];
@@ -334,13 +323,16 @@ myApp = {
 					$('#map-placeholder').toggleClass('hidden');
 					myApp.fetchPoiData();
 					myApp.map.zoomIn(6);
-					myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);					
+					if (myApp.amCounter === -1) { 
+						myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);
+						myApp.amCounter = 0;
+					}
 					break;
 				case 'up':
 					$('#map-placeholder').toggleClass('hidden');					
 					myApp.map.removeLayer(myApp.markers);
 					myApp.map.zoomOut(6);
-					myApp.map.panTo([40.3025, -121.2347]);					
+					if (myApp.amCounter === -1) { myApp.map.panTo([40.3025, -121.2347]);	}
 					break;
 			}
 		}, {offset: w});
@@ -394,12 +386,10 @@ myApp = {
 				case 'down':
 					console.log('waypoint 3A down');
 					v1.play();
-					// $('forester-pass').toggleClass("paused");					
 					break;
 				case 'up':
 					console.log('waypoint 3A up');
 					v1.pause();
-					// $('forester-pass').toggleClass("paused");
 					break;
 			}
 		}, {offset: 150});
@@ -409,15 +399,13 @@ myApp = {
 				case 'down':
 					console.log('waypoint 3B down');
 					v1.pause();
-					// $('forester-pass').toggleClass("paused");					
 					break;
 				case 'up':
 					console.log('waypoint 3B up');
 					v1.play();
-					// $('forester-pass').toggleClass("paused");
 					break;
 			}
-		}, {offset: 150});
+		}, {offset: 0});
 
 		$('#wp4').waypoint(function(d) {
 			switch(d) {
@@ -472,7 +460,7 @@ myApp = {
 					}					
 					break;
 				case 'up':
-					if (myApp.amCounter === 7) {
+					if (myApp.amCounter === 9) {
 						myApp.stop();
 						myApp.flag = true;
 						myApp.amCounter -= 1;
@@ -500,7 +488,24 @@ myApp = {
 		// }, {offset: 150});		
 	},
 
-	coordinates : { // for detecting animatedMarker pos
+	flag: false,
+
+	// return setInterval ID and clear it when animatedMarker stops
+	startInterval : function() {
+		return setInterval(function(){
+			if (myApp.flag === true){
+				myApp.stop();				
+				clearInterval(myApp.onMove);			
+			}
+		},100);
+	},
+
+	onMove : null,
+
+	amCounter : -1,
+
+	// latlng coordinates for when to stop animatedMarker
+	coordinates : { 
 		start: [-116.46695, 32.589707], 
 		one : [-116.645282, 33.273054],
 		two : [-116.671629, 33.757491], 
@@ -509,8 +514,12 @@ myApp = {
 		five: [-118.35886, 35.051991]
 	},	
 
+	// function to check coordinates with animatedMarker position
+	// increment amCounter when coordinates match
 	checkLatLon : function(e) {
-		var lat1 = myApp.coordinates.one[1],
+		var lat0 = myApp.coordinates.start[1],
+			lng0 = myApp.coordinates.start[0],
+			lat1 = myApp.coordinates.one[1],
 			lng1 = myApp.coordinates.one[0],
 			lat2 = myApp.coordinates.two[1],
 			lng2 = myApp.coordinates.two[0],
@@ -522,6 +531,9 @@ myApp = {
 			lng5 = myApp.coordinates.five[0];		
 
 		switch(e.latlng.lng, e.latlng.lat) {
+			case lng0, lat0 :
+				myApp.amCounter = 0;
+				break;
 			case lng1, lat1 :
 				myApp.flag = true;
 				myApp.amCounter = 2;

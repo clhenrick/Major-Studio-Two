@@ -1,23 +1,23 @@
 .DS_Store
-../../derelict_vehicles/*
-../../introduction/*
-../../kickstarter-video/*
-../data/*
+../../derelict_vehicles/
+../../introduction/
+../../kickstarter-video/
+../data/
 css/blur.svg
 data/half-mile-marks.geojson
 data/pct-trail-partial.geojson
 data/test.geojson
 images/Susan-Bates-eagle-rock1.jpg
 images/s_ca_eagle-rock.jpg
-js/tmp/*
+js/tmp/
 js/vendor/leaflet.geometryutil.js
-node_modules/*
+node_modules/
 server.js
-tmp/*
-../html2/*
-../images/iterations/*
-../qgis/*
-../scripts/*
+tmp/
+../html2/
+../images/iterations/
+../qgis/
+../scripts/
 ../supplements/Building Story Maps.pdf
 ../supplements/questions for mike.rtf
-../../zz_new_project_folder/*
+../../zz_new_project_folder/

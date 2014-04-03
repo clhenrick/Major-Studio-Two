@@ -11,7 +11,7 @@
 { "type": "Feature", "properties": { "Name": "Fuller Ridge", "feature_cl": "nf", "Descriptio": "7,000 feet down from here over 15 miles" }, "geometry": { "type": "Point", "coordinates": [ -116.725025791636085, 33.836762713254153 ] } },
 { "type": "Feature", "properties": { "Name": "Idyllwild Campground", "feature_cl": "camp", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -116.719610865372942, 33.740993405674573 ] } },
 { "type": "Feature", "properties": { "Name": "Warner Springs", "feature_cl": "town", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -116.634585001921835, 33.283518544836539 ] } },
-{ "type": "Feature", "properties": { "Name": "Eagle Rock", "feature_cl": "nf", "Descriptio": "I have a photo but GIS is good too" }, "geometry": { "type": "Point", "coordinates": [ -116.611643572301645, 33.254629337166669 ] } },
+{ "type": "Feature", "properties": { "Name": "Eagle Rock", "feature_cl": "nf", "Descriptio": "" }, "geometry": { "type": "Point", "coordinates": [ -116.611643572301645, 33.254629337166669 ] } },
 { "type": "Feature", "properties": { "Name": "Cold Canyon", "feature_cl": "nf", "Descriptio": "Had Ice in my bottles in the AM - May 4th" }, "geometry": { "type": "Point", "coordinates": [ -116.414229186090992, 32.819822279355733 ] } },
 { "type": "Feature", "properties": { "Name": "Lake Morena Campground", "feature_cl": "camp", "Descriptio": "First night on trail!" }, "geometry": { "type": "Point", "coordinates": [ -116.518509720855462, 32.683441024802562 ] } },
 { "type": "Feature", "properties": { "Name": "Southern Terminus of the PCT", "feature_cl": "poi", "Descriptio": null }, "geometry": { "type": "Point", "coordinates": [ -116.46695271015848, 32.589975941164745 ] } },

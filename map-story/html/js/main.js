@@ -31,11 +31,11 @@ myApp = {
 		this.map = L.map('map', config);
 		//disable drag and zoom handlers
 		//this.map.dragging.disable();
-		//this.map.touchZoom.disable();
-		//this.map.doubleClickZoom.disable();
-		//this.map.scrollWheelZoom.disable();
+		this.map.touchZoom.disable();
+		this.map.doubleClickZoom.disable();
+		this.map.scrollWheelZoom.disable();
 		// disable tap handler, if present.
-		//if (this.map.tap) this.map.tap.disable();
+		if (this.map.tap) this.map.tap.disable();
 		// add the Stamen terrain basemap layer
 		this.map.addLayer(config.baselayer);
 		// set init map center and zoom level
@@ -136,7 +136,7 @@ myApp = {
 
 		// load poi.geojson data
 		$.getJSON('data/pct-poi-final.geojson', function(data){
-			console.log('geojson data for POI\'s loaded: ', data);
+			//console.log('geojson data for POI\'s loaded: ', data);
 
 			features = data.features,
 			len = features.length,
@@ -186,7 +186,7 @@ myApp = {
             myApp.markers.addLayer(marker);	
 		})
 		.done(function() {
-			console.log( "another success! getJSON for POI.geojson is done." );
+			//console.log( "another success! getJSON for POI.geojson is done." );
 		})
 		.fail(function( jqxhr, textStatus, error ) {
 			var err = textStatus + ", " + error;
@@ -200,7 +200,7 @@ myApp = {
 	fetchData : function(){
 		// add PCT line feature from external geojson file
 		$.getJSON("data/pct-simp.geojson", function(data) {
-			console.log("geojson for pct trail loaded: ", data);
+			//console.log("geojson for pct trail loaded: ", data);
 
 			var myStyle = {
 				"color": "#9400ff",
@@ -242,7 +242,6 @@ myApp = {
 					interval: 1000,
 					icon: mike
 				});
-			console.log('myApp.am: ', myApp.am);
 			// add the animated marker
 			myApp.map.addLayer(myApp.am);
 			// add pct line geojson layer
@@ -253,7 +252,7 @@ myApp = {
 			myApp.am.on('move', myApp.checkLatLon);
 		})
 		.done(function() {
-			console.log( "success! getJSON for pct.geojson is done." );
+			//console.log( "success! getJSON for pct.geojson is done." );
 		})
 		.fail(function( jqxhr, textStatus, error ) {
 			var err = textStatus + ", " + error;
@@ -270,11 +269,11 @@ myApp = {
 	},
 
 	rm : function(layer){
-		console.log('removeLayer called');
+		//console.log('removeLayer called');
 		myApp.map.removeLayer(layer);
 	},
 
-	flag: false,
+	flag: false,	
 
 	start : function(){
 		myApp.am.start();
@@ -286,12 +285,23 @@ myApp = {
 		myApp.flag = true;
 	},
 
-	pan : function() {
-		var fps = 100;
-		setInterval(function(){
-			myApp.map.panTo({lon: myApp.am['_latlng'].lng, lat: myApp.am['_latlng'].lat})
-		},fps);
+	pan : function(){
+		myApp.map.panTo({lon: myApp.am['_latlng'].lng, lat: myApp.am['_latlng'].lat});
+	}, 
+
+	startInterval : function() {
+		return setInterval(function(){
+		// myApp.am.on('move', myApp.checkLatLon);
+			if (myApp.flag === true){
+				myApp.stop();				
+				clearInterval(myApp.onMove);			
+			}
+		},100);
 	},
+
+	onMove : null,
+
+	amCounter : 0,
 
 	// jquery waypoint detection
 	onScroll : function() {
@@ -321,16 +331,16 @@ myApp = {
 		$('#wp1A').waypoint(function(d) {
 			switch(d) {
 				case 'down':
+					$('#map-placeholder').toggleClass('hidden');
 					myApp.fetchPoiData();
 					myApp.map.zoomIn(6);
-					myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);
+					myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);					
 					break;
 				case 'up':
+					$('#map-placeholder').toggleClass('hidden');					
 					myApp.map.removeLayer(myApp.markers);
 					myApp.map.zoomOut(6);
-					myApp.map.panTo([40.3025, -121.2347]);
-					// myApp.am['_latlng'].lat = myApp.coordinates.start[1];
-					// myApp.am['_latlng'].lon = myApp.coordinates.start[0];
+					myApp.map.panTo([40.3025, -121.2347]);					
 					break;
 			}
 		}, {offset: w});
@@ -338,16 +348,23 @@ myApp = {
 		// start animation for chapter 01
 		$('#wp1B').waypoint(function(direction) {
 
-			console.log('direction: ' + direction);
+			//console.log('direction: ' + direction);
 
 			switch(direction){
 				case 'down' :
-					console.log('waypoint 1 triggered');										
-					myApp.start();
-					myApp.pan();
+					//console.log('waypoint 1 triggered');										
+					if (myApp.amCounter === 0) { 
+						myApp.start();
+						myApp.onMove = myApp.startInterval();
+						myApp.amCounter +=1;
+					} 
 					break;
 				case 'up' :					
-					myApp.stop();
+					if (myApp.amCounter === 1) { 
+						myApp.amCounter -=1;
+						myApp.flag = true;
+						//myApp.stop();
+					}					
 					break;
 			}
 		}, {offset: 150});
@@ -355,19 +372,19 @@ myApp = {
 		// start animation for chapter 02
 		$('#wp2').waypoint(function(d) {
 			switch(d) {
-				case 'down':
-					console.log('waypoint 2 down');
-					if (myApp.flag === true) {
+				case 'down':										
+					if (myApp.amCounter === 2) { 
 						myApp.start();
-						myApp.flag = false;
-						myApp.onMove = myApp.startInterval();		
-					}
+						myApp.amCounter += 1;
+						myApp.onMove = myApp.startInterval();
+					} 												
 					break;
-				case 'up':
-					if (myApp.flag === false) {
-						myApp.stop();
+				case 'up':					
+					myApp.stop();
+					if (myApp.amCounter === 3){
+						myApp.amCounter -= 1;
 						myApp.flag = true;
-					}
+					}										
 					break;
 			}
 		}, {offset: w});
@@ -404,19 +421,21 @@ myApp = {
 
 		$('#wp4').waypoint(function(d) {
 			switch(d) {
-				case 'down':
-					if (myApp.flag === true) {
-						myApp.start();
-						myApp.flag = false;
-						myApp.onMove = myApp.startInterval();		
+				case 'down':					
+					console.log('wp4 down');
+					if (myApp.amCounter === 4){
+						myApp.start();						
+						myApp.onMove = myApp.startInterval();
+						myApp.amCounter += 1;	
 					}
+											
 					break;
 				case 'up':
-					if (myApp.flag === false) {
+					if (myApp.amCounter === 5) {
+						myApp.amCounter -= 1;
 						myApp.stop();
-						myApp.flag = true;
-					}
-
+						myApp.flag = true;						
+					}											
 					break;
 			}
 		}, {offset: 150});
@@ -424,17 +443,20 @@ myApp = {
 		$('#wp5').waypoint(function(d) {
 			switch(d) {
 				case 'down':
-					if (myApp.flag === true) {
+					if (myApp.amCounter === 6) {
 						myApp.start();
 						myApp.flag = false;
-						myApp.onMove = myApp.startInterval();		
+						myApp.onMove = myApp.startInterval();
+						myApp.amCounter += 1;		
 					}					
 					break;
 				case 'up':
-					if (myApp.flag === false) {
+					if (myApp.amCounter === 7) {						
 						myApp.stop();
 						myApp.flag = true;
-					}					
+						myApp.amCounter -= 1;
+					}	
+
 					break;
 			}
 		}, {offset: 150});
@@ -442,16 +464,18 @@ myApp = {
 		$('#wp6').waypoint(function(d) {
 			switch(d) {
 				case 'down':
-					if (myApp.flag === true) {
+					if (myApp.amCounter === 8) {
 						myApp.start();
 						myApp.flag = false;
-						myApp.onMove = myApp.startInterval();		
+						myApp.onMove = myApp.startInterval();
+						myApp.amCounter += 1;		
 					}					
 					break;
 				case 'up':
-					if (myApp.flag === false) {
+					if (myApp.amCounter === 7) {
 						myApp.stop();
 						myApp.flag = true;
+						myApp.amCounter -= 1;
 					}					
 					break;
 			}
@@ -476,19 +500,6 @@ myApp = {
 		// }, {offset: 150});		
 	},
 
-	startInterval : function() {
-		return setInterval(function(e){
-		// myApp.am.on('move', myApp.checkLatLon);
-			if (myApp.flag === true){
-				myApp.stop();				
-				clearInterval(myApp.onMove);
-				console.log(myApp.onMove);
-			}
-		},100)
-	},
-
-	onMove : null,
-
 	coordinates : { // for detecting animatedMarker pos
 		start: [-116.46695, 32.589707], 
 		one : [-116.645282, 33.273054],
@@ -508,30 +519,37 @@ myApp = {
 			lat4 = myApp.coordinates.four[1],
 			lng4 = myApp.coordinates.four[0],
 			lat5 = myApp.coordinates.five[1],
-			lng5 = myApp.coordinates.five[0];
+			lng5 = myApp.coordinates.five[0];		
 
 		switch(e.latlng.lng, e.latlng.lat) {
 			case lng1, lat1 :
 				myApp.flag = true;
+				myApp.amCounter = 2;
 				break;
-			case lng2, lat2 :
-				console.log('lat2, lng2 triggered');
+			case lng2, lat2 :				
 				myApp.flag = true;
 				myApp.stop();
+				myApp.amCounter = 4;
 				break;
 			case lng3, lat3:
 				myApp.flag = true;
 				myApp.stop();
+				myApp.amCounter = 6;
 				break;
 			case lng4, lat4:
 				myApp.flag = true;
 				myApp.stop();
+				myApp.amCounter = 8;
 				break;
 			case lng5, lat5:
 				myApp.flag = true;
 				myApp.stop();
+				myApp.amCounter = 10;
 				break;								
 		}
+
+		myApp.pan();
+
 	},
 
 	init : function() {
@@ -543,9 +561,9 @@ myApp = {
 		//attach scroll events
 		//start tracking the marker for lat/long pos
 		myApp.onMove = myApp.startInterval();
+		//myApp.onPan = setInterval(myApp.pan, 100);
 		// add event listener for user scrolling
 		myApp.onScroll();
-		$('.leaflet-popup-content-wrapper').addClass('changed');
 	}
 } //end myApp
 

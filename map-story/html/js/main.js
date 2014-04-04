@@ -405,7 +405,7 @@ myApp = {
 					v1.play();
 					break;
 			}
-		}, {offset: 0});
+		}, {offset: 50});
 
 		$('#wp4').waypoint(function(d) {
 			switch(d) {

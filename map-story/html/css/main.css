@@ -63,7 +63,7 @@ html, body, {
 	right: 0;
 	left: 0;
 	bottom: 0;
-	z-index: 0;
+	z-index: 0;	
 }
 
 .arrow {
@@ -95,16 +95,26 @@ html, body, {
 	right: 3%;
 	bottom: 10%;
 	width: 33.3%;
+	color: hsla(0, 100%, 100%, 1);
 
-	color: hsla(0, 100%, 100%, .9);
-	/*text-shadow: /* black 0.1em 0.1em 0.2em; -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
-	text-shadow: 0 1px 0 hsl(0,0%,0%), 0 -1px 0 hsl(0,0%,0%), 1px 0 0 hsl(0,0%,0%), -1px 0 0 hsl(0,0%,0%);
+	background-color: hsla(0, 100%, 0%, 0.4);
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px; /* future proofing */
+	-khtml-border-radius: 10px; /* for old Konqueror browsers */
 }
 
-.image .call-out span {
+.image .call-out span#italic {
 	font-style: italic;
 }
 
+.image .call-out span#aw {
+	text-align: right;
+	float: right;
+	margin-right: 10px;
+	margin-top: 20px;
+}
 
 /*** container for map and content ***/
 #map-content-wrapper {

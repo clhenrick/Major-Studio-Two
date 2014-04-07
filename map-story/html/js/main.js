@@ -497,7 +497,7 @@ myApp = {
 				myApp.stop();				
 				clearInterval(myApp.onMove);			
 			}
-		},100);
+		},1000);
 	},
 
 	onMove : null,

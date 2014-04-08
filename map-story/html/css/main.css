@@ -35,7 +35,7 @@ html, body, {
 }
 
 #title h1 {
-	font: 25px/40px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	font: 25px/40px "Gill Sans", "Gill Sans MT", Calibri, sans-serif;  /*'Helvetica Neue', Arial, Helvetica, sans-serif;*/
 	text-align: left;
 	/*text-transform: capitalize;*/
 	letter-spacing: 2px;
@@ -128,7 +128,7 @@ html, body, {
 
 #map-placeholder {
 	height: 100%;
-	width: 20%;
+	width: 25%;
 	float: left;
 	z-index: 6;
 	position: absolute;
@@ -147,7 +147,7 @@ html, body, {
 	position: fixed;
   	display: inline-block;	
     height: 100%;
-    width: 20%;
+    width: 25%;
     float: left;
     margin: 0px;
   	top: 00px;
@@ -199,7 +199,7 @@ html, body, {
 	position: relative;
 	display: inline-block;
 	float: right;	
-	width: 79.9%;
+	width: 74.9%;
 	height: 100%;
 	z-index: 0;
 /*	border: 1px red solid;*/
@@ -324,7 +324,7 @@ html, body, {
 .content {
 	padding: 0;
 	margin: 0 auto;
-	width: 65%;	
+	width: 80%;	
 	/*border: 1px solid green;*/
 }
 

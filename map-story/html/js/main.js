@@ -314,7 +314,7 @@ myApp = {
 					$('#map').css({'z-index': '-3'});
 					break;
 			}
-		}, {offset: 40});
+		}, {offset: 150});
 
 		// zoom to start and load POI's
 		$('#wp1A').waypoint(function(d) {

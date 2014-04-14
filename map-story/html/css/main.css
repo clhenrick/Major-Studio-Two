@@ -135,10 +135,10 @@ html, body, {
 	z-index: 6;
 	position: absolute;
 	background: hsla(0,100%,100%,1);
-	/*border: 1px solid blue;*/
-	-moz-transition:all 15s ease-out;
-	-webkit-transition:all 5s ease-out;
-	transition:all 2s ease-out;
+	border-right: 2px solid hsla(0,100%,100%,1);	
+	-moz-transition:all 15s;
+	-webkit-transition:all 5s;
+	transition:all 2s;
 }
 
 .hidden {
@@ -152,7 +152,7 @@ html, body, {
     width: 25%;
     float: left;
     margin: 0px;
-  	top: 00px;
+  	top: 0px;
   	z-index: -3;
     /*display: inline-block;*/
     border-right: 1px solid hsla(0, 100%, 0%, 0.3);

@@ -306,7 +306,7 @@ myApp = {
 					console.log('wp0 called');
 					// $('#intro-image').css({'display', 'none'});
 					$('#map').css({'z-index': '5'});
-					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});
+					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});					
 					break;
 				case 'up':
 					// $('#intro-image').css('display', 'block');
@@ -314,7 +314,7 @@ myApp = {
 					$('#map').css({'z-index': '-3'});
 					break;
 			}
-		}, {offset: 150});
+		}, {offset: 125});
 
 		// zoom to start and load POI's
 		$('#wp1A').waypoint(function(d) {

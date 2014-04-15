@@ -209,6 +209,23 @@ html, body, {
 	position: relative;
 }
 
+/*** intro styles (supplement class / section) here ***/
+
+.supplement {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.supplement .call-out p {
+	width: 100%;
+	margin: 0 auto;
+	padding: 40px 0;	
+}
+
+.supplement p {
+	font: 25px/50px "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+}
+
 /*** each part of story is contained within a chapter ***/
 
 .chapter {

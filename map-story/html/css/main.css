@@ -219,7 +219,7 @@ html, body, {
 .supplement .call-out p {
 	width: 100%;
 	margin: 0 auto;
-	padding: 40px 0;	
+	padding: 50px 0px;	
 }
 
 .supplement p {
@@ -354,3 +354,9 @@ html, body, {
 	border: 1px solid green;*/
 }
 
+.content p em {
+	font-style: normal;
+	font-weight: bold;
+/*	color: hsl(0, 90%, 60%);*/
+	color: #a51c1c;
+}

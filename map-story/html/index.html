@@ -16,7 +16,7 @@
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
    <script>window.jQuery || document.write('<script src="js/vendor/leaflet.js"><\/script>')</script>
    <script src="http://rawgithub.com/makinacorpus/Leaflet.GeometryUtil/master/dist/leaflet.geometryutil.js"></script>
    <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
@@ -24,14 +24,17 @@
    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
    <script src="js/vendor/waypoints.min.js"></script>
 		<script src="js/vendor/AnimatedMarker.min.js"></script>
-		<script src="js/vendor/Leaflet.MakiMarkers.js"></script>		
-		<script src="js/main.js"></script>		
+		<script src="js/vendor/Leaflet.MakiMarkers.js"></script>
+		<script src="js/vendor/debounce.js"></script>		
+		<script src="js/main.js"></script>	
 	</head>
 	<body>
  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
    chromium.org/developers/how-tos/chrome-frame-getting-started -->
  <!--[if lte IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-
+	
+	<!-- loading gif -->
+	<div class="loader"></div>
 		<div id="wrapper">
 			<div id="title-container">
 				<div id="title">
@@ -300,7 +303,14 @@
 								<br>
 								When I got to the campground I saw three other hikers I already knew: Glide On who hiked the trail in 1979, and two girls who went by Ninja Turtle and Raven Lady. I had been bouncing around with them since before Idylwild. When I saw the two girls I yelled out "Breakfast at Micky D's and dinner with my LGBTs!", they got a kick out of that. I thought I might see them there since they had signed the hiker registers at the water caches earlier on the trail.  <br>
 								<br>
-								
+							</p>
+						<div class="image">
+							<img src="./images/s_ca_big-bear-wrightwood2.jpg">
+							<div class="caption">
+								<p>needs location</p>	
+							</div>
+						</div>								
+							<p>
 								The next day I felt like crap and was happy to only have 5 miles to get to an easy hitch hike on Route 2 to Wrightwood.  I didn't even have to stick my thumb out because a ninety-three year old man was just getting back from his morning walk at Inspiration Point (where Highway 2 crosses the PCT the first time).  He drove me into town while telling some stories of his own hiking adventures.  He said one Memorial Day he went to hike Mount Balden-Powell (which I'll hit tomorrow) and woke up to over a foot of snow on his sleeping bag!  It's interesting because most of my rides and off trail help seem to come from either retiree's or people close to retirement that have led interesting lives.  I think it takes a few types of people to offer rides and help to strangers and most of those types make for pretty amazing people.<br>
 								<br>
 								Most town days consist of picking up groceries and any other random things which usually doesn't take long. I had my bounce box shipped to this town (thanks Mom and Dad!) so I had a lot more on my plate.  The bounce box is actually a reused de-icing bucket filled with random things I only need intermittently and food that I can send up trail where grocery stores are lacking.   This means long term planning is involved for where the box is going and what food it will contain.  Some of the random stuff includes my camera battery charger and the backflushing thing for my filter which were both utilized at the bar.  I also had to figure out where to send the box and buy some groceries for it and the next stretch.  Fortunately another hiker, Slider, who I helped get rid of about 5 lbs of extra crap he didn't need in Big Bear wanted to buy me two beers as a thanks.  We ended up at a bar (<em>my spot point</em>) where I could spread all my crap out on some picnic tables, go grocery shopping and mail the box up trail to Independence without having to lug my pack around all over town.  Since we made the outside of the bar our home base other hikers naturally gravitated there and pretty soon there were eight of us hanging out.  The bartender Paul offered Slider, another hiker Chris and myself a place to stay in his house for the night.  We accepted and eventually learned that Paul used to be a CA state representative and later a big wig in the music industry.  He drove us around to his amazing house at the top of a ridge with a view of Las Vegas in the distance.  We cooked him a huge BBQ dinner as thanks and shot pool in his living room the rest of the night.  I actually did really well, must have been the Young's Double Chocolate Stout I was sipping on.  <br>
@@ -497,7 +507,7 @@
 
 							<div class="image" id="">
 								<!-- an image relating to chapter -->
-								<img src="./images/">
+								<img src="">
 								<div class="caption">
 									<p>a caption</p>	
 								</div>
@@ -736,7 +746,13 @@
 			</div>									
 		</div>
 		<script type="text/javascript">
-			// intro image blur as user scrolls
+			$(window).load(function(){
+				$('.loader').fadeOut('slow');
+			});
+
+			window.onload = myApp.init;
+
+			// intro image blur as user scrolls			
 			$(document).ready(function(){
 				var s,
 					scrolled = false,

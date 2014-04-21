@@ -294,7 +294,7 @@ myApp = {
 	}, 
 
 	// jQuery waypoint scroll detection
-	onScroll : function() {
+	onScroll : function() {		
 		//waypoint offset value
 		var w = 60,
 			v1 = document.getElementsByTagName("video")[0];
@@ -566,6 +566,7 @@ myApp = {
 
 	init : function() {
 		console.log('called myApp.init()');
+		$.waypoints.settings.scrollThrottle = 30;
 		//draw map
 		myApp.renderMap();
 		//async load geo data
@@ -574,10 +575,8 @@ myApp = {
 		//start tracking the marker for lat/long pos
 		myApp.onMove = myApp.startInterval();
 		//myApp.onPan = setInterval(myApp.pan, 100);
-		// add event listener for user scrolling
+		// add event listener for user scrolling		
 		myApp.onScroll();
+		 
 	}
 } //end myApp
-
-
-window.onload = myApp.init;

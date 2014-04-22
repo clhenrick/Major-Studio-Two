@@ -753,41 +753,27 @@
 
 			// intro image blur as user scrolls			
 			$(document).ready(function(){
-				var s,
-					scrolled = false,
-					body = $(document.body),
-					bheigh = body.height();
-
+				
 				$(window).scroll(function(){
-					s = $(window).scrollTop();
-					//console.log('scroll value is: ', s);
+					var s = $(window).scrollTop();
+					console.log('scroll value is: ', s);
 
 					// scroll offset value 
-					x = s/50;
+					var x = s/50;
 
 					//console.log('x value is: ', x);
 
-					var increaseBlur = function(x){
+					var blur = function(x){
 						var filterVal = 'blur(' + x + 'px)';
 						$('#intro-image')
-					 .css('filter',filterVal)
-					 .css('webkitFilter',filterVal)
-					 .css('mozFilter',filterVal)
-					 .css('oFilter',filterVal)
-					 .css('msFilter',filterVal);
-					};
+						 .css('filter',filterVal)
+						 .css('webkitFilter',filterVal)
+						 .css('mozFilter',filterVal)
+						 .css('oFilter',filterVal)
+						 .css('msFilter',filterVal);
+						};			 
 
-					var decreaseBlur = function(x){
-						var filterVal = 'blur('+ x + 'px)';
-						$('#intro-image')
-					 .css('filter',filterVal)
-					 .css('webkitFilter',filterVal)
-					 .css('mozFilter',filterVal)
-					 .css('oFilter',filterVal)
-					 .css('msFilter',filterVal);
-					};				 
-
-					s > 100 ? increaseBlur(x) : decreaseBlur(x);
+					s > 100 ? blur(x) : blur(x);
 
 				});
 			});

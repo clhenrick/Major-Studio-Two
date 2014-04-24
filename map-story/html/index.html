@@ -752,31 +752,31 @@
 			window.onload = myApp.init;
 
 			// intro image blur as user scrolls			
-			$(document).ready(function(){
+			// $(document).ready(function(){
 				
-				$(window).scroll(function(){
-					var s = $(window).scrollTop();
-					console.log('scroll value is: ', s);
+			// 	$(window).scroll(function(){
+			// 		var s = $(window).scrollTop();
+			// 		console.log('scroll value is: ', s);
 
-					// scroll offset value 
-					var x = s/50;
+			// 		// scroll offset value 
+			// 		var x = s/50;
 
-					//console.log('x value is: ', x);
+			// 		//console.log('x value is: ', x);
 
-					var blur = function(x){
-						var filterVal = 'blur(' + x + 'px)';
-						$('#intro-image')
-						 .css('filter',filterVal)
-						 .css('webkitFilter',filterVal)
-						 .css('mozFilter',filterVal)
-						 .css('oFilter',filterVal)
-						 .css('msFilter',filterVal);
-						};			 
+			// 		var blur = function(x){
+			// 			var filterVal = 'blur(' + x + 'px)';
+			// 			$('#intro-image')
+			// 			 .css('filter',filterVal)
+			// 			 .css('webkitFilter',filterVal)
+			// 			 .css('mozFilter',filterVal)
+			// 			 .css('oFilter',filterVal)
+			// 			 .css('msFilter',filterVal);
+			// 			};			 
 
-					s > 100 ? blur(x) : blur(x);
+			// 		s > 100 ? blur(x) : blur(x);
 
-				});
-			});
+			// 	});
+			// });
 		</script>
 	</body>
 </html>

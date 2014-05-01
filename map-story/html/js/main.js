@@ -293,11 +293,48 @@ myApp = {
 		});
 	}, 
 
+	fadeIntro: function() {
+		//blur intro image as user scrolls						
+		$(window).scroll(function(){
+			var s = $(window).scrollTop();
+			console.log('scroll value is: ', s);
+
+			// scroll offset value 
+			var x = s/50;
+
+			console.log('x value is: ', x);
+
+			var blur = function(x){
+				var filterVal = 'blur(' + x + 'px)';
+				$('#intro-image')
+				 .css('filter',filterVal)
+				 .css('webkitFilter',filterVal)
+				 .css('mozFilter',filterVal)
+				 .css('oFilter',filterVal)
+				 .css('msFilter',filterVal);
+				};			 
+
+			s > 100 ? blur(x) : blur(x);
+
+		});
+	},
+
 	// jQuery waypoint scroll detection
 	onScroll : function() {		
 		//waypoint offset value
 		var w = 60,
 			v1 = document.getElementsByTagName("video")[0];
+
+		// $('#intro').waypoint(function(d){
+		// 	switch(d) {
+		// 		case 'down':
+		// 			myApp.fadeIntro();
+		// 			break;
+		// 		case 'up':
+		// 			myApp.fadeIntro();
+		// 			break;
+		// 	}
+		// }, {offset: '75%'});
 		
 		// reveal map to user 
 		$('#wp0').waypoint(function(direction){

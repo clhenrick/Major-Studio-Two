@@ -6,7 +6,7 @@ html, body, {
 	margin: 0 auto;
 	padding: 0;
 	overflow: hidden;
-	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+	font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;	
 }
 
 /* loading GIF */
@@ -19,6 +19,11 @@ html, body, {
 	z-index: 9000;
 	background: url('../images/page-loader.gif') 50% 50% no-repeat rgba(249,249,249,0.7);
 
+}
+
+/* prevent user scrolling until page loads */
+body {
+	overflow: hidden;
 }
 
 #wrapper {

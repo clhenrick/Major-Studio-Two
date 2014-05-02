@@ -295,28 +295,28 @@ myApp = {
 
 	fadeIntro: function() {
 		//blur intro image as user scrolls						
-		$(window).scroll(function(){
-			var s = $(window).scrollTop();
-			console.log('scroll value is: ', s);
+		// $(window).scroll(function(){
+		// 	var s = $(window).scrollTop();
+		// 	console.log('scroll value is: ', s);
 
-			// scroll offset value 
-			var x = s/50;
+		// 	// scroll offset value 
+		// 	var x = s/50;
 
-			console.log('x value is: ', x);
+		// 	console.log('x value is: ', x);
 
-			var blur = function(x){
-				var filterVal = 'blur(' + x + 'px)';
-				$('#intro-image')
-				 .css('filter',filterVal)
-				 .css('webkitFilter',filterVal)
-				 .css('mozFilter',filterVal)
-				 .css('oFilter',filterVal)
-				 .css('msFilter',filterVal);
-				};			 
+		// 	var blur = function(x){
+		// 		var filterVal = 'blur(' + x + 'px)';
+		// 		$('#intro-image')
+		// 		 .css('filter',filterVal)
+		// 		 .css('webkitFilter',filterVal)
+		// 		 .css('mozFilter',filterVal)
+		// 		 .css('oFilter',filterVal)
+		// 		 .css('msFilter',filterVal);
+		// 		};			 
 
-			s > 100 ? blur(x) : blur(x);
+		// 	s > 100 ? blur(x) : blur(x);
 
-		});
+		// });
 	},
 
 	// jQuery waypoint scroll detection
@@ -325,16 +325,16 @@ myApp = {
 		var w = 60,
 			v1 = document.getElementsByTagName("video")[0];
 
-		// $('#intro').waypoint(function(d){
-		// 	switch(d) {
-		// 		case 'down':
-		// 			myApp.fadeIntro();
-		// 			break;
-		// 		case 'up':
-		// 			myApp.fadeIntro();
-		// 			break;
-		// 	}
-		// }, {offset: '75%'});
+		$('#intro').waypoint(function(d){
+			switch(d) {
+				case 'down':
+					myApp.fadeIntro();
+					break;
+				case 'up':
+					myApp.fadeIntro();
+					break;
+			}
+		}, {offset: '75%'});
 		
 		// reveal map to user 
 		$('#wp0').waypoint(function(direction){
@@ -343,7 +343,7 @@ myApp = {
 					console.log('wp0 called');
 					// $('#intro-image').css({'display', 'none'});
 					$('#map').css({'z-index': '5'});
-					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});					
+					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});									
 					break;
 				case 'up':
 					// $('#intro-image').css('display', 'block');
@@ -363,13 +363,13 @@ myApp = {
 					if (myApp.amCounter === -1) { 
 						myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);
 						myApp.amCounter = 0;
-					}
+					}					
 					break;
 				case 'up':
 					$('#map-placeholder').toggleClass('hidden');					
 					myApp.map.removeLayer(myApp.markers);
 					myApp.map.zoomOut(6);
-					if (myApp.amCounter === -1) { myApp.map.panTo([40.3025, -121.2347]);	}
+					if (myApp.amCounter === -1) { myApp.map.panTo([40.3025, -121.2347]);	}					
 					break;
 			}
 		}, {offset: w});

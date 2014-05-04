@@ -34,16 +34,18 @@ app.main = (function() {
 	  alert("Web Audio is not supported in this browser");
 	}
 
-	// window.requestAnimationFrame = (function(){
-	// 	return window.requestAnimationFrame ||
-	// 		window.webkitRequestAnimationFrame ||
-	// 		window.mozRequestAnimationFrame ||
-	// 		window.oRequestAnimationFrame ||
-	// 		window.msRequestAnimationFrame ||
-	// 		function(callback){
-	// 			window.setTimeout(callback, 1000 / 60);
-	// 		};
-	// })();
+	// initialize requestAnimationFrame API for updating the viz
+	// support current and future stable versions
+	window.requestAnimationFrame = (function(){
+		return window.requestAnimationFrame ||
+			window.webkitRequestAnimationFrame ||
+			window.mozRequestAnimationFrame ||
+			window.oRequestAnimationFrame ||
+			window.msRequestAnimationFrame ||
+			function(callback){
+				window.setTimeout(callback, 1000 / 60);
+			};
+	})();
 
 	function getUserMedia(dict, callback) {
 		try {
@@ -89,10 +91,10 @@ app.main = (function() {
 		console.error(e);
 	};
 
-	function render() {
-		// visualize the live audio input
-		requestAnimationFrame(render);
-	};
+	// function render() {
+	// 	// visualize the live audio input
+	// 	requestAnimationFrame(render);
+	// };
 
 
 	var rafID = null;
@@ -199,8 +201,8 @@ app.main = (function() {
 			}
 		}
 
-		if (!window.requestAnimationFrame)
-			window.requestAnimationFrame = window.webkitRequestAnimationFrame;
+		// if (!window.requestAnimationFrame)
+		// 	window.requestAnimationFrame = window.webkitRequestAnimationFrame;
 		rafID = window.requestAnimationFrame( updatePitch );
 	}
 

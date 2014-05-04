@@ -1,8 +1,6 @@
-// from O'Reilly book
-
 var app = app || {};
 
-app.oreilly = (function() {
+app.main = (function() {
 	var audioContext = new AudioContext();
 	var isPlaying = false;
 	var sourceNode = null;

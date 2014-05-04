@@ -1,7 +1,7 @@
 var app = app || {};
 
 app.main = (function() {
-	var audioContext = new AudioContext();
+	var audioContext = null;
 	var isPlaying = false;
 	var sourceNode = null;
 	var analyser = null;
@@ -17,7 +17,6 @@ app.main = (function() {
 	var HEIGHT=42;
 	var confidence = 0;
 	var currentPitch = 0;
-	var context;
 
 	// initialize audio context in a way that supports both 
 	// current webkit and future stable versions of the API
@@ -29,7 +28,7 @@ app.main = (function() {
 
 	if (contextClass) {
 	  // Web Audio API is available.
-	  context = new contextClass();
+	  audioContext = new contextClass();
 	} else {
 	  // Web Audio API is not available. Ask the user to use a supported browser.
 	  alert("Web Audio is not supported in this browser");
@@ -66,14 +65,14 @@ app.main = (function() {
 
 	function onStream(stream) {
 		// wrap a mediaStreamSourceNode around the live input stream
-		var input = context.createMediaStreamSource(stream);
+		var input = audioContext.createMediaStreamSource(stream);
 		// connect the input to a filter
 		// var filter = context.createBiquadFilter();
 		// filter.frequency.value = 60.0;
 		// filter.type = filter.NOTCH;
 		// filter.Q = 10.0;
 
-		analyser = context.createAnalyser();
+		analyser = audioContext.createAnalyser();
 		analyser.fftSize = 2048;
 		input.connect(analyser);
 		updatePitch();

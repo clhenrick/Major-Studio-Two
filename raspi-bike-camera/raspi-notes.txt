@@ -117,3 +117,15 @@ sudo update-rc.d -f  NameOfYourScript remove // remove script from startup
 - button (good, solid one).
 - 
 
+5/7/14
+------
+The pi is mofo finikie...
+
+### Issues:
+1. picamera is turning off display which makes using the motorola dock a pain in the ass
+  -reacting by keeping dock plugged into power and interacting with pi through ssh and finder
+
+2. wifi dongle stops working and I lose connection via ssh & finder
+
+3. trying to get the GPS to work but that seems to hang it up when script tries to do gpscontrol.stopController() and gpscontrol.join()
+

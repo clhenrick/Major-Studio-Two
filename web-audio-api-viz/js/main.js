@@ -104,6 +104,10 @@ app.main = (function() {
 	var MINVAL = 134;  // 128 == zero.  MINVAL is the "minimum detected signal" level.
 
 	var noteStrings = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
+	var hues = [30,60,90,120,150,180,210,240,270,300,330,360];
+	var l = "70%";
+	var s = "90%";
+
 
 	function noteFromPitch( frequency ) {
 		var noteNum = 12 * (Math.log( frequency / 440 )/Math.log(2) );
@@ -153,7 +157,7 @@ app.main = (function() {
 		if ((rms>0.01)&&(best_correlation > 0.01)) {
 			confidence = best_correlation * rms * 10000;
 			currentPitch = sampleRate/best_offset;
-			// console.log("f = " + sampleRate/best_offset + "Hz (rms: " + rms + " confidence: " + best_correlation + ")")
+			//console.log("currentPitch: " + currentPitch + "f = " + sampleRate/best_offset + "Hz (rms: " + rms + " confidence: " + best_correlation + ")")
 		}
 	//	var best_frequency = sampleRate/best_offset;
 	}
@@ -165,7 +169,7 @@ app.main = (function() {
 		// possible other approach to confidence: sort the array, take the median; go through the array and compute the average deviation
 		autoCorrelate( buf, audioContext.sampleRate );
 
-		canvasContext.clearRect(0,0,WIDTH,HEIGHT);
+		//canvasContext.clearRect(0,0,WIDTH,HEIGHT);
 
 	 	if (confidence <10) {
 	 		detectorElem.className = "vague";
@@ -176,9 +180,12 @@ app.main = (function() {
 	 	} else {
 		 	detectorElem.className = "confident";
 		 	pitchElem.innerText = Math.floor( currentPitch ) ;
-		 	var note =  noteFromPitch( currentPitch );
+		 	var note =  noteFromPitch( currentPitch );		 	
 			noteElem.innerHTML = noteStrings[note%12];
+			var target = noteElem.innerHTML;
+			console.log("target: " + target);
 			var detune = centsOffFromPitch( currentPitch, note );
+			//console.log("detune: " + detune);
 			if (detune == 0 ) {
 				detuneElem.className = "";
 				detuneAmount.innerHTML = "--";
@@ -186,9 +193,49 @@ app.main = (function() {
 				// TODO: draw a line.
 			} else {
 				if (Math.abs(detune)<10)
-					canvasContext.fillStyle = "green";
-				else
-					canvasContext.fillStyle = "red";
+					canvasContext.fillStyle = "white";
+				else {
+					switch(target) {
+						case "C" :
+							canvasContext.fillStyle = "hsl(" + hues[0] + "," + s + "," + l + ")";
+							break;
+						case "C#":
+							canvasContext.fillStyle = "hsl(" + hues[1] + "," + s + "," + l + ")";
+							break;
+						case "D":
+							canvasContext.fillStyle = "hsl(" + hues[2] + "," + s + "," + l + ")";
+							break;
+						case "D#":
+							canvasContext.fillStyle = "hsl(" + hues[3] + "," + s + "," + l + ")";
+							break;
+						case "E":
+							canvasContext.fillStyle = "hsl(" + hues[4] + "," + s + "," + l + ")";
+							break;						 						 							
+						case "F":
+							canvasContext.fillStyle = "hsl(" + hues[5] + "," + s + "," + l + ")";
+							break;
+						case "F#":
+							canvasContext.fillStyle = "hsl(" + hues[6] + "," + s + "," + l + ")";
+							break;
+						case "G":
+							canvasContext.fillStyle = "hsl(" + hues[7] + "," + s + "," + l + ")";
+							break;
+						case "G#":
+							canvasContext.fillStyle = "hsl(" + hues[8] + "," + s + "," + l + ")";
+							break;
+						case "A":
+							canvasContext.fillStyle = "hsl(" + hues[9] + "," + s + "," + l + ")";
+							break;
+						case "A#":
+							canvasContext.fillStyle = "hsl(" + hues[10] + "," + s + "," + l + ")";
+							break;
+						case "B":
+							canvasContext.fillStyle = "hsl(" + hues[11] + "," + s + "," + l + ")";
+							break;						 						 						 
+						default:
+							canvasContext.fillStyle = "white";
+					}
+				}	
 
 				if (detune < 0) {
 		  			detuneElem.className = "flat";
@@ -196,7 +243,7 @@ app.main = (function() {
 				else {
 					detuneElem.className = "sharp";
 				}
-	  			canvasContext.fillRect(CENTER, 0, (detune*3), HEIGHT);
+	  			canvasContext.fillRect(0, 0, WIDTH, HEIGHT);
 				detuneAmount.innerHTML = Math.abs( Math.floor( detune ) );
 			}
 		}

@@ -1,5 +1,5 @@
 #Map Story project
-Telling my brother Mike's story of Hiking the PCT through an interactive media experience.
+Telling my brother Mike's story of Hiking the Pacific Crest Trail through an interactive media experience.
 This project is inspired by a NY Times article titled [The Russia Left Behind](http://www.nytimes.com/newsgraphics/2013/10/13/russia/)
 
 ##Goals

@@ -10,7 +10,6 @@ data/test.geojson
 images/Susan-Bates-eagle-rock1.jpg
 images/s_ca_eagle-rock.jpg
 js/tmp/
-js/vendor/leaflet.geometryutil.js
 node_modules/
 server.js
 tmp/

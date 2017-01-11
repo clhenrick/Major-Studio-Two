@@ -7,40 +7,37 @@
 		<meta name="generator" content="TextMate http://macromates.com/">
 		<meta name="author" content="Chris L Henrick">
 		<meta name="description" content="Visualizing a through hike on the Pacific Crest Trail">
- 	<meta name="viewport" content="width=device-width">
-		<!-- Date -->
-		<link rel="stylesheet" type="text/css" href="css/reset.css">
+ 		<meta name="viewport" content="width=device-width">
 		<link rel="icon" href="favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
 		<link rel="stylesheet" href="css/main.css" type="text/css" media="all" />
 		<!--[if lt IE 9]>
 			<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
     <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-   <script>window.jQuery || document.write('<script src="js/vendor/leaflet.js"><\/script>')</script>
-   <script src="http://rawgithub.com/makinacorpus/Leaflet.GeometryUtil/master/dist/leaflet.geometryutil.js"></script>
-   <script type="text/javascript" src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
+   	<script src="http://maps.stamen.com/js/tile.stamen.js?v1.2.3"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-   <script src="js/vendor/waypoints.min.js"></script>
+		<script src="js/vendor/leaflet.geometryutil.js"></script>
+   	<script src="js/vendor/waypoints.min.js"></script>
 		<script src="js/vendor/AnimatedMarker.min.js"></script>
-		<script src="js/vendor/Leaflet.MakiMarkers.js"></script>			
-		<script src="js/main.js"></script>	
+		<script src="js/vendor/Leaflet.MakiMarkers.js"></script>
+		<script src="js/main.js"></script>
 	</head>
 	<body>
  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
    chromium.org/developers/how-tos/chrome-frame-getting-started -->
  <!--[if lte IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-	
+
 	<!-- loading gif -->
 	<div class="loader"></div>
 		<div id="wrapper">
 			<div id="title-container">
 				<div id="title">
-					<h1>A Thru Hike on the Pacific Crest National Scenic Trail</h1>	
+					<h1>A Thru Hike on the Pacific Crest National Scenic Trail</h1>
 				</div>
 			</div>
-			
+
 			<div class="image" id="intro-image">
 				<div class="call-out">
 					<span id="italic">
@@ -49,18 +46,18 @@
 				</div>
 <!-- 				<div class="arrow" id="top">
 					<p>&#x21E7;</p>
-				</div> -->			
+				</div> -->
 			<div class="caption" id="intro-caption">
-				<p>View of the Mojave Dessert from Kennedy Meadows in the Southern Sierra Nevada</p>	
+				<p>View of the Mojave Dessert from Kennedy Meadows in the Southern Sierra Nevada</p>
 			</div>
-			</div>						
-			
-			<div id="map-content-wrapper">				
-				<!-- leaflet map -->				
+			</div>
+
+			<div id="map-content-wrapper">
+				<!-- leaflet map -->
 				<div id="map"></div>
 				<div id="map-placeholder"></div>
 
-				<div id="content-wrapper">											
+				<div id="content-wrapper">
 					<!-- scrollable content here -->
 					<!-- <section class="media-container">
 					</section> -->
@@ -71,10 +68,10 @@
 									I was elated, having quit my job not six days prior and finding myself in a completely foreign landscape with no remaining commitments other than walking for 2,650 miles and sleeping outside for the next five months.
 								</p>
 							</div>
-							<p>								
+							<p>
 								The Pacific Crest Trail is a long distance hiking and equestrian trail that traverses western North America from the Mexican border just southeast of San Diego to the Canadian border northwest of Seattle. The trail is closely aligned with the highest portions of the Sierra Nevada and Cascade mountain ranges of California, Oregon and Washington. To hike the entire length in one calendar year is to "thru hike" the trail. To complete a thru hike, a hiker must time their arrival in the Sierra Nevada's after most of winters snow has melted in June but arrive at the Canadian border 2,660 miles later before heavy snow falls in late September. In the spring of 2013, Mike Henrick was one of several hundred hikers to thru hike the PCT. <br>
 								<br>
-							</p>							
+							</p>
 						</div>
 					</section>
 
@@ -91,10 +88,10 @@
 							<div class="image" id="wp1B">
 								<img src="./images/s_ca_first_steps.jpg">
 								<div class="caption">
-									<p>First steps on the trail</p>	
+									<p>First steps on the trail</p>
 								</div>
 							</div>
-							<p>								
+							<p>
 								The trail wound its way around the town of <em>Campo</em> and out into the desert.  It was unlike anything I have experienced previously; desert shrubs growing around the husks of burnt trees and dry sand.  The trail is graded for horses and winds up and around hills.  Vast landscapes lay alongside the path as the vegetation isn't much taller than your waist. Often the trial seems cut right from the bedrock of the slope.  It makes me wonder about the history and who built each section that would eventually be linked to become the Pacific Crest National Scenic Trail. <br>
 								<br>
 								The first twenty miles of trail from <em>Campo</em> are almost entirely free of reliable water sources.  I had a great internal debate about how much water to carry on the trail. Too much and the extra weight would slow me down, too little and dehydration would make things uncomfortable.  I have also never hiked twenty miles in a day before but had heard the trail was easier than most of the trails I'm used to. I ended up taking about five and a half liters, which lasted until about a mile from my first campsite at <em>Lake Morena</em>.  The weather was so dry and the site so free of bugs that I decided to cowboy camp, or camp without shelter for the first night. <br>
@@ -103,10 +100,10 @@
 							<div class="image" id="wp1B">
 								<img src="./images/s_ca_the_start_burnt.jpg">
 								<div class="caption">
-									<p>Burnt vegetation on the trail.</p>	
+									<p>Burnt vegetation on the trail.</p>
 								</div>
 							</div>
-							<p>										
+							<p>
 								The next morning I missed a turn coming out of the campground and got lost for an hour. Six miles later I began a fourteen mile climb that I would not finish until the next morning.  The temperatures rose to over ninety degrees fahrenheit and with no shade on the trail I made due with my hiking umbrella once the wind died down.  Eventually I camped in a canyon and nursed my blisters.  The next day I limped five miles into <em>Mount Laguna</em>, a small town, to take care of blisters and get a larger pair of shoes.  I went from a size eleven and a half to a size thirteen!  The outfitter in town was a great resource, he stocked more lightweight gear into that tiny store than you can imagine.<br>
 								<br>
 								After my short day in town I did an easy thirteen miles that ended in the windiest conditions I have ever experienced. I  reached the remote campsite called out on my map only to find all the level spots where I could pitch my tent were completely exposed to sixty mile per hour winds and light rain.  Three section hikers behind me looked ahead and found sheltered sites another two hundred yards down trail so I laid low with them through intense wind and rain.  My tent had a light drip in two spots but otherwise I was warm and dry in my down sleeping bag, unlike one of the section hikers who woke up in a puddle.  The next morning was almost as wet and windy as the night but in fits and starts.
@@ -115,16 +112,16 @@
 								<p>
 									I stopped after 12 miles to let my blisters dry out rather than continue on soaked feet.  The next morning I woke a few minutes after five a.m. and felt motivated. After a cold breakfast of granola and rehydrated milk I was on the trail by six fifteen a.m. <br>
 								</p>
-							</div> 
+							</div>
 							<p>Three hours later I had made ten miles to a water cache under a highway at <em>Scissors Crossing</em>.<br>
 								<br>
 							</p>
 							<div class="image" id="first-steps">
 								<img src="./images/s_ca-water-cache.JPG">
 								<div class="caption">
-									<p>Water caches are stocked by trail angels in dry areas.</p>	
+									<p>Water caches are stocked by trail angels in dry areas.</p>
 								</div>
-							</div>							
+							</div>
 							<p>
 								I stayed for a little while to talk to two other through hikers and the trail angel who stocks the water cache. I managed fourteen more miles by the time I set my ass down at the top of a huge ridge by another water cache.  I was feeling pretty hammered but it was only three-thirty in the afternoon!  I find I can hike very fast, typically averaging close to three miles per hour, but my blistered feet and tired ankles are limiting my range.  I think that in another week or two I'll be doing twenty-five mile days regularly.  Until then I try to stay ahead of any serious injury by doing a lot of stretching and self-massage.<br>
 								<br>
@@ -135,18 +132,18 @@
 							<div class="image" id="first-steps">
 								<img src="./images/first-100-miles2.JPG">
 								<div class="caption">
-									<p>Mike's pack next to the marker for mile one hundred.</p>	
+									<p>Mike's pack next to the marker for mile one hundred.</p>
 								</div>
 							</div>
 							<p>
 								My I.T. band on my left knee was hurting, not severely but enough to make me stop often to stretch and massage it back into compliance.  I spent last night camping out behind the community center after a burger, a shower and meeting more hikers.  Overall there are many more other through hikers than I expected.  I seem to meet several new people every day and run into half a dozen I've already met who I passed or are in the process of passing me.  Everyone hikes their own pace. I enjoy hiking alone and socializing at water stops and camp sites.  I seem to have an unusual hiking style of pushing for two hours without stopping, a quick five minute stretch break and another hour or two push before taking a longer break.  I don't hike with poles so I can eat, drink and change layers all while continuing to walk.  I hope my feet will toughen up after the rest day today and I can start doing longer days continuously.  The next town is sixty-nine miles and an unthinkable ten-thousand feet of elevation gain away.  I'm taking four days of food but hope to do it in less than that. <br>
 								<br>
-							</p>	
-						</div>		
-					</section>								
+							</p>
+						</div>
+					</section>
 
 					<section class="chapter" id="warner-springs">
-						<div class="content" id="wp3">					
+						<div class="content" id="wp3">
 						<div class="content-title" id="wp2">
 							<h2>Warner Springs to Idyllwyld - mile 180</h2>
 							<h3>Tuesday, May 14, 2013</h3>
@@ -155,16 +152,16 @@
 							<p>
 								I have seen physically well prepared hikers falter with bad attitudes while the physically unprepared thrive with the right mindsets.
 							</p>
-						</div>							
+						</div>
 							<p>
 								I want to start off by saying that this hike is the hardest thing I have ever done.  I've bike toured 2,000 miles, lived in a foreign country for four months, been through five years of engineering school and worked in some fairly extreme conditions.  None of that compares to the pounding of your feet for hours upon hours, ignoring the biting pain of blisters and the dull throb of sore muscles and tendons during the third or fourth day on the trail.  Often times there are ten, twelve or twenty miles between water sources and I worry about water constantly.  Too much and I waste time and energy carrying extra weight, not to mention sweat.  Too little and my suffering increases but more important is the fear.  This is eighty percent mental after all. Fear is usually groundless and only serves to aid in preparation.  The planning and the physical make up the other twenty percent. I have seen physically well prepared hikers falter with bad attitudes while the physically unprepared thrive with the right mindsets.  <br><br/>
 							</p>
 							<div class="image" id="first-steps">
 								<img src="./images/leaving-warner-springs.jpg">
 								<div class="caption">
-									<p>Leaving Warner Springs</p>	
+									<p>Leaving Warner Springs</p>
 								</div>
-							</div>		
+							</div>
 							<p>
 								<br>
 								While this may be the hardest thing I've ever done nothing has been as gratifying, intensely beautiful or fulfilling as seeing the trail wind its way up a mountain side, walking that trail and looking back at where you were that morning some ten or fifteen miles behind.  Knowing that you made it another day through the desert, in the sand and heat.  My blisters have healed and larger shoes are making a huge difference.  My legs seem to be toughening up for the most part and my belief in my ability to walking another two-thousand four-hundred miles (that's approximately ninety-five marathons) only increases with the miles.  I've experienced some serious low points when I have to sit and motivate myself forward up yet another climb in the roasting sun. The pay off is that the high points always blow them out of the water.  <br>
@@ -173,7 +170,7 @@
 								<p>
 									The fatigue of the previous day combined with multiple thousand foot climbs in addition to the two trips to get off-trail water, each a mile long with a several hundred foot drop made me footsore and tired, leading up to "the climb."
 								</p>
-							</div>									
+							</div>
 							<p>
 								Philosophizing aside, here's a quick summary of the past section: the eighteen miles out of Warner Springs to a trail angel's house at mile one-hundred seventy-seven rolled by before two p.m. but my I.T. band at my left knee was not in agreement with the success my feet were able to achieve. I slept in "the shack" on the most comfortable army cot I have had the pleasure of encountering after a dinner of ten fried tacos and a side of raw cabbage.  The next morning things seemed to be working more smoothly and I pushed out twenty-five miles to Paradise Cafe, the only water source in a twenty or so mile stretch.  I ate a huge prime rib steak, two sides of potatoes and half another hikers burger with a tall glass of Fat Tire beer to wash it down.  The meal made sleeping on the Cafe's concrete patio next to the highway much more bearable.  <br>
 								<br>
@@ -182,12 +179,12 @@
 							<div class="image" id="second-image">
 								<img src="images/near-the-climb.JPG" alt="the climb 2"/>
 								<div class="caption">
-									<p>"The Climb"</p>	
+									<p>"The Climb"</p>
 								</div>
-							</div>							
+							</div>
 							<p>
 
-								"The climb" was different.  Sixteen miles into the day (really nineteen miles with the off trail water and road walk from the cafe) I hit this wall of a climb, the steepest most switch backed stretch of trail yet. It took over three hours to travel less than five miles, a staggeringly slow and arduous pace compared to my usual two to three mile per hour pace.  I sweated my way up the ridge, having wisely taken a siesta until almost four-thirty p.m.  Thankfully the trail switched sides and much of the climb remained in the shade.  Still, I cannot explain the mental toll it takes to go from flying up over hills passing the less physically fit to struggling for breath at seven thousand feet up a twenty or thirty percent grade.  All of this knowing the next water awaited ten dry miles away and knowing that I would have to camp and carry an additional two liters because of it. Eventually though, like all things, it ended.								
+								"The climb" was different.  Sixteen miles into the day (really nineteen miles with the off trail water and road walk from the cafe) I hit this wall of a climb, the steepest most switch backed stretch of trail yet. It took over three hours to travel less than five miles, a staggeringly slow and arduous pace compared to my usual two to three mile per hour pace.  I sweated my way up the ridge, having wisely taken a siesta until almost four-thirty p.m.  Thankfully the trail switched sides and much of the climb remained in the shade.  Still, I cannot explain the mental toll it takes to go from flying up over hills passing the less physically fit to struggling for breath at seven thousand feet up a twenty or thirty percent grade.  All of this knowing the next water awaited ten dry miles away and knowing that I would have to camp and carry an additional two liters because of it. Eventually though, like all things, it ended.
 							</p>
 							<div class="call-out">
 								<p>
@@ -197,19 +194,19 @@
 							<p>
 								The top of the ridge gave way to incredible views of Palm Springs to the east and desert, mountains and more desert to the west.  The trail wound its way around knife edge ridges finding the only walkable route, often with two hundred foot drops adjacent to the barely eighteen inch wide trail.  Huge rocky peaks passed by overhead and eventually I made it to a campsite with enough flat ground to sleep on.  I arrived at seven-thirty p.m., ate and slept.  The next morning I was on trail by six-thirty a.m., not even twelve hours after the previous day with just one and a half liters of water for the remaining five miles.  My knee throbbed but I pushed to the next water source five miles away with the friends I had made on the trail passing patches of snow (which made for great slushies in our almost empty water bottles).  We congregated by the stream, elated that the climb and the dry stretch was over. After a long drink and an even longer break the final six hundred foot climb was over. Then a sixteen-hundred foot drop down to a trailhead where we talked to some day hikers into driving us into town.  Yesterday I rented a cabin with three friends, ate the biggest burrito of my life and iced my knee as much as I could.  Today I'll sleep at a campground and push on further tomorrow.  <br>
 								<br>
-							</p> 
+							</p>
 							<div class="image" id="second-image">
 								<img src="images/near-the-climb2.jpg" alt="the climb 2"/>
 								<div class="caption">
-									<p>Looking back after "The Climb"</p>	
+									<p>Looking back after "The Climb"</p>
 								</div>
-							</div>	
-						</div>					
+							</div>
+						</div>
 					</section>
 
 					<section class="media-container" id="wp2">
-				
-					</section>						
+
+					</section>
 
 					<section class="chapter" id="">
 						<div class="content" id="wp4">
@@ -221,7 +218,7 @@
 							<p>
 								Twenty miles into the day I was at the first water source: a drinking fountain that made filling bottles with piss warm water in the wind a test of patience.
 							</p>
-						</div>						
+						</div>
 							<p>
 								<!--Content from blog goes in here! -->
 								After a relaxing day off in Idylwild, I stuck my thumb out and hitched the three miles up to the Devils Slide trail; the sixteen-hundred foot climb back to where I departed the PCT two days earlier.  A seventy year old retired man gave me a lift and we had an enlightening conversation comparing quitting your job to hike two-thousand six-hundrd miles (me) to starting your own timber business and staying with it for forty years (him).  We said our farewells at the trailhead and I started the climb, pausing to talk to several day hikers on the way up (and encouraging them to pick up hitching through hikers). <br>
@@ -232,13 +229,13 @@
 							<div class="image">
 								<img src="images/downhill.JPG" alt="downhill"/>
 								<div class="caption">
-									<p>Downhill to Ziggy and the Bear's</p>	
+									<p>Downhill to Ziggy and the Bear's</p>
 								</div>
-							</div>	
-							<p>								
+							</div>
+							<p>
 								Often the trail would wind seemingly in the wrong direction, heading for miles away from where the end would be.  My knees held up fine on the downhill but my insoles started to flake under my heels from the wear. Towards the bottom I developed a heel blister on my left foot faster than I could duct tape the insoles. Twenty miles into the day I was at the first water source; a drinking fountain that made filling bottles with piss warm water in the wind a test of patience.  Next to the fountain a sign reads something like "This water is brought to you by the generosity of the such and such water company, treat it as you would any other PCT water source" seemingly to mock you as the wind blows the water away from your narrow bottle mouth, unlike any other PCT water source.  <br>
 								<br>
-								The map showed just five miles of downhill and flat to a trail angel's house called <em>Ziggy and the Bear</em>. Reality showed five miles of the most intense wind I have felt on the trip while walking in soft sand. (The windmill farm nearby and the narrow stretch of flat desert between two 9,000 foot mountain ranges did give me a hint that there might be some wind ahead...) I made it four miles to a highway underpass and came across empty coolers and a poster with hand written thanks from previous hikers for all the sodas and fruit.  Cars zoomed ahead in constant noise and no one else was in sight. It was a low point.  Still, in another mile signs appeared reading "Trail angels ahead!" and "Almost there! Keep going!". I came into the fenced in yard and was greeted by half a dozen hikers and the two hosts, subbing temporarily for Ziggy and the Bear.  To my surprise another five or ten hikers rolled in as the afternoon turned to evening. I took a shower, had a foot bath and gorged myself on fruit, salad and ice cream provided by the trail angels plus the ramen noodles I brought. <br>								
+								The map showed just five miles of downhill and flat to a trail angel's house called <em>Ziggy and the Bear</em>. Reality showed five miles of the most intense wind I have felt on the trip while walking in soft sand. (The windmill farm nearby and the narrow stretch of flat desert between two 9,000 foot mountain ranges did give me a hint that there might be some wind ahead...) I made it four miles to a highway underpass and came across empty coolers and a poster with hand written thanks from previous hikers for all the sodas and fruit.  Cars zoomed ahead in constant noise and no one else was in sight. It was a low point.  Still, in another mile signs appeared reading "Trail angels ahead!" and "Almost there! Keep going!". I came into the fenced in yard and was greeted by half a dozen hikers and the two hosts, subbing temporarily for Ziggy and the Bear.  To my surprise another five or ten hikers rolled in as the afternoon turned to evening. I took a shower, had a foot bath and gorged myself on fruit, salad and ice cream provided by the trail angels plus the ramen noodles I brought. <br>
 							<div class="call-out">
 								<p>
 									Backwards felt like giving up, and forwards felt like pain. I chose forwards.
@@ -248,9 +245,9 @@
 							<div class="image">
 								<img src="images/s_ca_ziggy-and-bear.JPG" alt="hikers asleep at ziggy and the bear's"/>
 								<div class="caption">
-									<p>Hikers asleep at Ziggy and the Bear's.</p>	
+									<p>Hikers asleep at Ziggy and the Bear's.</p>
 								</div>
-							</div>								
+							</div>
 							<p>
 								The next morning I was out by seven a.m., my heel blister getting worse despite the cut out piece of shoe insole I had taped around it.  The trail took me up two canyons and down to the largest natural water source in over two-hundred miles; an eighteen inch wide stream six inches deep.  At this point I borrowed a needle and thread from a friend, lanced my heel blister and left thread through it to keep the drainage flowing. I could barely walk the pain was so bad.  My calf was worn out completely from favoring the heel on the downhills and my ankle could barely move on its own.  At this point I could turn back to a nature conservancy two miles behind to heal or push on forward fifty miles to the next resupply.  I didn't have an extra days food in my back to sit and wait. Backwards felt like giving up, and forwards felt like pain.  I chose forwards.<br>
 								<br>
@@ -260,7 +257,7 @@
 								<div class="caption">
 									<p>Leaving Ziggy and the Bear's</p>
 								</div>
-								
+
 							</div>
 							<p>
 
@@ -275,9 +272,9 @@
 								The next day we climbed out of the canyon and back above eight-thousand feet.  Unlike earlier I felt strong, despite limping on a useless left ankle.  I passed a new group of people on a steady incline making introductions here and there.  The trail soon descended back to just over seven-thousand feet and after a small climb twenty-one miles into the day I camped near a Hollywood animal training facility.  A caged Bengal tiger whined and growled until just after dark a hundred yards from where I slept.  The cages looked tiny and I felt for the animals. Other hikers reported seeing bears but I only spotted the tiger and a baboon as I passed.<br>
 								<br>
 								The last sixteen miles passed under my limping ankle over flat to rolling terrain through a shaded pine forest and back to open high desert. I talked my way into a ride to the Big Bear hostel with a married couple dropping off a hiker.  Yesterday I tried my hand at a pancake challenge but only made it halfway before quitting.  About three or four pounds of pancakes remained... Today will be zero day number two to let my I.T. band relax and sore muscles heal.  I may or may not leave tomorrow. We'll see.
-							</p>						
+							</p>
 						</div>
-						
+
 					</section>
 
 					<section class="chapter" id="chapter-name">
@@ -289,9 +286,9 @@
 						<div class="image">
 							<img src="./images/s_ca_leaving-big-bear.jpg">
 							<div class="caption">
-								<p>Leaving Big Bear.</p>	
+								<p>Leaving Big Bear.</p>
 							</div>
-						</div>						
+						</div>
 							<p>
 								I ended up taking a three day break at the hostel in <em>Big Bear Lake</em>.  The manager offered me a job there (more like a free place to stay for a few hours of work a day) so I have a backup plan if some future injury leads to a lengthier recovery period.  The I.T. band still felt a bit funny heading on that day but after massaging a knot out of whatever muscle that runs adjacent to it the pain went away.  Of course, as soon as I recovered from that the side of my knee bone started getting store.  I think it's Iliotibial band friction syndrome, which another long distance hiker said he gets near the start of every hike and eventually goes away.  I did five miles yesterday and plan on only doing five more tonight to give it some time off.  <br>
 								<br>
@@ -301,9 +298,9 @@
 						<div class="image">
 							<img src="./images/s_ca_big-bear-wrightwood1.jpg">
 							<div class="caption">
-								<p>needs location</p>	
+								<p>needs location</p>
 							</div>
-						</div>								
+						</div>
 							<p>
 								On Sunday, two days later, I rolled into <em>Cajon Pass</em> around 11 am, the location of an infamous McDonalds Restaurant half a mile off the trail. Everyone goes there despite claims of hating the place, hiker hunger is just too strong.  I honestly haven't eaten at one in five or ten years but a double quarter pounder, large milkshake, salad (need those veggies) and some chicken McNuggets really hit the spot.  I walked in with one friend, we met another we knew already there and about four more walked in over the course of the next hour or so. The prospect of a 6,500 foot climb in front of me loomed ahead and when offered a ride up trail to a trail angels house (the Saufleys) at Agua Dulce I couldn't say no.  The offer came from a former through hiker of 2010 that was between trail crews and headed north on a slow schedule.  The friend I walked in with, Guino, and I both went with him.  He claimed that there was a daily shuttle from the Saufelys to an REI near Cajon Pass so I assumed an easy ride back.  I later found out they go to a different REI in the opposite direction.  I ended up talking (or yogi'ing) my way into a ride from a guy at the Mexican place I had dinner at in Agua Dulche.  It cost $20 for his gas but saved me a sketchy hitch hike on Memorial Day for the hour long ride back to Cajon Pass.  The guy used to be a parapalegic from some disease but had regained most of his motor functions except for his fingers and the ability to walk without a cane. You meet so many characters on this trail it never amazes me.  <br>
 								<br>
@@ -315,9 +312,9 @@
 						<div class="image">
 							<img src="./images/s_ca_big-bear-wrightwood2.jpg">
 							<div class="caption">
-								<p>needs location</p>	
+								<p>needs location</p>
 							</div>
-						</div>								
+						</div>
 							<p>
 								The next day I felt like crap and was happy to only have 5 miles to get to an easy hitch hike on Route 2 to Wrightwood.  I didn't even have to stick my thumb out because a ninety-three year old man was just getting back from his morning walk at Inspiration Point (where Highway 2 crosses the PCT the first time).  He drove me into town while telling some stories of his own hiking adventures.  He said one Memorial Day he went to hike Mount Balden-Powell (which I'll hit tomorrow) and woke up to over a foot of snow on his sleeping bag!  It's interesting because most of my rides and off trail help seem to come from either retiree's or people close to retirement that have led interesting lives.  I think it takes a few types of people to offer rides and help to strangers and most of those types make for pretty amazing people.<br>
 								<br>
@@ -332,14 +329,14 @@
 							<div class="image" id="">
 								<img src="./images/s_ca_big-bear-wrightwood3.jpg">
 								<div class="caption">
-									<p>Mile 373.</p>	
+									<p>Mile 373.</p>
 								</div>
-							</div> 
+							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>	
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
 					</section>
 
 					<section class="chapter" id="chapter-name">
@@ -347,7 +344,7 @@
 						<div class="content-title">
 							<h2>Wrightwood to Tehachipi - PCT mile 558</h2>
 							<h3>Thursday, June 6, 2013</h3>
-						</div>							
+						</div>
 							<p>
 								The hundred or so miles out of Wrightwood started off with a 2,800 foot climb up to Mount Balden-Powell, a 9,500 foot tall mountain named after some kind of boyscout version of George Washington. Rather than lump everything into one exhausting day, I chose to "nero" or only hike 5 miles with two friends to the base of the mountain and camp. My friends go at a slower pace and it was nice to be forced to take it easy rather than my usual steam rolling approach. We ran into a few other hiker friends who had slack packed the section from north to south and had spent the last hour trying to hitch back into Wrightwood to get their packs. They finally caught a break when some benevolent rednecks came out of a dirt road nearby and picked them up. <br />
 								<br />
@@ -363,22 +360,22 @@
 <!-- 							<div class="image" id="">
 								<img src="./images/">
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div> -->
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
-					</section>					
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
+					</section>
 
 					<section class="chapter" id="chapter-name">
 						<div class="content" id="wp7">
 						<div class="content-title">
 							<h2>Tehachipi to Kennedy Meadows - Mile 702!</h2>
 							<h3>Saturday, June 15, 2013</h3>
-						</div>							
+						</div>
 							<p>
 								<!--Content from blog goes in here! -->
 								A week ago Friday afternoon, if you had driven down one of
@@ -402,7 +399,7 @@
 								all made it to that next spring, none of us with a drop of water left and all
 								severely dehydrated. Cold water never
 								tasted so sweet. I never saw Lint, he
-								must have pushed on. 
+								must have pushed on.
 								<br><br>
 
 								Friday came after Thursday, only 103 degrees for 24
@@ -424,7 +421,7 @@
 								Even so, as darkness set in, I was out of water with an unknown number
 								of miles to go. When your mouth runs
 								dry your mind starts to wander in the dark space around your headlamp
-								light. 
+								light.
 
 								<br><br>
 
@@ -498,7 +495,7 @@
 								he took some days off. The next morning
 								was breakfast burritos and more fruit.
 								It was like someone hit the reset button on my mindset and I was back to
-								loving the trail again, surrounded by amazing people and good food. 
+								loving the trail again, surrounded by amazing people and good food.
 
 								<br><br>
 
@@ -517,14 +514,14 @@
 								<!-- an image relating to chapter -->
 								<img src="">
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
 					</section>
 
 
@@ -542,7 +539,7 @@
 								<div class="caption" id="wp3B">
 									<p>Forester Pass, Sierra Nevada</p>
 								</div>
-							</div>							
+							</div>
 							<p>
 								I've made it to mile 906 and am in Mammoth Lakes, CA.  My last resupply at Kearsarge Pass didn't leave me enough time to do a write up of the section but I have time now.  You have to realize that every time I get to town I'm planning for a 5 to 7 day backpacking trip in the space of a few hours.  Laundry, showers, dinner, food shopping, organizing, packing and planning all take time and these blog posts are secondary to all of that.  I'm actually writing this from a hotel computer but staying at a campground since the library is closed and all the hotels are booked or double their normal price due to some motocross race in town.  If they don't figure out I'm not a guest here I'll post a write up of the last section and possibly pictures.<br>
 								<br>
@@ -556,21 +553,21 @@
 								<br>
 								The next morning was a steep climb up to Kearsarge Pass, an exit point off the PCT.  You have to hike 7.5 miles off trail with a 2,000 foot climb up to 12,000 feet or so just to get a resupply.  Tee Cozy, Piper and I had a hard time hitching to Bishop for Resupply so I didn't have time to write this up then.  We split a fancy hotel room but Piper had to stay an extra day for an important package since it was Saturday.  I also got screwed since my bounce box was there but I couldn't get to it or mail it forward.  I am screwed yet again since I got here at Mammoth Lakes on a Saturday and can't get mail again...<br>
 								<br>
-								Tee-Cozy and I started hitching back to the Kearsarge trailhead at 9:45 the next morning but didn't get to the trail until 2 PM!  I booked it up over Kearsarge and over Glenn pass to camp at Rae Lakes but that's for the next post.  Maybe I'll write it up later. 
+								Tee-Cozy and I started hitching back to the Kearsarge trailhead at 9:45 the next morning but didn't get to the trail until 2 PM!  I booked it up over Kearsarge and over Glenn pass to camp at Rae Lakes but that's for the next post.  Maybe I'll write it up later.
 							</p>
 
 							<div class="image" id="">
-								<!-- an image relating to chapter 
+								<!-- an image relating to chapter
 								<img src="./images/"> -->
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
 					</section>
 
 					<section class="chapter" id="chapter-name">
@@ -578,7 +575,7 @@
 						<div class="content-title">
 							<h2>Finally a computer! Update through mile 1425 - Burney Falls State Park</h2>
 							<h3>Thursday, July 25, 2013</h3>
-						</div>							
+						</div>
 							<p>
 								I apologize for the lack of updates (well not really) but I've been moving fast and the availability of computers has been extremely limited. &nbsp;I haven't taken a day off in over 500 miles so it's been almost impossible to find the usual 2 to 3 hours it takes to update this blog. <br />
 								<br />
@@ -606,17 +603,17 @@
 							</p>
 
 							<div class="image" id="">
-								<!-- an image relating to chapter 
+								<!-- an image relating to chapter
 								<img src="./images/"> -->
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
 					</section>
 
 					<section class="chapter" id="chapter-name">
@@ -624,7 +621,7 @@
 						<div class="content-title">
 							<h2>California finished!</h2>
 							<h3>Wednesday, August 7, 2013</h3>
-						</div>							
+						</div>
 							<p>
 								I have to make this quick since the library computer only has 10 minutes remaining!<br />
 								<br />
@@ -642,60 +639,60 @@
 							</p>
 
 							<div class="image" id="">
-								<!-- an image relating to chapter 
+								<!-- an image relating to chapter
 								<img src="./images/"> -->
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
-					</section>					
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
+					</section>
 
 					<section class="chapter" id="chapter-name">
 						<div class="content" id="">
 						<div class="content-title">
 							<h2>title</h2>
 							<h3>date</h3>
-						</div>							
+						</div>
 							<p>
-								<!--Content from blog goes in here! -->	
+								<!--Content from blog goes in here! -->
 							</p>
 
 							<div class="image" id="">
-								<!-- an image relating to chapter 
+								<!-- an image relating to chapter
 								<img src="./images/"> -->
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
-						</div>						
+								<!--Content from blog goes in here! -->
+							</p>
+						</div>
 					</section>
 
 					<!-- <section class="chapter" id="final-post">
 						<div class="content">
 							<div class="content-title">
 								<h2>I made it!</h2>
-							</div>							
+							</div>
 							<p>
 								The morning of September 20th I was walking across the last 7,000 foot high passes of the PCT with two other hiker friends and by the late afternoon eating baby back ribs, pie and ice cream at the Manning Park Lodge in British Columbia.<br>
 								<br>
 								Going back to the end of my last text post, a huge thunderstorm hit on the way into Snoqualmie Pass (mile 2402) and I soon learned that over a dozen hikers ahead of me had holed up waiting for it to pass at a hostel nearby. That thunderstorm included the most lightning I've ever seen and a solid
-								 three hours of extremely heavy rain.  It caused landslides that 
+								 three hours of extremely heavy rain.  It caused landslides that
 								destroyed a bike shop in Stehekin, the last town on trail.  The hotel room was essential to get my tent, down jacket and down sleeping bag dried out. I had already realized that on my current schedule I would hit Stehekin (mile 2580) on a Saturday afternoon but the post office closes from Friday at 4:00 until Monday morning at 10:00.  Not only that, but you'd have to make the 12:15 bus into Stehekin to catch the PO in time Friday afternoon since the 3:15 bus wouldn't get you to town until 4:30.  That meant all of those hikers waiting out the rain, plus the ten or so hikers I was already around were all stuck on the same choice of either speeding up drastically through the two toughest sections in Washington to pick our boxes up at the PO on Friday or take it easy and get in on Sunday or Monday morning. <br>
 								<br>
 								This late in the trail I had no reason to speed up and all the more reason to slow down and enjoy the scenery of what a trailworker/past thru-hiker I met on trail earlier called "the dessert of a thru-hike".  I spent the next rainy night in Snoqualamie splitting a hotel room with Brown Bag and headed out after lunch.  Speaking of food, there's a tiny restaurant run out of an RV called the Ardvark that makes incredible asian fusion food and raw fruit and veggie juices parked in front of a Chevron station.  One of my Mom's friends sent an amazing $50 gift card and I think the Ardvark soaked up most of it!  The Chevron station also holds a contract post office where all the hiker boxes are thrown without any kind of order into an out of use walk-in freezer.  The staff directs you to the freezer to find your boxes and checks your ID as you leave, definitely a first for the trail. <br>
 								<br>
-								Anyhow, the rain storm hadn't quite blown through and the trail out of Snoqualmie climbs 3,000 feet to some incredible views that I didn't want to miss.  Rather than haul ass out of town and get a full day in, I made camp just 10 miles out to make sure I didn't miss too much thanks to the low cloud cover which cleared up later that night.  VP (Vegan Paul) and Brownbag made camp a few miles ahead while a lot of others went down to the bottom of the ridge another 5 or 6 miles further.  A handful of other hikers took an alternate route that avoids two huge passes and cuts ten miles off the trail to try and make Stehekin by Friday.  The alternate would have missed the two passes I was on and some 
-								incredible views of Rainer and even Glacial Peak far off in the 
-								distance.  The next morning justified my decision as huge views of Mount Rainer between massive ridges opened up at dawn.  The remainder of the trail reminded me of the Sierra - long graded 
+								Anyhow, the rain storm hadn't quite blown through and the trail out of Snoqualmie climbs 3,000 feet to some incredible views that I didn't want to miss.  Rather than haul ass out of town and get a full day in, I made camp just 10 miles out to make sure I didn't miss too much thanks to the low cloud cover which cleared up later that night.  VP (Vegan Paul) and Brownbag made camp a few miles ahead while a lot of others went down to the bottom of the ridge another 5 or 6 miles further.  A handful of other hikers took an alternate route that avoids two huge passes and cuts ten miles off the trail to try and make Stehekin by Friday.  The alternate would have missed the two passes I was on and some
+								incredible views of Rainer and even Glacial Peak far off in the
+								distance.  The next morning justified my decision as huge views of Mount Rainer between massive ridges opened up at dawn.  The remainder of the trail reminded me of the Sierra - long graded
 								climbs up to high passes separated by forests and meadows, sometimes ten
 								 to fifteen miles long. I passed VP that second day and ended up camping with Brownbag the next couple nights on the way to Stevens Pass and the town of Baring.  He gets up later and I walk a bit faster but end earlier so we didn't do much hiking together, just the same miles per day.  We even ended up hitching together even though I got to the road almost an hour before him. <br>
 								<br>
@@ -731,30 +728,30 @@
 						<div class="content-title">
 							<h2>title</h2>
 							<h3>date</h3>
-						</div>							
+						</div>
 							<p>
-								<!--Content from blog goes in here! -->	
+								<!--Content from blog goes in here! -->
 							</p>
 
 							<div class="image" id="">
-								<!-- an image relating to chapter 
+								<!-- an image relating to chapter
 								<img src="./images/"> -->
 								<div class="caption">
-									<p>a caption</p>	
+									<p>a caption</p>
 								</div>
 							</div>
 
 							<p>
-								<!--Content from blog goes in here! -->	
-							</p>						
+								<!--Content from blog goes in here! -->
+							</p>
 						</div>
-						
+
 					</section>
-				</div>				
-			</div>									
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript">
-			
+
 			// fade loading GIF and allow user scrolling on page load
 			$(window).load(function(){
 				$('.loader').fadeOut('slow');

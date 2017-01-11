@@ -2,10 +2,9 @@ myApp = {
 
 	map : null,
 	am : null,
-	markers : null,	
+	markers : null,
 
 	renderMap : function(){
-		//console.log('this: ', this);
 		var config = {
 				baselayer: new L.StamenTileLayer('terrain'),
 				initLatLng: new L.LatLng(40.3025, -121.2347),
@@ -16,15 +15,16 @@ myApp = {
 				attributionControl: false
 			};
 
+		// allow multiple popups to be open at once
 		L.Map = L.Map.extend({
-		    openPopup: function(popup) {
-		        //this.closePopup();
-		        this._popup = popup;
+			openPopup: function(popup) {
+	      //this.closePopup();
+	      this._popup = popup;
 
-		        return this.addLayer(popup).fire('popupopen', {
-		            popup: this._popup
-		        });
-		    }
+	      return this.addLayer(popup).fire('popupopen', {
+	          popup: this._popup
+	      });
+		  }
 		});
 
 		//init the map
@@ -41,18 +41,17 @@ myApp = {
 		// set init map center and zoom level
 		this.map.setView(config.initLatLng, config.initZoom);
 		// place attribution in bottom left so it's visible
-		L.control.attribution({ 
+		L.control.attribution({
 			'position': 'bottomleft'
 		}).setPrefix()
-		  .addAttribution("Trail Data courtesy of <a href=\"http://www.pctmap.net/\">Half Mile Maps</a>")		  
+		  .addAttribution("Trail Data courtesy of <a href=\"http://www.pctmap.net/\">Half Mile Maps</a>")
 		  .addTo(this.map);
 
-		this.markers = L.layerGroup().addTo(this.map);		
+		this.markers = L.layerGroup().addTo(this.map);
 	},
 
 	checkFeatureClass : function(feature){
 		/*** function to detect feature class of marker ***/
-		//console.log('checkFeatureClass feature: ', feature);
 		var fc = feature.properties.feature_cl;
 
 		var poi = new L.MakiMarkers.icon({
@@ -69,7 +68,7 @@ myApp = {
 				icon: "town",
 				color: "#D9D9D9",
 				size: "l"
-			}),				
+			}),
 			event = new L.MakiMarkers.icon({
 				icon: "circle",
 				color: "#5CDBFF",
@@ -79,12 +78,12 @@ myApp = {
 				icon: "triangle",
 				color: "#99554E",
 				size: "l"
-			}),				
+			}),
 			site = new L.MakiMarkers.icon({
 				icon: "square",
 				color: "#6969FF",
 				size: "l"
-			}),	
+			}),
 			nfwater = new L.MakiMarkers.icon({
 				icon: "park",
 				color: "#6969FF",
@@ -99,7 +98,7 @@ myApp = {
 				icon: "lodging",
 				color: "#6969FF",
 				size: "l"
-			}),											
+			}),
 			nf = new L.MakiMarkers.icon({
 				icon: "park",
 				color: "#35ad22",
@@ -117,112 +116,33 @@ myApp = {
 			case 'nf_water' : return nfwater; break;
 			case 'site' : return site; break;
 			case 'food' : return food; break;
-			default :  return poi;				
-		}		
+			default :  return poi;
+		}
 	},
 
-	fetchPoiData : function(){
-		var features,
-			len,
-			i,
-			lat,
-			lon,
-			icon,
-			name,
-			desc,
-			marker;
-		// create a layerGroup to store each marker	
-		myApp.markers = L.layerGroup().addTo(myApp.map);
-
-		// load poi.geojson data, add event listener for animatedMarker on move
-		$.getJSON('data/pct-poi-final.geojson', function(data){
-			//console.log('geojson data for POI\'s loaded: ', data);
-
-			features = data.features,
-			len = features.length,
-			i = 0;
-
-            // check point of interest data for what to add to popups
-            var popupContent = function(feature, layer, name, desc, lat, lon) {                    
-                if (name && !desc) {
-                    return "<h2>" + name + "</h2>";
-                } else if (name && desc) {
-                    return "<h2>" + name + "</h2>" + "<p>" + desc + "</p>";
-                } else if (!name && desc) {
-                    return "<p>" + desc + "</p>";
-                };
-            }
-
-            var onEachFeature = function(feature, layer, animatedMarker){                    
-                var name = feature.properties.Name,
-                    desc = feature.properties.Descriptio,
-                    lat = feature.geometry.coordinates[1],
-                    lon = feature.geometry.coordinates[0],
-                    popupOptions = {
-                    	closebutton : false
-                    };                    
-
-                layer.bindPopup(popupContent(feature, layer, name, desc, lat, lon), popupOptions);
-
-                myApp.am.on({'move': function(e){                      
-                    // measure distance in pixels from animatedMarker to poi markers
-                    var d = L.GeometryUtil.distance(myApp.map, e.latlng, [lat,lon]);
-                    
-                    // do a distance test to open / close popups
-                    if (d < 100) { layer.openPopup(); }
-                    if (d > 200) { layer.closePopup(); }
-                    }
-                });
-            };
-
-            var marker = L.geoJson(data, {
-            	pointToLayer: function(feature, latlng){
-            		var myIcon = myApp.checkFeatureClass(feature);
-            		return new L.Marker(latlng, {
-            			icon : myIcon,
-            		});            		
-            	},				           	
-            	onEachFeature: function(feature, layer){            		
-            		onEachFeature(feature, layer, myApp.am);
-            	}
-            });
-
-            myApp.markers.addLayer(marker);	
-		})
-		.done(function() {
-			//console.log( "another success! getJSON for POI.geojson is done." );
-		})
-		.fail(function( jqxhr, textStatus, error ) {
-			var err = textStatus + ", " + error;
-			console.log( "Request Failed: " + err );
-		})    
-		.always(function() {
-			// run this stuff after, regardless of success or failure
-		}); // end $.getJSON(poi.geojson);	
-	},
-
-	fetchData : function(){
+	fetchData : function(callback){
 		// add PCT line feature from external geojson file
 		$.getJSON("data/pct-simp.geojson", function(data) {
-			//console.log("geojson for pct trail loaded: ", data);
+			// console.log("geojson for pct trail loaded: ", data);
 
 			var myStyle = {
 				"color": "#9400ff",
 				"weight": 4,
 				"opacity": 0.7,
 				"smoothFactor": 2
-				},
-				temp = [];
-			
+			};
+
+			var temp = [];
+
 			// for Animated Marker JS
-			// loop through geojson data and push the lat lon values to line array			
+			// loop through geojson data and push the lat lon values to line array
 			for (d in data) {
 				var i = 0,
-					l = data.features.length;
-				for (i; i < l; i ++){
+				  	l = data.features.length;
+				for (i; i < l; i ++) {
 					var j = 0,
-						coordinates = data.features[i].geometry.coordinates,
-						cLen = coordinates.length;
+						  coordinates = data.features[i].geometry.coordinates,
+						  cLen = coordinates.length;
 					for (j; j<cLen; j++){
 						var reverseCoordinates = [];
 						//reverse the order of lat lon as leaflet reads lon then lat
@@ -240,20 +160,28 @@ myApp = {
 				});
 
 			var line = L.polyline(temp);
+
 			myApp.am = L.animatedMarker(line.getLatLngs(), {
 					autoStart: false,
 					distance: 5000,
 					interval: 1000,
 					icon: mike
 				});
+
 			// add the animated marker
 			myApp.map.addLayer(myApp.am);
+
 			// add pct line geojson layer
 			var pctLine = L.geoJson(data, {
 					style : myStyle
-				}).addTo(myApp.map); 
+				}).addTo(myApp.map);
+
 			// add event listener for animatedMarker lat lon position
 			myApp.am.on('move', myApp.checkLatLon);
+
+			if (callback && typeof callback === 'function') {
+				callback();
+			}
 		})
 		.done(function() {
 			//console.log( "success! getJSON for pct.geojson is done." );
@@ -261,11 +189,98 @@ myApp = {
 		.fail(function( jqxhr, textStatus, error ) {
 			var err = textStatus + ", " + error;
 			console.log( "Request Failed: " + err );
-		})    
+		})
 		.always(function() {
 			// run this stuff after, regardless of success or failure
 		}); // end $.getJSON(pct.geojson);
 
+	},
+
+	fetchPoiData : function(callback){
+		var features,
+				len,
+				i,
+				lat,
+				lon,
+				icon,
+				name,
+				desc,
+				marker,
+				self = this;
+
+		// create a layerGroup to store each marker
+		myApp.markers = L.layerGroup().addTo(myApp.map);
+
+		// load poi.geojson data, add event listener for animatedMarker on move
+		$.getJSON('data/pct-poi-final.geojson', function(data){
+			// console.log('geojson data for POI\'s loaded: ', data);
+
+			features = data.features,
+			len = features.length,
+			i = 0;
+
+      // check point of interest data for what to add to popups
+      var popupContent = function(feature, layer, name, desc, lat, lon) {
+          if (name && !desc) {
+              return "<h2>" + name + "</h2>";
+          } else if (name && desc) {
+              return "<h2>" + name + "</h2>" + "<p>" + desc + "</p>";
+          } else if (!name && desc) {
+              return "<p>" + desc + "</p>";
+          };
+      }
+
+      var onEachFeature = function(feature, layer, animatedMarker){
+          var name = feature.properties.Name,
+              desc = feature.properties.Descriptio,
+              lat = feature.geometry.coordinates[1],
+              lon = feature.geometry.coordinates[0],
+              popupOptions = {
+              	closebutton : false
+              };
+
+          layer.bindPopup(popupContent(feature, layer, name, desc, lat, lon), popupOptions);
+
+
+          animatedMarker.on({'move': function(e){
+              // measure distance in pixels from animatedMarker to poi markers
+              var d = L.GeometryUtil.distance(myApp.map, e.latlng, [lat,lon]);
+
+              // do a distance test to open / close popups
+              if (d < 100) { layer.openPopup(); }
+              if (d > 200) { layer.closePopup(); }
+              }
+          });
+      };
+
+      var marker = L.geoJson(data, {
+      	pointToLayer: function(feature, latlng){
+      		var myIcon = myApp.checkFeatureClass(feature);
+      		return new L.Marker(latlng, {
+      			icon : myIcon,
+      		});
+      	},
+      	onEachFeature: function(feature, layer){
+      		onEachFeature(feature, layer, self.am);
+      	}
+      });
+
+      myApp.markers.addLayer(marker);
+
+			if (callback && typeof callback === 'function') {
+				callback();
+			}
+		})
+		.done(function() {
+			//console.log( "another success! getJSON for POI.geojson is done." );
+		})
+		.fail(function( jqxhr, textStatus, error ) {
+			var err = textStatus + ", " + error;
+			console.log( "Request Failed: " + err );
+		})
+		.always(function() {
+			// run this stuff after, regardless of success or failure
+		}); // end $.getJSON(poi.geojson);
 	},
 
 	add : function(layer){
@@ -275,14 +290,15 @@ myApp = {
 	rm : function(layer){
 		//console.log('removeLayer called');
 		myApp.map.removeLayer(layer);
-	},		
+	},
 
 	start : function(){
+		console.log(myApp.am);
 		myApp.am.start();
 		myApp.flag = false;
 	},
 
-	stop : function(){		
+	stop : function(){
 		myApp.flag = true;
 		myApp.am.stop();
 	},
@@ -291,15 +307,15 @@ myApp = {
 		myApp.map.panTo({
 			lon: myApp.am['_latlng'].lng, lat: myApp.am['_latlng'].lat
 		});
-	}, 
+	},
 
 	fadeIntro: function() {
-		//blur intro image as user scrolls						
+		//blur intro image as user scrolls
 		// $(window).scroll(function(){
 		// 	var s = $(window).scrollTop();
 		// 	console.log('scroll value is: ', s);
 
-		// 	// scroll offset value 
+		// 	// scroll offset value
 		// 	var x = s/50;
 
 		// 	console.log('x value is: ', x);
@@ -312,7 +328,7 @@ myApp = {
 		// 		 .css('mozFilter',filterVal)
 		// 		 .css('oFilter',filterVal)
 		// 		 .css('msFilter',filterVal);
-		// 		};			 
+		// 		};
 
 		// 	s > 100 ? blur(x) : blur(x);
 
@@ -320,10 +336,13 @@ myApp = {
 	},
 
 	// jQuery waypoint scroll detection
-	onScroll : function() {		
+	onScroll : function() {
 		//waypoint offset value
 		var w = 60,
-			v1 = document.getElementsByTagName("video")[0];
+			  v1 = document.getElementsByTagName("video")[0];
+
+		//start tracking the marker for lat/long pos
+		myApp.onMove = myApp.startInterval();
 
 		$('#intro').waypoint(function(d){
 			switch(d) {
@@ -335,15 +354,15 @@ myApp = {
 					break;
 			}
 		}, {offset: '75%'});
-		
-		// reveal map to user 
+
+		// reveal map to user
 		$('#wp0').waypoint(function(direction){
 			switch(direction) {
 				case 'down':
-					console.log('wp0 called');
+					// console.log('wp0 called');
 					// $('#intro-image').css({'display', 'none'});
 					$('#map').css({'z-index': '5'});
-					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});									
+					$('#map-placeholder').css({'background-color' : 'hsla(0,100%,100%,0)'});
 					break;
 				case 'up':
 					// $('#intro-image').css('display', 'block');
@@ -360,16 +379,16 @@ myApp = {
 					$('#map-placeholder').toggleClass('hidden');
 					myApp.fetchPoiData();
 					myApp.map.zoomIn(6);
-					if (myApp.amCounter === -1) { 
+					if (myApp.amCounter === -1) {
 						myApp.map.panTo([myApp.coordinates.start[1],myApp.coordinates.start[0]]);
 						myApp.amCounter = 0;
-					}					
+					}
 					break;
 				case 'up':
-					$('#map-placeholder').toggleClass('hidden');					
+					$('#map-placeholder').toggleClass('hidden');
 					myApp.map.removeLayer(myApp.markers);
 					myApp.map.zoomOut(6);
-					if (myApp.amCounter === -1) { myApp.map.panTo([40.3025, -121.2347]);	}					
+					if (myApp.amCounter === -1) { myApp.map.panTo([40.3025, -121.2347]);	}
 					break;
 			}
 		}, {offset: w});
@@ -381,19 +400,19 @@ myApp = {
 
 			switch(direction){
 				case 'down' :
-					//console.log('waypoint 1 triggered');										
-					if (myApp.amCounter === 0) { 
+					//console.log('waypoint 1 triggered');
+					if (myApp.amCounter === 0) {
 						myApp.start();
 						myApp.onMove = myApp.startInterval();
 						myApp.amCounter +=1;
-					} 
+					}
 					break;
-				case 'up' :					
-					if (myApp.amCounter === 1) { 
+				case 'up' :
+					if (myApp.amCounter === 1) {
 						myApp.amCounter -=1;
 						myApp.flag = true;
 						//myApp.stop();
-					}					
+					}
 					break;
 			}
 		}, {offset: 150});
@@ -401,19 +420,19 @@ myApp = {
 		// start animation for chapter 02
 		$('#wp2').waypoint(function(d) {
 			switch(d) {
-				case 'down':										
-					if (myApp.amCounter === 2) { 
+				case 'down':
+					if (myApp.amCounter === 2) {
 						myApp.start();
 						myApp.amCounter += 1;
 						myApp.onMove = myApp.startInterval();
-					} 												
+					}
 					break;
-				case 'up':					
+				case 'up':
 					myApp.stop();
 					if (myApp.amCounter === 3){
 						myApp.amCounter -= 1;
 						myApp.flag = true;
-					}										
+					}
 					break;
 			}
 		}, {offset: w});
@@ -446,21 +465,21 @@ myApp = {
 
 		$('#wp4').waypoint(function(d) {
 			switch(d) {
-				case 'down':					
+				case 'down':
 					console.log('wp4 down');
 					if (myApp.amCounter === 4){
-						myApp.start();						
+						myApp.start();
 						myApp.onMove = myApp.startInterval();
-						myApp.amCounter += 1;	
+						myApp.amCounter += 1;
 					}
-											
+
 					break;
 				case 'up':
 					if (myApp.amCounter === 5) {
 						myApp.amCounter -= 1;
 						myApp.stop();
-						myApp.flag = true;						
-					}											
+						myApp.flag = true;
+					}
 					break;
 			}
 		}, {offset: 150});
@@ -472,15 +491,15 @@ myApp = {
 						myApp.start();
 						myApp.flag = false;
 						myApp.onMove = myApp.startInterval();
-						myApp.amCounter += 1;		
-					}					
+						myApp.amCounter += 1;
+					}
 					break;
 				case 'up':
-					if (myApp.amCounter === 7) {						
+					if (myApp.amCounter === 7) {
 						myApp.stop();
 						myApp.flag = true;
 						myApp.amCounter -= 1;
-					}	
+					}
 
 					break;
 			}
@@ -493,15 +512,15 @@ myApp = {
 						myApp.start();
 						myApp.flag = false;
 						myApp.onMove = myApp.startInterval();
-						myApp.amCounter += 1;		
-					}					
+						myApp.amCounter += 1;
+					}
 					break;
 				case 'up':
 					if (myApp.amCounter === 9) {
 						myApp.stop();
 						myApp.flag = true;
 						myApp.amCounter -= 1;
-					}					
+					}
 					break;
 			}
 		}, {offset: 150});
@@ -512,17 +531,17 @@ myApp = {
 		// 			if (myApp.flag === true) {
 		// 				myApp.start();
 		// 				myApp.flag = false;
-		// 				myApp.onMove = myApp.startInterval();		
-		// 			}					
+		// 				myApp.onMove = myApp.startInterval();
+		// 			}
 		// 			break;
 		// 		case 'up':
 		// 			if (myApp.flag === false) {
 		// 				myApp.stop();
 		// 				myApp.flag = true;
-		// 			}					
+		// 			}
 		// 			break;
 		// 	}
-		// }, {offset: 150});		
+		// }, {offset: 150});
 	},
 
 	flag: false,
@@ -531,8 +550,8 @@ myApp = {
 	startInterval : function() {
 		return setInterval(function(){
 			if (myApp.flag === true){
-				myApp.stop();				
-				clearInterval(myApp.onMove);			
+				myApp.stop();
+				clearInterval(myApp.onMove);
 			}
 		},1000);
 	},
@@ -542,14 +561,14 @@ myApp = {
 	amCounter : -1,
 
 	// latlng coordinates for when to stop animatedMarker
-	coordinates : { 
-		start: [-116.46695, 32.589707], 
+	coordinates : {
+		start: [-116.46695, 32.589707],
 		one : [-116.645282, 33.273054],
-		two : [-116.671629, 33.757491], 
+		two : [-116.671629, 33.757491],
 		three : [-116.917108, 34.2842],
 		four: [-117.647582, 34.338275],
 		five: [-118.35886, 35.051991]
-	},	
+	},
 
 	// function to check coordinates with animatedMarker position
 	// increment amCounter when coordinates match
@@ -565,7 +584,7 @@ myApp = {
 			lat4 = myApp.coordinates.four[1],
 			lng4 = myApp.coordinates.four[0],
 			lat5 = myApp.coordinates.five[1],
-			lng5 = myApp.coordinates.five[0];		
+			lng5 = myApp.coordinates.five[0];
 
 		switch(e.latlng.lng, e.latlng.lat) {
 			case lng0, lat0 :
@@ -575,7 +594,7 @@ myApp = {
 				myApp.flag = true;
 				myApp.amCounter = 2;
 				break;
-			case lng2, lat2 :				
+			case lng2, lat2 :
 				myApp.flag = true;
 				myApp.stop();
 				myApp.amCounter = 4;
@@ -594,7 +613,7 @@ myApp = {
 				myApp.flag = true;
 				myApp.stop();
 				myApp.amCounter = 10;
-				break;								
+				break;
 		}
 
 		myApp.pan();
@@ -602,18 +621,15 @@ myApp = {
 	},
 
 	init : function() {
-		console.log('called myApp.init()');
 		$.waypoints.settings.scrollThrottle = 30;
 		//draw map
 		myApp.renderMap();
-		//async load geo data
+		// async load geo data
 		myApp.fetchData();
 		//attach scroll events
-		//start tracking the marker for lat/long pos
-		myApp.onMove = myApp.startInterval();
-		//myApp.onPan = setInterval(myApp.pan, 100);
-		// add event listener for user scrolling		
 		myApp.onScroll();
-		 
+		//start tracking the marker for lat/long pos
+		// myApp.onMove = myApp.startInterval();
+		//myApp.onPan = setInterval(myApp.pan, 100);
 	}
 } //end myApp
